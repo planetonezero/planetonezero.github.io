@@ -5959,9 +5959,8 @@ details.learningGoals{
   <div class="challengeActions">
     <button class="action" id="startTreeChallenge" type="button">Challenge starten</button>
     <button class="action secondary hidden" id="nextTreeChallenge" type="button">Andere Challenge ausprobieren</button>
-    <button class="action secondary hidden challengeRuleLocked" id="ownTreeChallenge" type="button" disabled>Eigene Strategie</button>
+    <button class="action secondary hidden" id="ownTreeChallenge" type="button" disabled>Eigene Strategie</button>
   </div>
-  <p class="challengeStatus" id="treeChallengeUnlock">Die eigene Strategie wird nach zwei ausprobierten vorgegebenen Challenges freigeschaltet.</p>
 </div>
 <article class="learnCard socialStart phase2Lockable phase2Locked" id="learn5">
 <span class="taskLabel">Aufgabe E</span>
@@ -10413,7 +10412,7 @@ async function finishTreeChallengeYear(){
   q.tree=next;q.round++;q.collapsed=collapsed;q.exhaustionScore=nextExhaustionScore;q.selected=selected;
   treeChallengeAnimating=true;
   try{await animateTreeRound("challengeFruitLayer",fromTree,used,left,next);}finally{treeChallengeAnimating=false;}
-  if(treeChallengeCurrent.id!=="own"&&q.log.length>=3)treeChallengeTried.add(treeChallengeCurrent.id);
+  if(treeChallengeCurrent.id!=="own"&&q.log.length>=10)treeChallengeTried.add(treeChallengeCurrent.id);
   renderTreeChallenge();
 }
 function startTreeChallengeBy(challenge){
@@ -10432,10 +10431,10 @@ function startRandomTreeChallenge(){
   startTreeChallengeBy(available[rand(0,available.length-1)]||TREE_CHALLENGES[0]);
 }
 function updateOwnTreeChallengeUnlock(){
-  const btn=document.getElementById("ownTreeChallenge");const note=document.getElementById("treeChallengeUnlock");if(!btn)return;
+  const btn=document.getElementById("ownTreeChallenge");if(!btn)return;
   const unlocked=treeChallengeTried.size>=2;
-  btn.disabled=!unlocked;btn.classList.toggle("challengeRuleLocked",!unlocked);btn.classList.toggle("hidden",false);
-  if(note)note.textContent=unlocked?"Du hast zwei vorgegebene Challenges ausprobiert. Jetzt kannst du eine eigene Strategie testen.":"Die eigene Strategie wird nach zwei ausprobierten vorgegebenen Challenges freigeschaltet (je mindestens 3 Jahre).";
+  btn.disabled=!unlocked;
+  btn.classList.toggle("hidden",!unlocked);
 }
 function updateTreeChallengeVisibility(){
   const box=document.getElementById("treeChallenge");if(!box)return;
