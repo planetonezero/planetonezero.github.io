@@ -4901,6 +4901,60 @@ body.mysteryExpanded{
 }
 
 
+/* ===== Optionale Challenges ===== */
+.optionalChallenge{
+  margin:0 0 18px;
+  padding:16px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  background:#faf9f6;
+}
+.optionalChallenge.hidden{display:none!important}
+.optionalChallengeHead{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  margin-bottom:8px;
+}
+.optionalChallengeHead h3{margin:0;font-size:17px;line-height:1.3}
+.optionalChallengeTag{
+  flex:0 0 auto;
+  padding:4px 8px;
+  border-radius:999px;
+  background:#e8e5de;
+  color:#555;
+  font-size:11px;
+  font-weight:800;
+}
+.optionalChallenge p{font-size:14px;line-height:1.55}
+.optionalChallenge .challengeLead{margin:0 0 10px}
+.optionalChallenge .challengeEvent{
+  margin:10px 0;
+  padding:11px 12px;
+  border-left:4px solid #5db7de;
+  border-radius:8px;
+  background:#edf6fb;
+}
+.optionalChallenge .challengeEvent strong{display:block;margin-bottom:4px}
+.challengeStatus{margin:8px 0 0!important;font-size:12px!important;color:#666}
+.challengeActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.challengeActions .action{flex:0 0 auto!important;width:auto!important}
+.challengeCanvasNote{margin-top:8px!important;font-size:12px!important;color:#666}
+.challengeTreeWrap{margin-top:12px}
+.challengeChoiceGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.challengeTreeLayout{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(280px,1fr);gap:18px;align-items:start;margin-top:12px}
+.challengeTreeLayout .pixelTree{max-width:360px}
+.challengeRuleLocked{opacity:.58}
+.challengeRuleLocked .action{pointer-events:none}
+@media(max-width:700px){
+  .optionalChallengeHead{display:grid}
+  .optionalChallengeTag{justify-self:start}
+  .challengeChoiceGrid,.challengeTreeLayout{grid-template-columns:1fr}
+  .challengeActions{flex-direction:column}
+  .challengeActions .action{width:100%!important}
+}
+
 /* ===== Einheitliche Hinweise in Phase 1 ===== */
 .inlineHint{
   margin:8px 0 12px!important;
@@ -5606,6 +5660,22 @@ details.learningGoals{
         </p>
 </div>
 </article>
+<div class="optionalChallenge hidden" id="environmentChallenge">
+  <div class="optionalChallengeHead">
+    <h3>Umwelt-Challenge</h3>
+    <span class="optionalChallengeTag" id="environmentChallengeCounter">4 Varianten</span>
+  </div>
+  <p class="challengeLead">Die nächste Aufgabe ist eine Gruppenaufgabe. Musst du noch warten? Dann kannst du hier weiterarbeiten. Spiele nur so lange, bis die anderen bereit sind.</p>
+  <div class="challengeEvent hidden" id="environmentChallengeEvent"></div>
+  <p class="challengeStatus" id="environmentChallengeStatus">Es gibt vier verschiedene Ereignisse. Du kannst mehrere ausprobieren.</p>
+  <div class="challengeActions">
+    <button class="action" id="startEnvironmentChallenge" type="button">Challenge starten</button>
+    <button class="action secondary hidden" id="nextEnvironmentChallenge" type="button">Andere Challenge ausprobieren</button>
+    <button class="action secondary hidden" id="restoreEnvironmentWorld" type="button">Zur ursprünglichen Welt</button>
+    <button class="action secondary hidden" id="resetEnvironmentSelection" type="button">Flächenauswahl zurücksetzen</button>
+  </div>
+  <p class="challengeCanvasNote hidden" id="environmentCanvasNote"></p>
+</div>
 <article class="taskCard withArtwork phase1Lockable phase1Locked" id="taskB">
 <span class="taskLabel">Aufgabe B</span>
 <h2>
@@ -5793,6 +5863,34 @@ details.learningGoals{
 </label>
 </div>
 </article>
+<div class="optionalChallenge hidden" id="treeChallenge">
+  <div class="optionalChallengeHead">
+    <h3>Baum-Challenges</h3>
+    <span class="optionalChallengeTag" id="treeChallengeCounter">mehrere Varianten</span>
+  </div>
+  <p class="challengeLead">Die nächste Aufgabe ist eine Gruppenaufgabe. Musst du noch warten? Dann kannst du hier weiterarbeiten. Spiele nur so lange, bis die anderen bereit sind.</p>
+  <div class="challengeEvent hidden" id="treeChallengeEvent"></div>
+  <div class="challengeTreeWrap hidden" id="treeChallengePlay">
+    <div class="challengeChoiceGrid" id="treeChallengeChoices"></div>
+    <div class="challengeTreeLayout">
+      <div>
+        <div class="pixelTree" id="challengePixelTree"><div class="pixelCrown"></div><div class="pixelTrunk"></div><div class="pixelTreeDiamond" aria-hidden="true"></div><div id="challengeFruitLayer"></div></div>
+      </div>
+      <div class="fruitChartBox" id="challengeFruitChart" aria-label="Diagramm: Früchte im Challenge-Verlauf"></div>
+    </div>
+    <p class="challengeStatus" id="treeChallengeStatus"></p>
+    <div class="roundActions">
+      <button class="action" id="finishTreeChallengeYear" type="button">Neues Jahr starten</button>
+      <button class="action secondary" id="resetTreeChallenge" type="button">Challenge neu starten</button>
+    </div>
+  </div>
+  <div class="challengeActions">
+    <button class="action" id="startTreeChallenge" type="button">Challenge starten</button>
+    <button class="action secondary hidden" id="nextTreeChallenge" type="button">Andere Challenge ausprobieren</button>
+    <button class="action secondary hidden challengeRuleLocked" id="ownTreeChallenge" type="button" disabled>Eigene Strategie</button>
+  </div>
+  <p class="challengeStatus" id="treeChallengeUnlock">Die eigene Strategie wird nach zwei ausprobierten vorgegebenen Challenges freigeschaltet.</p>
+</div>
 <article class="learnCard socialStart phase2Lockable phase2Locked" id="learn5">
 <span class="taskLabel">Aufgabe E</span>
 <h2>Jetzt arbeitet ihr zu zweit</h2><p class="phase2LockHint">Bearbeite zuerst Aufgabe D.</p>
@@ -7303,11 +7401,177 @@ function deleteWorld(id){
    ============================================================ */
 
 
+/* ============================================================
+   OPTIONALE UMWELT-CHALLENGES
+   Arbeiten nur mit einer Kopie der aktuellen Welt.
+   ============================================================ */
+const ENV_CHALLENGES=[
+  {id:"rain",title:"Starkregen",count:10,mode:"randomCluster",color:"#5DB7DE",text:"Durch starken Regen entsteht ein neuer See. 10 zusammenhängende Felder deiner Welt werden zu Wasser. Welche Fläche betroffen ist, entscheidet der Zufall. Passe deine Welt danach an."},
+  {id:"slide",title:"Erdrutsch",count:8,mode:"randomPath",color:"#D98B5F",text:"Ein Hang gerät ins Rutschen. 8 zusammenhängende Felder deiner Welt werden zu Fels und Geröll. Welche Fläche betroffen ist, entscheidet der Zufall. Passe deine Welt danach an."},
+  {id:"tornado",title:"Tornado",count:9,mode:"randomPath",color:"#b9bec4",text:"Ein Tornado fegt über one.zero. 9 zusammenhängende Felder deiner Welt werden zerstört. Welche Fläche betroffen ist, entscheidet der Zufall. Passe deine Welt danach an."},
+  {id:"meteor",title:"Jahrtausendereignis",count:11,mode:"randomCluster",color:"#555b63",text:"Ein Meteorit schlägt auf one.zero ein. 11 zusammenhängende Felder deiner Welt werden unbrauchbar. Welche Fläche betroffen ist, entscheidet der Zufall. Passe deine Welt danach an."}
+];
+let envChallengeBase=null;
+let envChallengeCurrent=null;
+let envChallengeCells=[];
+let envChallengeUsed=[];
+let envChallengeSelecting=false;
+
+function cellKey(x,y){return x+":"+y}
+function cloneGridValue(g){return JSON.parse(JSON.stringify(g))}
+function envCellSet(){return new Set(envChallengeCells.map(c=>cellKey(c.x,c.y)))}
+function isEnvBlocked(x,y){return !!envChallengeCurrent && envCellSet().has(cellKey(x,y))}
+function envNeighbors(x,y){
+  return [[1,0],[-1,0],[0,1],[0,-1]].map(([dx,dy])=>({x:x+dx,y:y+dy}))
+    .filter(c=>c.x>=0&&c.x<COLS&&c.y>=0&&c.y<ROWS&&mask[c.y][c.x]);
+}
+function buildRandomEnvArea(count,mode){
+  const all=[];
+  for(let y=0;y<ROWS;y++)for(let x=0;x<COLS;x++)if(mask[y][x])all.push({x,y});
+  for(let attempt=0;attempt<80;attempt++){
+    const start=all[rand(0,all.length-1)];
+    const cells=[start],seen=new Set([cellKey(start.x,start.y)]);
+    while(cells.length<count){
+      let candidates=[];
+      if(mode==="randomPath"){
+        const tail=cells[cells.length-1];
+        candidates=envNeighbors(tail.x,tail.y).filter(c=>!seen.has(cellKey(c.x,c.y)));
+        if(!candidates.length){
+          candidates=cells.flatMap(c=>envNeighbors(c.x,c.y)).filter(c=>!seen.has(cellKey(c.x,c.y)));
+        }
+      }else{
+        candidates=cells.flatMap(c=>envNeighbors(c.x,c.y)).filter(c=>!seen.has(cellKey(c.x,c.y)));
+        candidates=candidates.filter((c,i,a)=>a.findIndex(d=>d.x===c.x&&d.y===c.y)===i);
+        candidates.sort((a,b)=>{
+          const da=(a.x-start.x)**2+(a.y-start.y)**2+Math.random()*2.2;
+          const db=(b.x-start.x)**2+(b.y-start.y)**2+Math.random()*2.2;
+          return da-db;
+        });
+        candidates=candidates.slice(0,Math.max(2,Math.min(6,candidates.length)));
+      }
+      if(!candidates.length)break;
+      const next=candidates[rand(0,candidates.length-1)];
+      cells.push(next);seen.add(cellKey(next.x,next.y));
+    }
+    if(cells.length===count)return cells;
+  }
+  return all.slice(0,count);
+}
+function drawEnvironmentOverlay(){
+  if(!envChallengeCurrent||!envChallengeCells.length)return;
+  ctx.save();
+  envChallengeCells.forEach(({x,y})=>{
+    ctx.fillStyle=envChallengeCurrent.color;
+    ctx.globalAlpha=.94;
+    ctx.fillRect(x*SCALE,y*SCALE,SCALE,SCALE);
+    ctx.globalAlpha=1;
+    ctx.strokeStyle="#ffffffaa";
+    ctx.lineWidth=2;
+    ctx.strokeRect(x*SCALE+1,y*SCALE+1,SCALE-2,SCALE-2);
+    if(["tornado","meteor"].includes(envChallengeCurrent.id)){
+      ctx.strokeStyle=envChallengeCurrent.id==="meteor"?"#2e3237":"#727981";
+      ctx.lineWidth=3;
+      ctx.beginPath();ctx.moveTo(x*SCALE+7,y*SCALE+7);ctx.lineTo((x+1)*SCALE-7,(y+1)*SCALE-7);ctx.stroke();
+    }
+  });
+  ctx.restore();
+}
+const baseDraw=draw;
+draw=function(){baseDraw();drawEnvironmentOverlay();};
+
+function snapshotEnvironmentWorld(){
+  envChallengeBase={grid:cloneGridValue(grid),colors:[...userColors],names:[...userColorNames],selected};
+}
+function restoreEnvironmentBase(keepChallengeUI=false){
+  if(!envChallengeBase)return;
+  grid=cloneGridValue(envChallengeBase.grid);
+  userColors=[...envChallengeBase.colors];
+  userColorNames.splice(0,userColorNames.length,...envChallengeBase.names);
+  selected=envChallengeBase.selected;
+  envChallengeCells=[];envChallengeSelecting=false;
+  makePalette();draw();
+  const saveBtn=document.getElementById("save");
+  const resetBtn=document.getElementById("reset");
+  if(saveBtn)saveBtn.disabled=false;
+  if(resetBtn)resetBtn.disabled=false;
+  if(!keepChallengeUI){
+    envChallengeCurrent=null;envChallengeBase=null;
+    document.getElementById("environmentChallengeEvent")?.classList.add("hidden");
+    document.getElementById("nextEnvironmentChallenge")?.classList.add("hidden");
+    document.getElementById("restoreEnvironmentWorld")?.classList.add("hidden");
+    document.getElementById("resetEnvironmentSelection")?.classList.add("hidden");
+    document.getElementById("environmentCanvasNote")?.classList.add("hidden");
+    const start=document.getElementById("startEnvironmentChallenge");if(start)start.classList.remove("hidden");
+    const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Es gibt vier verschiedene Ereignisse. Du kannst mehrere ausprobieren.";
+  }
+}
+function chooseEnvironmentChallenge(){
+  if(!envChallengeBase)snapshotEnvironmentWorld();else restoreEnvironmentBase(true);
+  let available=ENV_CHALLENGES.filter(c=>!envChallengeUsed.includes(c.id));
+  if(!available.length){envChallengeUsed=[];available=[...ENV_CHALLENGES];}
+  envChallengeCurrent=available[rand(0,available.length-1)];
+  envChallengeUsed.push(envChallengeCurrent.id);
+  envChallengeCells=buildRandomEnvArea(envChallengeCurrent.count,envChallengeCurrent.mode);
+  envChallengeSelecting=false;
+
+  const event=document.getElementById("environmentChallengeEvent");
+  if(event){event.innerHTML="<strong>"+envChallengeCurrent.title+"</strong>"+envChallengeCurrent.text;event.classList.remove("hidden");}
+  const counter=document.getElementById("environmentChallengeCounter");
+  if(counter)counter.textContent=Math.min(envChallengeUsed.length,4)+" von 4 ausprobiert";
+  const status=document.getElementById("environmentChallengeStatus");
+  const note=document.getElementById("environmentCanvasNote");
+  if(envChallengeSelecting){
+    if(status)status.textContent="Wähle auf deiner Welt eine zusammenhängende Fläche: 0 von "+envChallengeCurrent.count+" Feldern.";
+    if(note){note.textContent="Klicke das erste Feld an und erweitere die Fläche danach über benachbarte Felder.";note.classList.remove("hidden");}
+    document.getElementById("resetEnvironmentSelection")?.classList.remove("hidden");
+  }else{
+    if(status)status.textContent="Die betroffene Fläche wurde zufällig bestimmt. Passe deine Welt mit den verbleibenden Feldern an.";
+    if(note){note.textContent="Die markierte Fläche kann in dieser Challenge nicht mehr verändert werden.";note.classList.remove("hidden");}
+    document.getElementById("resetEnvironmentSelection")?.classList.add("hidden");
+  }
+  document.getElementById("startEnvironmentChallenge")?.classList.add("hidden");
+  document.getElementById("nextEnvironmentChallenge")?.classList.remove("hidden");
+  document.getElementById("restoreEnvironmentWorld")?.classList.remove("hidden");
+  const saveBtn=document.getElementById("save");const resetBtn=document.getElementById("reset");
+  if(saveBtn)saveBtn.disabled=true;if(resetBtn)resetBtn.disabled=true;
+  draw();
+}
+function handleEnvironmentChallengeClick(x,y){
+  if(!envChallengeCurrent)return false;
+  const set=envCellSet();
+  if(set.has(cellKey(x,y)))return true;
+  if(!envChallengeSelecting)return set.has(cellKey(x,y));
+  if(envChallengeCells.length>=envChallengeCurrent.count)return true;
+  if(envChallengeCells.length>0){
+    const adjacent=envNeighbors(x,y).some(c=>set.has(cellKey(c.x,c.y)));
+    if(!adjacent){
+      const status=document.getElementById("environmentChallengeStatus");
+      if(status)status.textContent="Die Fläche muss zusammenhängend bleiben. Wähle ein Feld direkt neben deiner bisherigen Fläche.";
+      return true;
+    }
+  }
+  envChallengeCells.push({x,y});
+  if(envChallengeCells.length>=envChallengeCurrent.count)envChallengeSelecting=false;
+  const status=document.getElementById("environmentChallengeStatus");
+  if(status)status.textContent=envChallengeSelecting
+    ?"Wähle auf deiner Welt eine zusammenhängende Fläche: "+envChallengeCells.length+" von "+envChallengeCurrent.count+" Feldern."
+    :"Die Fläche steht fest. Passe deine Welt jetzt mit den verbleibenden Feldern an.";
+  draw();
+  return true;
+}
+function updateEnvironmentChallengeVisibility(){
+  const box=document.getElementById("environmentChallenge");if(!box)return;
+  const hasSavedWorld=getSavedWorlds().length>0;
+  box.classList.toggle("hidden",!hasSavedWorld);
+  if(!hasSavedWorld&&envChallengeBase)restoreEnvironmentBase(false);
+}
+
 function updatePhase1Progress(){
   const worlds=getSavedWorlds().slice().sort((a,b)=>Number(a.id)-Number(b.id));
   const b=document.getElementById("taskB");
 
   if(b)b.classList.toggle("phase1Locked",worlds.length<1);
+  updateEnvironmentChallengeVisibility();
 }
 
 function initPhase1Progress(){
@@ -8271,6 +8535,14 @@ canvas.addEventListener(
       return;
     }
 
+
+    if(handleEnvironmentChallengeClick(x,y)){
+      return;
+    }
+
+    if(isEnvBlocked(x,y)){
+      return;
+    }
 
     grid[y][x] =
       selected;
@@ -9276,6 +9548,7 @@ function updatePhase2Progress(){
   if(d)d.classList.toggle("phase2Locked",!(afterBOk&&cComplete));
   if(e)e.classList.toggle("phase2Locked",!taskDComplete);
   if(f)f.classList.toggle("phase2Locked",!eComplete);
+  updateTreeChallengeVisibility();
 
   document.querySelectorAll(".phase2LockHint").forEach(hint=>{
     const parent=hint.closest(".phase2Lockable");
@@ -9971,6 +10244,133 @@ async function finishPRound(){
     }
   }
   updatePhase2Progress();
+}
+
+/* ============================================================
+   OPTIONALE BAUM-CHALLENGES
+   Eigener Zusatzdurchlauf; der normale Baumzustand bleibt unverändert.
+   Die Regenerations- und Kollapslogik entspricht exakt Aufgabe C.
+   ============================================================ */
+const TREE_CHALLENGES=[
+  {id:"importantPlus",title:"Alles Wichtige plus Wunsch",text:"Erfülle in jedem Jahr alles, was du ganz sicher brauchst, und zusätzlich mindestens einen Wunsch – solange das möglich ist."},
+  {id:"maximum",title:"Möglichst viel nutzen",text:"Nutze in jedem Jahr so viele Früchte wie möglich. Wähle also immer die grösstmögliche Zahl deiner Dinge aus."},
+  {id:"desires",title:"Wünsche im Blick",text:"Versuche in jedem Jahr mindestens zwei deiner zusätzlichen Wünsche zu erfüllen. Entscheide selbst, was du darüber hinaus auswählst."}
+];
+let treeChallengeState=null;
+let treeChallengeCurrent=null;
+let treeChallengeAnimating=false;
+let treeChallengeTried=new Set();
+
+function freshTreeChallengeState(){return {tree:TREE_START,max:TREE_MAX,round:1,log:[],selected:[],collapsed:false,exhaustionScore:0};}
+function treeChallengeSelected(){return [...document.querySelectorAll("#treeChallengeChoices input:checked")].map(cb=>Number(cb.dataset.i));}
+function renderTreeChallenge(){
+  const box=document.getElementById("treeChallenge");if(!box||!treeChallengeState||!treeChallengeCurrent)return;
+  const p=normalizedPersonal(eState().personal||[]);
+  const selectedSet=new Set(treeChallengeState.selected||[]);
+  const choices=document.getElementById("treeChallengeChoices");
+  if(choices){
+    choices.innerHTML=p.map((x,i)=>{
+      const label=x.kind==="need"?"Das brauche ich ganz sicher":"Das wünsche ich mir eher zusätzlich";
+      const cls=x.kind==="need"?"needAlloc":"desireAlloc";
+      return '<label class="allocItem '+cls+'"><input type="checkbox" data-i="'+i+'" '+(selectedSet.has(i)?'checked':'')+'> <span><strong>'+label+'</strong><br>'+escapeHtml(x.text)+'</span> '+fruitIcons(FRUIT_COST)+'</label>';
+    }).join("");
+    choices.querySelectorAll("input").forEach(cb=>cb.addEventListener("change",()=>{
+      treeChallengeState.selected=treeChallengeSelected();
+    }));
+  }
+  drawTreeTo("challengeFruitLayer",treeChallengeState.tree);
+  renderFruitChart("challengeFruitChart",treeChallengeState.log||[],TREE_START,TREE_MAX,treeChallengeState.exhaustionScore,treeChallengeState.collapsed===true);
+  const status=document.getElementById("treeChallengeStatus");
+  if(status){
+    status.textContent=treeChallengeState.collapsed
+      ?"Der Baum ist kollabiert. Du kannst eine andere Challenge ausprobieren."
+      :"Jahr "+Math.min(treeChallengeState.round,GAME_ROUNDS)+" · "+treeChallengeState.tree+" Früchte am Baum";
+  }
+  const finish=document.getElementById("finishTreeChallengeYear");
+  if(finish)finish.disabled=treeChallengeAnimating||treeChallengeState.collapsed||treeChallengeState.log.length>=GAME_ROUNDS;
+  updateOwnTreeChallengeUnlock();
+}
+function challengeRuleMessage(p,q,selected){
+  const selectedItems=selected.map(i=>p[i]).filter(Boolean);
+  const selectedNeeds=selectedItems.filter(x=>x.kind==="need").length;
+  const selectedDesires=selectedItems.filter(x=>x.kind==="desire").length;
+  const needTotal=p.filter(x=>x.kind==="need").length;
+  const desireTotal=p.filter(x=>x.kind==="desire").length;
+  const capacity=Math.floor(q.tree/FRUIT_COST);
+  const baseMin=q.tree>=4?2:(q.tree>=2?1:0);
+  if(selected.length<baseMin)return baseMin===2?"Wähle mindestens zwei Dinge für dieses Jahr aus.":"Es sind nur noch wenige Früchte da. Wähle aber mindestens eine Sache aus.";
+  if(treeChallengeCurrent.id==="maximum"){
+    const target=Math.min(p.length,capacity);
+    if(selected.length<target)return "Wähle für diese Challenge so viele Dinge aus, wie mit den vorhandenen Früchten möglich sind ("+target+").";
+  }
+  if(treeChallengeCurrent.id==="importantPlus"){
+    const targetNeeds=Math.min(needTotal,capacity);
+    const canAllNeeds=needTotal<=capacity;
+    const canWish=canAllNeeds&&desireTotal>0&&(needTotal+1)<=capacity;
+    if(canAllNeeds&&selectedNeeds<needTotal)return "Wähle für diese Challenge alles aus, was du ganz sicher brauchst.";
+    if(canWish&&selectedDesires<1)return "Wähle zusätzlich mindestens einen Wunsch aus.";
+    if(!canAllNeeds&&selected.length<capacity)return "Nicht alles Wichtige ist mehr gleichzeitig möglich. Nutze die verfügbaren Früchte und entscheide, was jetzt Vorrang hat.";
+  }
+  if(treeChallengeCurrent.id==="desires"){
+    const wanted=Math.min(2,desireTotal,capacity);
+    if(selectedDesires<wanted)return "Wähle für diese Challenge mindestens "+wanted+(wanted===1?" zusätzlichen Wunsch":" zusätzliche Wünsche")+" aus, solange das möglich ist.";
+  }
+  return "";
+}
+async function finishTreeChallengeYear(){
+  if(treeChallengeAnimating||!treeChallengeState||!treeChallengeCurrent)return;
+  const p=normalizedPersonal(eState().personal||[]),q=treeChallengeState;
+  const selected=treeChallengeSelected();
+  const ruleMessage=treeChallengeCurrent.id==="own"?"":challengeRuleMessage(p,q,selected);
+  if(treeChallengeCurrent.id==="own"){
+    const baseMin=q.tree>=4?2:(q.tree>=2?1:0);
+    if(selected.length<baseMin){alert(baseMin===2?"Wähle mindestens zwei Dinge für dieses Jahr aus.":"Es sind nur noch wenige Früchte da. Wähle aber mindestens eine Sache aus.");return;}
+  }else if(ruleMessage){alert(ruleMessage);return;}
+  const used=selected.length*FRUIT_COST;
+  if(used>q.tree){alert("Nicht genug Früchte vorhanden. Passe deine Auswahl an.");return;}
+  const fromTree=q.tree,left=q.tree-used;
+  const exhaustionScore=Math.max(0,Math.min(6,Number(q.exhaustionScore)||0));
+  const stressPoints=left<=1?1:0;
+  const stressedScore=Math.min(6,exhaustionScore+stressPoints);
+  const collapsed=(left===0&&exhaustionScore>=5)||(left===1&&stressedScore>=6);
+  const night=growOvernight(left,used,TREE_MAX,q.round,q.tree);
+  const reg=collapsed?0:night.reg;
+  const next=collapsed?0:night.next;
+  const nextExhaustionScore=collapsed?stressedScore:(night.next>=6?Math.max(0,stressedScore-1):stressedScore);
+  q.log.push({round:q.round,harvest:used,left,regrow:reg,treeAfter:next,collapsed,exhaustionScore:nextExhaustionScore});
+  q.tree=next;q.round++;q.collapsed=collapsed;q.exhaustionScore=nextExhaustionScore;q.selected=selected;
+  treeChallengeAnimating=true;
+  try{await animateTreeRound("challengeFruitLayer",fromTree,used,left,next);}finally{treeChallengeAnimating=false;}
+  if(treeChallengeCurrent.id!=="own"&&q.log.length>=3)treeChallengeTried.add(treeChallengeCurrent.id);
+  renderTreeChallenge();
+}
+function startTreeChallengeBy(challenge){
+  treeChallengeCurrent=challenge;
+  treeChallengeState=freshTreeChallengeState();
+  const event=document.getElementById("treeChallengeEvent");
+  if(event){event.innerHTML="<strong>"+challenge.title+"</strong>"+challenge.text;event.classList.remove("hidden");}
+  document.getElementById("treeChallengePlay")?.classList.remove("hidden");
+  document.getElementById("startTreeChallenge")?.classList.add("hidden");
+  document.getElementById("nextTreeChallenge")?.classList.remove("hidden");
+  renderTreeChallenge();
+}
+function startRandomTreeChallenge(){
+  let available=TREE_CHALLENGES.filter(c=>!treeChallengeTried.has(c.id)&&c.id!==treeChallengeCurrent?.id);
+  if(!available.length)available=TREE_CHALLENGES.filter(c=>c.id!==treeChallengeCurrent?.id);
+  startTreeChallengeBy(available[rand(0,available.length-1)]||TREE_CHALLENGES[0]);
+}
+function updateOwnTreeChallengeUnlock(){
+  const btn=document.getElementById("ownTreeChallenge");const note=document.getElementById("treeChallengeUnlock");if(!btn)return;
+  const unlocked=treeChallengeTried.size>=2;
+  btn.disabled=!unlocked;btn.classList.toggle("challengeRuleLocked",!unlocked);btn.classList.toggle("hidden",false);
+  if(note)note.textContent=unlocked?"Du hast zwei vorgegebene Challenges ausprobiert. Jetzt kannst du eine eigene Strategie testen.":"Die eigene Strategie wird nach zwei ausprobierten vorgegebenen Challenges freigeschaltet (je mindestens 3 Jahre).";
+}
+function updateTreeChallengeVisibility(){
+  const box=document.getElementById("treeChallenge");if(!box)return;
+  const s=eState();
+  const ready=s.individualReflectionSaved===true && s.reflectionUnderstandingConfirmed===true && s.termsPart1Understood===true && s.universalTermsUnderstood===true;
+  box.classList.toggle("hidden",!ready);
+  updateOwnTreeChallengeUnlock();
 }
 
 const DOUGHNUT_NEEDS={
@@ -12623,6 +13023,31 @@ function initErarbeitung(){
 
 
 
+
+  const envStart=id("startEnvironmentChallenge");
+  const envNext=id("nextEnvironmentChallenge");
+  const envRestore=id("restoreEnvironmentWorld");
+  const envReset=id("resetEnvironmentSelection");
+  if(envStart)envStart.onclick=chooseEnvironmentChallenge;
+  if(envNext)envNext.onclick=chooseEnvironmentChallenge;
+  if(envRestore)envRestore.onclick=()=>restoreEnvironmentBase(false);
+  if(envReset)envReset.onclick=()=>{
+    if(!envChallengeCurrent||envChallengeCurrent.mode!=="self")return;
+    envChallengeCells=[];envChallengeSelecting=true;draw();
+    const status=id("environmentChallengeStatus");
+    if(status)status.textContent="Wähle auf deiner Welt eine zusammenhängende Fläche: 0 von "+envChallengeCurrent.count+" Feldern.";
+  };
+
+  const treeStart=id("startTreeChallenge");
+  const treeNext=id("nextTreeChallenge");
+  const treeOwn=id("ownTreeChallenge");
+  const treeFinish=id("finishTreeChallengeYear");
+  const treeReset=id("resetTreeChallenge");
+  if(treeStart)treeStart.onclick=startRandomTreeChallenge;
+  if(treeNext)treeNext.onclick=startRandomTreeChallenge;
+  if(treeOwn)treeOwn.onclick=()=>{if(treeChallengeTried.size>=2)startTreeChallengeBy({id:"own",title:"Eigene Strategie",text:"Du hast verschiedene Strategien ausprobiert. Überlege dir jetzt selbst eine Regel für deine Auswahl und spiele mehrere Jahre danach."});};
+  if(treeFinish)treeFinish.onclick=finishTreeChallengeYear;
+  if(treeReset)treeReset.onclick=()=>{if(treeChallengeCurrent){treeChallengeState=freshTreeChallengeState();renderTreeChallenge();}};
 
   id("finishRound").onclick=finishPRound;
   id("resetPersonalRounds").onclick=resetPersonalRounds;
