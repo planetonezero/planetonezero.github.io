@@ -4912,6 +4912,13 @@ body.mysteryExpanded{
   box-shadow:0 2px 12px #00000012;
 }
 .optionalChallenge.hidden{display:none!important}
+.optionalChallenge{border-top-color:#b9ddb3}
+.optionalChallenge > .taskLabel,
+.treeChallengeOverlayHead .taskLabel{
+  background:#edf7ea;
+  color:#376a3b;
+  border:1px solid #b9ddb3;
+}
 .optionalChallengeHead{
   display:flex;
   justify-content:space-between;
@@ -5769,7 +5776,7 @@ details.learningGoals{
   </div>
   <p class="challengeLead">Die nächste Aufgabe ist eine Gruppenaufgabe. Musst du noch warten? Dann kannst du hier weiterarbeiten. Spiele nur so lange, bis die anderen bereit sind.</p>
   <div class="challengeEvent taskInstruction hidden" id="environmentChallengeEvent"></div>
-  <p class="challengeStatus" id="environmentChallengeStatus">Es gibt vier verschiedene Ereignisse. Du kannst mehrere ausprobieren.</p>
+  <p class="challengeStatus" id="environmentChallengeStatus"></p>
   <div class="challengeActions">
     <button class="action" id="startEnvironmentChallenge" type="button">Challenge starten</button>
     <button class="action secondary hidden" id="nextEnvironmentChallenge" type="button">Andere Challenge ausprobieren</button>
@@ -7621,7 +7628,7 @@ function restoreEnvironmentBase(keepChallengeUI=false){
     document.getElementById("resetEnvironmentSelection")?.classList.add("hidden");
     document.getElementById("environmentCanvasNote")?.classList.add("hidden");
     const start=document.getElementById("startEnvironmentChallenge");if(start)start.classList.remove("hidden");
-    const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Es gibt vier verschiedene Ereignisse. Du kannst mehrere ausprobieren.";
+    const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="";
   }
 }
 function chooseEnvironmentChallenge(){
