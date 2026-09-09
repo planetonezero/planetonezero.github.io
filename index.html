@@ -7600,8 +7600,8 @@ function chooseEnvironmentChallenge(){
     if(note){note.textContent="Klicke das erste Feld an und erweitere die Fläche danach über benachbarte Felder.";note.classList.remove("hidden");}
     document.getElementById("resetEnvironmentSelection")?.classList.remove("hidden");
   }else{
-    if(status)status.textContent="Die betroffene Fläche wurde zufällig bestimmt. Passe deine Welt mit den verbleibenden Feldern an.";
-    if(note){note.textContent="Die markierte Fläche kann in dieser Challenge nicht mehr verändert werden.";note.classList.remove("hidden");}
+    if(status)status.textContent="";
+    if(note){note.textContent="";note.classList.add("hidden");}
     document.getElementById("resetEnvironmentSelection")?.classList.add("hidden");
   }
   document.getElementById("startEnvironmentChallenge")?.classList.add("hidden");
