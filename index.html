@@ -7532,10 +7532,10 @@ function deleteWorld(id){
    Arbeiten nur mit einer Kopie der aktuellen Welt.
    ============================================================ */
 const ENV_CHALLENGES=[
-  {id:"rain",title:"Starkregen",count:10,mode:"randomCluster",color:"#5DB7DE",text:"Durch starken Regen entsteht ein neuer See. 10 zusammenhängende Felder deiner Welt werden zu Wasser. Welche Fläche betroffen ist, entscheidet der Zufall. Passe deine Welt danach an."},
-  {id:"slide",title:"Erdrutsch",count:8,mode:"randomPath",color:"#D98B5F",text:"Ein Hang gerät ins Rutschen. 8 zusammenhängende Felder deiner Welt werden zu Fels und Geröll. Welche Fläche betroffen ist, entscheidet der Zufall. Passe deine Welt danach an."},
-  {id:"tornado",title:"Tornado",count:9,mode:"randomPath",color:"#b9bec4",text:"Ein Tornado fegt über one.zero. 9 zusammenhängende Felder deiner Welt werden zerstört. Welche Fläche betroffen ist, entscheidet der Zufall. Passe deine Welt danach an."},
-  {id:"meteor",title:"Jahrtausendereignis",count:11,mode:"randomCluster",color:"#555b63",text:"Ein Meteorit schlägt auf one.zero ein. 11 zusammenhängende Felder deiner Welt werden unbrauchbar. Welche Fläche betroffen ist, entscheidet der Zufall. Passe deine Welt danach an."}
+  {id:"rain",title:"Starkregen",count:10,mode:"randomCluster",color:"#b9bec4",text:"Durch starken Regen entsteht ein neuer See. 10 zusammenhängende Felder deiner Welt werden zu Wasser. Welche Felder davon betroffen sind, siehst du nun in deiner Welt. Schaue deine Welt an und überlege dir, wie du auf die Veränderung reagierst. Gestalte um."},
+  {id:"slide",title:"Erdrutsch",count:8,mode:"randomPath",color:"#b9bec4",text:"Ein Hang gerät ins Rutschen. 8 zusammenhängende Felder deiner Welt werden zu Fels und Geröll. Welche Felder davon betroffen sind, siehst du nun in deiner Welt. Schaue deine Welt an und überlege dir, wie du auf die Veränderung reagierst. Gestalte um."},
+  {id:"tornado",title:"Tornado",count:9,mode:"randomPath",color:"#b9bec4",text:"Ein Tornado fegt über one.zero. 9 zusammenhängende Felder deiner Welt werden zerstört. Welche Felder davon betroffen sind, siehst du nun in deiner Welt. Schaue deine Welt an und überlege dir, wie du auf die Veränderung reagierst. Gestalte um."},
+  {id:"meteor",title:"Jahrtausendereignis",count:11,mode:"randomCluster",color:"#555b63",text:"Ein Meteorit schlägt auf one.zero ein. 11 zusammenhängende Felder deiner Welt werden unbrauchbar. Welche Felder davon betroffen sind, siehst du nun in deiner Welt. Schaue deine Welt an und überlege dir, wie du auf die Veränderung reagierst. Gestalte um."}
 ];
 let envChallengeBase=null;
 let envChallengeCurrent=null;
@@ -7594,7 +7594,39 @@ function drawEnvironmentOverlay(){
     ctx.strokeStyle="#ffffffaa";
     ctx.lineWidth=2;
     ctx.strokeRect(x*SCALE+1,y*SCALE+1,SCALE-2,SCALE-2);
-    if(["tornado","meteor"].includes(envChallengeCurrent.id)){
+    if(envChallengeCurrent.id==="rain"){
+      ctx.strokeStyle="#5f6870";
+      ctx.fillStyle="#ffffff99";
+      ctx.lineWidth=2;
+      const cx=x*SCALE+SCALE/2;
+      const cy=y*SCALE+SCALE/2+1;
+      ctx.beginPath();
+      ctx.moveTo(cx,cy-8);
+      ctx.bezierCurveTo(cx-6,cy-2,cx-7,cy+2,cx-7,cy+5);
+      ctx.bezierCurveTo(cx-7,cy+10,cx-3,cy+13,cx,cy+13);
+      ctx.bezierCurveTo(cx+3,cy+13,cx+7,cy+10,cx+7,cy+5);
+      ctx.bezierCurveTo(cx+7,cy+2,cx+6,cy-2,cx,cy-8);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+    }else if(envChallengeCurrent.id==="slide"){
+      ctx.strokeStyle="#5f6870";
+      ctx.fillStyle="#ffffff99";
+      ctx.lineWidth=2;
+      const left=x*SCALE+8;
+      const top=y*SCALE+10;
+      ctx.beginPath();
+      ctx.moveTo(left+4,top+13);
+      ctx.lineTo(left+1,top+8);
+      ctx.lineTo(left+6,top+2);
+      ctx.lineTo(left+14,top);
+      ctx.lineTo(left+20,top+6);
+      ctx.lineTo(left+18,top+14);
+      ctx.lineTo(left+10,top+17);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+    }else if(["tornado","meteor"].includes(envChallengeCurrent.id)){
       ctx.strokeStyle=envChallengeCurrent.id==="meteor"?"#2e3237":"#727981";
       ctx.lineWidth=3;
       ctx.beginPath();ctx.moveTo(x*SCALE+7,y*SCALE+7);ctx.lineTo((x+1)*SCALE-7,(y+1)*SCALE-7);ctx.stroke();
