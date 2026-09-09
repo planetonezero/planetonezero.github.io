@@ -7244,6 +7244,10 @@ function initTaskAnswers(){
           saveTaskAnswers(
             currentAnswers
           );
+
+          if(key==="A"&&typeof updateEnvironmentChallengeVisibility==="function"){
+            updateEnvironmentChallengeVisibility();
+          }
         }
       );
     });
@@ -7633,8 +7637,10 @@ function handleEnvironmentChallengeClick(x,y){
 function updateEnvironmentChallengeVisibility(){
   const box=document.getElementById("environmentChallenge");if(!box)return;
   const hasSavedWorld=getSavedWorlds().length>0;
-  box.classList.toggle("hidden",!hasSavedWorld);
-  if(!hasSavedWorld&&envChallengeBase)restoreEnvironmentBase(false);
+  const hasReflection=String(getTaskAnswers().A||"").trim().length>0;
+  const canShow=hasSavedWorld&&hasReflection;
+  box.classList.toggle("hidden",!canShow);
+  if(!canShow&&envChallengeBase)restoreEnvironmentBase(false);
 }
 
 function updatePhase1Progress(){
