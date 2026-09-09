@@ -933,17 +933,26 @@ button.full-width{
   background:rgba(3,8,26,.78);opacity:0;transition:opacity .55s ease;
 }
 .treeNightOverlay.active{opacity:1}
-.treeNightStar{
-  position:absolute;width:3.6%;aspect-ratio:1;
-  animation:treeStarTwinkle 1.35s steps(2,end) infinite alternate;
+.treeNewYearFirework{
+  position:absolute;width:4.2%;aspect-ratio:1;
+  opacity:0;
+  --fireworkColor:#f4c84a;
+  --fireworkColor2:#5db7de;
+  animation:treeNewYearBurst 2.2s steps(5,end) 1 both;
 }
-.treeNightStar::before,
-.treeNightStar::after{
-  content:"";position:absolute;background:#fff;
-  box-shadow:0 0 5px rgba(255,255,255,.75);
+.treeNewYearFirework::before,
+.treeNewYearFirework::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(var(--fireworkColor),var(--fireworkColor)) 50% 0/18% 34% no-repeat,
+    linear-gradient(var(--fireworkColor2),var(--fireworkColor2)) 50% 100%/18% 34% no-repeat,
+    linear-gradient(var(--fireworkColor2),var(--fireworkColor2)) 0 50%/34% 18% no-repeat,
+    linear-gradient(var(--fireworkColor),var(--fireworkColor)) 100% 50%/34% 18% no-repeat;
 }
-.treeNightStar::before{left:42%;top:0;width:18%;height:100%}
-.treeNightStar::after{left:0;top:42%;width:100%;height:18%}
+.treeNewYearFirework::after{
+  transform:rotate(45deg);
+  filter:brightness(1.2);
+}
 .pixelFruit.treeHarvesting{
   animation:treeFruitFall .9s ease-in forwards;
   z-index:5;
@@ -967,9 +976,11 @@ button.full-width{
   94%{opacity:.72}
   100%{transform:translateY(520%) rotate(24deg);opacity:0}
 }
-@keyframes treeStarTwinkle{
-  from{opacity:.35;transform:scale(.7)}
-  to{opacity:1;transform:scale(1)}
+@keyframes treeNewYearBurst{
+  0%{opacity:0;transform:scale(.35)}
+  35%{opacity:1;transform:scale(.9)}
+  75%{opacity:1;transform:scale(1.35)}
+  100%{opacity:0;transform:scale(1.6)}
 }
 .simNumbers,.socialStatus{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}.simNumbers strong,.socialStatus strong{background:#f4f1ea;padding:8px 10px;border-radius:8px}.miniCard{padding:9px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px}.counterBox{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0;padding:10px;background:#f4f1ea;border-radius:9px}.counter{display:flex;align-items:center;gap:10px}.counter button{width:36px;height:36px;border:0;border-radius:8px;background:#222;color:#fff;font-size:20px;cursor:pointer}.profileGrid,.allocationGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.profile{padding:14px;border:1px solid #ddd;border-radius:10px;background:#faf9f6}.profile h3{font-size:19px;margin:0 0 8px}.profile h4{font-size:13px;margin:13px 0 5px;color:#555}.profile p{margin:5px 0}.socialStart{border-top-color:#5db7de}.allocItem{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:start;padding:9px;border:1px solid #ddd;border-radius:8px;font-size:13px}.nextQuestion{margin-top:18px}.textLoadWarning{background:#fff3cd;padding:10px;border-radius:8px}@media(max-width:700px){.sortRow,.hardDecision,.needEditor,.treeStory,.simLayout,.profileGrid,.allocationGrid{grid-template-columns:1fr}.sortChoices{display:grid}.storyTree{margin:auto}}
 
@@ -5722,28 +5733,28 @@ details.learningGoals{
 <article class="learnCard phase2Lockable phase2Locked" id="learn3"><span class="taskLabel">Aufgabe C</span><p class="phase2LockHint">Zuerst Aufgabe B fertig bearbeiten.</p><div class="treeStory treeStorySimple">
 <div class="treeStoryCopy">
 <h3>Der magische Baum</h3>
-<p data-t="t3.story">Auf one.zero sorgt ein magischer Baum dafür, dass du bekommst, was du dir für ein gutes Leben wünschst. Für alles, was du dir erfüllst, werden zwei Früchte geerntet. Nach jeder Runde wachsen über Nacht neue Früchte. Wie viele es genau sind, siehst du erst nach der Nacht.</p>
+<p data-t="t3.story">Auf one.zero sorgt ein magischer Baum dafür, dass du bekommst, was du dir für ein gutes Leben wünschst. Für alles, was du dir erfüllst, werden zwei Früchte geerntet. Immer an Neujahr entscheidest du, was du dir im kommenden Jahr erfüllen möchtest. Beim Jahreswechsel wachsen neue Früchte nach. Wie viele es sind, siehst du erst nach Neujahr.</p>
 </div>
 <div class="treeStoryMedia">
 <img alt="Magischer Baum auf one.zero" class="treeStoryImage" src="baum.png"/>
 </div>
-</div><p class="taskInstruction" data-t="t3.goal">Wähle aus, was du in dieser Runde bekommen möchtest. Beim Klick auf «Runde abschliessen» werden die dafür nötigen Früchte (gelbe Quadrate) vom Baum genommen. Spiele mindestens 10 Runden und beobachte, wie sich der Bestand verändert. Probiere, dir zu erfüllen, was du brauchst und was du dir wünschst, aber achte auch darauf, wie es dem Baum geht. Es kann spannend sein, mehrere Durchläufe zu spielen und dabei bewusst unterschiedliche Strategien auszuprobieren.</p><div class="requirementGrid" id="taskCRequirements"></div>
+</div><p class="taskInstruction" data-t="t3.goal">Wähle aus, was du dir im kommenden Jahr erfüllen möchtest. Beim Klick auf «Neues Jahr starten» werden die dafür nötigen Früchte (gelbe Quadrate) vom Baum genommen. Spiele mindestens 10 Jahre und beobachte, wie sich der Bestand verändert. Probiere, dir zu erfüllen, was du brauchst und was du dir wünschst, aber achte auch darauf, wie es dem Baum geht. Es kann spannend sein, mehrere Durchläufe zu spielen und dabei bewusst unterschiedliche Strategien auszuprobieren.</p><div class="requirementGrid" id="taskCRequirements"></div>
 <div class="treeChartLayout">
   <div class="treeChartTreeColumn">
     <div class="pixelTree" id="pixelTree"><div class="pixelCrown"></div><div class="pixelTrunk"></div><div class="pixelTreeDiamond" aria-hidden="true"></div><div id="fruitLayer"></div></div>
-    <div class="simNumbers simNumbersHidden" aria-hidden="true"><strong><span data-t="sim.tree">Am Baum</span>: <span id="treeCount">22</span>/<span id="treeMaxCount">22</span></strong><strong><span data-t="sim.round">Runde</span>: <span id="roundCount">1</span></strong></div>
+    <div class="simNumbers simNumbersHidden" aria-hidden="true"><strong><span data-t="sim.tree">Am Baum</span>: <span id="treeCount">22</span>/<span id="treeMaxCount">22</span></strong><strong><span data-t="sim.round">Jahr</span>: <span id="roundCount">1</span></strong></div>
   </div>
   <div class="fruitChartBox" id="personalFruitChart" aria-label="Diagramm: Früchte im Verlauf"></div>
 </div>
 <div aria-live="polite" class="thoughtHint" id="personalThoughtHint"></div><div class="roundActions">
-<button class="action" data-t="sim.finish" id="finishRound">Runde abschliessen</button>
-<button class="action secondary" id="resetPersonalRounds" type="button">Runden zurücksetzen</button>
+<button class="action" data-t="sim.finish" id="finishRound">Neues Jahr starten</button>
+<button class="action secondary" id="resetPersonalRounds" type="button">Jahre zurücksetzen</button>
 </div></article>
 <article class="learnCard phase2Lockable phase2Locked" id="learn4">
 <span class="taskLabel">Aufgabe D</span>
-<h2>Was hast du beobachtet?</h2><p class="phase2LockHint">Spiele zuerst mindestens 10 Runden in Aufgabe C.</p>
+<h2>Was hast du beobachtet?</h2><p class="phase2LockHint">Spiele zuerst mindestens 10 Jahre in Aufgabe C.</p>
 <div class="taskQuestion reflectionPrompt">
-<strong>Denke über deine Runden nach.</strong>
+<strong>Denke über deine Jahre nach.</strong>
 <p>Gehe dabei auf diese Fragen ein:</p>
 <ul>
 <li>Was ist passiert, wenn du viele Früchte genutzt hast?</li>
@@ -5786,7 +5797,7 @@ details.learningGoals{
 <span class="taskLabel">Aufgabe E</span>
 <h2>Jetzt arbeitet ihr zu zweit</h2><p class="phase2LockHint">Bearbeite zuerst Aufgabe D.</p>
 <div class="taskInstruction partnerTaskCombined">
-<p>Setzt euch zu zweit zusammen. Ihr seid Person A und Person B. Jede Person erhält zwei vorgegebene Needs und zwei Desires. Ihr spielt wieder mit dem Baum. Besprecht zuerst, wie ihr gemeinsam entscheiden wollt, und schreibt eure Abmachung auf. Entscheidet danach in jeder Runde gemeinsam, welche Needs und Desires erfüllt werden. Spielt mindestens 10 Runden und beobachtet, wie sich eure Entscheidungen auf die Verteilung und den Baum auswirken.</p>
+<p>Setzt euch zu zweit zusammen. Ihr seid Person A und Person B. Jede Person erhält zwei vorgegebene Needs und zwei Desires. Ihr spielt wieder mit dem Baum. Besprecht zuerst, wie ihr gemeinsam entscheiden wollt, und schreibt eure Abmachung auf. Entscheidet danach für jedes Jahr gemeinsam, welche Needs und Desires erfüllt werden. Spielt mindestens 10 Jahre und beobachtet, wie sich eure Entscheidungen auf die Verteilung und den Baum auswirken.</p>
 <div class="labField partnerAgreementField">
 <label for="groupRule">Eure Abmachung</label>
 <div class="phase2RuleInputWrap">
@@ -5811,7 +5822,7 @@ details.learningGoals{
 <div class="groupTreeColumn">
 <div class="socialStatus simNumbersHidden" aria-hidden="true">
 <strong>Am Baum: <span id="gTree">22</span>/22</strong>
-<strong>Runde: <span id="gRound">1</span></strong>
+<strong>Jahr: <span id="gRound">1</span></strong>
 </div>
 <div class="pixelTree groupTree">
 <div class="pixelCrown"></div>
@@ -5823,19 +5834,19 @@ details.learningGoals{
 <div class="fruitChartBox" id="groupFruitChart" aria-label="Diagramm: Früchte im Verlauf"></div>
 </div>
 <div class="roundActions">
-<button class="action" id="gFinish" type="button">Gemeinsame Runde abschliessen</button>
-<button class="action secondary" id="resetGroupRounds" type="button">Runden zurücksetzen</button>
+<button class="action" id="gFinish" type="button">Neues Jahr starten</button>
+<button class="action secondary" id="resetGroupRounds" type="button">Jahre zurücksetzen</button>
 </div>
 </article>
 <article class="learnCard phase2Lockable phase2Locked" id="learn7">
 <span class="taskLabel">Aufgabe F</span>
 <h2>Was hat sich verändert?</h2><p class="phase2LockHint">Bearbeitet zuerst Aufgabe E.</p>
 <div class="taskQuestion reflectionPrompt">
-<strong>Denkt über eure gemeinsamen Runden nach.</strong>
+<strong>Denkt über eure gemeinsamen Jahre nach.</strong>
 <p>Geht dabei auf diese Fragen ein:</p>
 <ul>
 <li>War eure Verteilung für Person A und Person B gerecht? Warum?</li>
-<li>Hat eure Abmachung funktioniert? Würdet ihr sie für weitere Runden beibehalten oder verändern? Warum?</li>
+<li>Hat eure Abmachung funktioniert? Würdet ihr sie für weitere Jahre beibehalten oder verändern? Warum?</li>
 </ul>
 <textarea class="largeReflection" data-e-save="groupReflection" id="groupReflection"></textarea>
 </div>
@@ -6227,7 +6238,7 @@ details.learningGoals{
 </tr>
 <tr class="modelQuizRow" data-correct="yes">
 <td>
-<span>one.zero kann helfen, Folgen von Entscheidungen über mehrere Runden zu beobachten.</span>
+<span>one.zero kann helfen, Folgen von Entscheidungen über mehrere Jahre zu beobachten.</span>
 <div aria-live="polite" class="modelQuizFeedback"></div>
 </td>
 <td>
@@ -6375,19 +6386,19 @@ details.learningGoals{
 </div>
 </div>
 </div>
-<!-- Hinweise und Impressum -->
+<!-- Didaktischer Kommentar & Impressum -->
 <div class="teacherCommentLink">
 <button id="openTeacherComment">
-    Hinweise und Impressum
+    Didaktischer Kommentar &amp; Impressum
   </button>
 </div>
 <div aria-labelledby="commentTitle" aria-modal="true" class="commentOverlay" id="commentOverlay" role="dialog">
 <div class="commentDialog">
-<button aria-label="Hinweise und Impressum schliessen" class="commentClose" id="closeTeacherComment">
+<button aria-label="Didaktischer Kommentar und Impressum schliessen" class="commentClose" id="closeTeacherComment">
       Schliessen
     </button>
 <h2 id="commentTitle">
-      Hinweise und Impressum
+      Didaktischer Kommentar &amp; Impressum
     </h2>
 <p>
       Diese digitale Lernumgebung ist Teil des Unterrichtsarrangements <strong>Planet 1.0</strong>.
@@ -6410,7 +6421,7 @@ details.learningGoals{
     </p>
 <p>
       Kontakt über das
-      <a href="https://github.com/bfkids/novera" rel="noopener noreferrer" target="_blank">GitHub-Repository von one.zero</a>.
+      <a href="https://github.com/planetonezero" rel="noopener noreferrer" target="_blank">GitHub-Repository von one.zero</a>.
     </p>
 <h3>Technische Umsetzung</h3>
 <p>
@@ -6453,7 +6464,7 @@ details.learningGoals{
 
 const STORAGE_KEY = "mons_novera_saved_worlds";
 const TASK_ANSWERS_KEY = "novera_task_answers";
-const VALID_SLOTS = ["1","2"];
+const VALID_SLOTS = ["1","2","3"];
 
 const COLS = 20;
 const ROWS = 15;
@@ -7231,6 +7242,13 @@ function syncStateWithURL(){
 
 function deleteWorld(id){
 
+  if(!window.confirm("Möchtest du Welt " + id + " wirklich löschen?")){
+    return;
+  }
+
+  const currentWorldId =
+    getURLParam("world");
+
   let worlds =
     getSavedWorlds();
 
@@ -7250,7 +7268,33 @@ function deleteWorld(id){
 
   renderGallery();
 
-  syncStateWithURL();
+  /* Beim Löschen bleibt die aktuell sichtbare Welt unverändert.
+     Nur ein vorhandener URL-Verweis wird an die Renummerierung angepasst. */
+  try{
+    if(currentWorldId){
+      const deletedNumber=Number(id);
+      const currentNumber=Number(currentWorldId);
+      let nextWorldId=currentWorldId;
+
+      if(currentWorldId===id){
+        nextWorldId=null;
+      }else if(
+        Number.isFinite(deletedNumber) &&
+        Number.isFinite(currentNumber) &&
+        currentNumber>deletedNumber
+      ){
+        nextWorldId=String(currentNumber-1);
+      }
+
+      const url=new URL(window.location.href);
+      if(nextWorldId && worlds.some(w=>w.id===nextWorldId)){
+        url.searchParams.set("world",nextWorldId);
+      }else{
+        url.searchParams.delete("world");
+      }
+      window.history.replaceState({},"",url.pathname+(url.search?url.search:""));
+    }
+  }catch(e){}
 }
 
 
@@ -8682,7 +8726,7 @@ document.addEventListener(
    ERARBEITUNG V3 – lokal, ohne Backend
    ============================================================ */
 const E_KEY="novera_erarbeitung_v4";
-const TXT={"p2.kicker": "one.zero", "p2.title": "one.zero weiter entdecken", "p2.intro": "Du arbeitest mit deinen bisherigen Welten weiter und findest heraus, wie Bedürfnisse, Wünsche, begrenzte Möglichkeiten und Entscheidungen zusammenhängen.", "nav.back": "← Zurück", "worlds.title": "Deine gespeicherten Welten", "worlds.note": "Diese Welten hast du in der ersten Phase gespeichert. Du kannst sie hier nochmals ansehen.", "worlds.empty": "Noch keine Welt gespeichert.", "worlds.world": "Welt", "t1.title": "Das brauche ich ganz sicher – das wünsche ich mir eher zusätzlich", "t1.instruction": "Schau dir die Begriffe aus deiner zuletzt gespeicherten Welt an. Ordne jeden Begriff so ein, wie es für dich persönlich passt.", "sort.need": "Das brauche ich ganz sicher", "sort.desire": "Das wünsche ich mir eher zusätzlich", "sort.hard": "Schwierig zu entscheiden", "t1.hardWhat": "Was ist schwierig einzuordnen?", "t1.hardWhy": "Warum ist die Entscheidung schwierig?", "t1.confirm": "Meine Auswahl bestätigen", "t1.reveal": "Für «Das brauche ich» wird auch der Begriff Need (Bedürfnis) verwendet. Für «Das möchte ich zusätzlich» wird Desire (zusätzlicher Wunsch) verwendet.", "t1.allergy": "Was ein Mensch braucht, hängt teilweise von seiner Situation ab. Wer zum Beispiel eine Lebensmittelallergie hat, braucht möglicherweise bestimmte Nahrung, die für andere nur eine zusätzliche Wahl wäre.", "t1.noCategories": "In deiner letzten gespeicherten Welt wurden keine benannten Kategorien gefunden. Gehe zurück und benenne die verwendeten Farben.", "t2.title": "Drei Dinge genauer anschauen", "t2.instruction": "Wähle drei Dinge aus, die du ganz sicher für ein gutes Leben brauchst. Schreibe genauer, was du damit meinst. Ergänze zu jedem einen Wunsch, den du dir zusätzlich erfüllen möchtest.", "common.example": "Beispiel", "t2.example": "Das brauche ich ganz sicher: mit anderen Menschen in Kontakt sein können. Das wünsche ich mir zusätzlich: dafür immer das neueste Smartphone haben.", "t2.choose": "Kategorie auswählen", "t2.needLabel": "Das brauche ich ganz sicher", "t2.desireLabel": "Das wünsche ich mir zusätzlich", "t2.confirm": "Auswahl übernehmen", "t2.requirementsIntro": "Damit Menschen etwas bekommen oder tun können, braucht es natürliche und gesellschaftliche Voraussetzungen.", "t2.requirementsNote": "", "t2.needThree": "Ordne in Aufgabe A mindestens drei Kategorien bei «Das brauche ich ganz sicher» ein.", "t2.fill": "Bitte fülle bei allen drei Beispielen beide Felder aus.", "t3.title": "Der magische Baum", "t3.story": "Auf one.zero braucht es für deine ausgewählten Dinge keine natürlichen oder gesellschaftlichen Voraussetzungen. Hier wächst ein magischer Baum. Seine Früchte können all diese Dinge möglich machen. Für jede Sache braucht es zwei Früchte. In der Wirklichkeit brauchen verschiedene Dinge unterschiedliche Voraussetzungen.", "t3.goal": "Wähle aus, was du in dieser Runde bekommen möchtest. Beim Klick auf «Runde abschliessen» werden die dafür nötigen Früchte (gelbe Quadrate) vom Baum genommen. Spiele mindestens 10 Runden und beobachte, wie sich der Bestand verändert. Probiere, dir zu erfüllen, was du brauchst und was du dir wünschst, aber achte auch darauf, wie es dem Baum geht. Es kann spannend sein, mehrere Durchläufe zu spielen und dabei bewusst unterschiedliche Strategien auszuprobieren.", "sim.tree": "Am Baum", "sim.reserve": "Zurückgelegt", "sim.round": "Runde", "sim.harvest": "Ernten", "sim.secure": "Davon für später zurücklegen", "sim.finish": "Runde abschliessen", "sim.needFirst": "Schliesse zuerst Aufgabe B ab.", "sim.feedback": "Du hast {harvest} Früchte geerntet. {left} blieben am Baum. Über Nacht wuchsen {regrow} nach. Erfüllt wurden {needs} von 3 Dingen, die du ganz sicher brauchst, und {desires} von 3 zusätzlichen Wünschen.", "log.round": "Runde", "log.harvest": "Ernte", "log.treeleft": "Rest am Baum", "log.regrow": "Nachgewachsen", "log.reserve": "Zurückgelegt", "log.needs": "Needs", "log.desires": "Desires", "t4.title": "Was hast du beobachtet?", "t4.intro": "Schau auf deine Runden zurück und beschreibe deine Erfahrungen.", "t4.q1": "Was ist passiert, wenn du viele Früchte genutzt hast?", "t4.q2": "Was ist passiert, wenn du weniger Früchte genutzt hast?", "t4.q3": "Wann konntest du dir auch zusätzliche Wünsche erfüllen – und wann nicht?", "t4.q4": "Was konntest du beim Nachwachsen der Früchte nicht vorhersagen?", "t4.rememberTitle": "Vergleiche mit deinen Beobachtungen:", "t4.remember": "Nutzung heute beeinflusst Möglichkeiten morgen. Wie viele Früchte nachwachsen, ist begrenzt und nicht vollständig vorhersehbar. Auch wenn du nicht genau weisst, was später passiert, kannst du überlegen, was später noch möglich sein soll – und wie du das beeinflussen könntest. Der Baum zeigt diesen Zusammenhang vereinfacht. In der letzten Aufgabe dieser Lerneinheit erfährst du mehr darüber.", "t5.title": "Jetzt arbeitet ihr zu zweit", "t5.intro": "Setzt euch zu zweit zusammen. Ihr bekommt zwei erfundene Personen: Person A und Person B. Beide haben eigene Needs und Desires.", "t5.newProfiles": "Andere Profile", "t5.rule": "Eure Abmachung", "t5.help": "Denkt zum Beispiel darüber nach: Welche Needs sollen zuerst erfüllt werden? Soll jede Person gleich viel erhalten? Wann erfüllt ihr zusätzlich Desires? Was macht ihr, wenn nicht alles möglich ist?", "profile.needs": "Needs – das braucht die Person", "profile.desires": "Desires – das möchte die Person zusätzlich", "t6.title": "Gemeinsam entscheiden", "t6.intro": "Wählt selbst per Klick aus, welche Needs und Desires ihr in dieser Runde erfüllen wollt. Spielt mindestens 10 Runden und beobachtet, wie sich der Bestand verändert und wie es dem Baum geht. Es kann spannend sein, mehrere Durchläufe zu spielen und dabei bewusst unterschiedliche Strategien auszuprobieren. Die Website zeigt nur die Folgen eurer Entscheidung.", "t6.secure": "Für später zurücklegen", "t6.finish": "Gemeinsame Runde abschliessen", "t6.changeRule": "Habt ihr eure Abmachung während der Runden verändert? Wenn ja: warum?", "t6.tooMuch": "Dafür reichen die verfügbaren Früchte nicht.", "t6.feedback": "Ihr habt {used} Früchte verteilt und {secure} für später zurückgelegt. {aN}/3 Needs von Person A und {bN}/3 Needs von Person B wurden erfüllt. Am Baum blieben {left}; über Nacht wuchsen {reg} nach.", "t7.title": "Was hat sich verändert?", "t7.q1": "Welche Needs konnten nicht immer erfüllt werden?", "t7.q2": "War eure Verteilung für Person A und Person B gerecht? Warum?", "t7.q3": "Was ist passiert, wenn ihr viele Früchte für Needs und Desires eingesetzt habt?", "t7.q4": "Was habt ihr bei euren gemeinsamen Regeln und Entscheidungen bemerkt?", "end.question": "Was kann one.zero über ein gutes Leben auf der Erde zeigen?", "end.note": "Der Baum und seine Früchte sind erfunden. Gibt es auf der Erde trotzdem ähnliche Zusammenhänge? Diese Frage verfolgt ihr im anschliessenden Mystery weiter."};
+const TXT={"p2.kicker": "one.zero", "p2.title": "one.zero weiter entdecken", "p2.intro": "Du arbeitest mit deinen bisherigen Welten weiter und findest heraus, wie Bedürfnisse, Wünsche, begrenzte Möglichkeiten und Entscheidungen zusammenhängen.", "nav.back": "← Zurück", "worlds.title": "Deine gespeicherten Welten", "worlds.note": "Diese Welten hast du in der ersten Phase gespeichert. Du kannst sie hier nochmals ansehen.", "worlds.empty": "Noch keine Welt gespeichert.", "worlds.world": "Welt", "t1.title": "Das brauche ich ganz sicher – das wünsche ich mir eher zusätzlich", "t1.instruction": "Schau dir die Begriffe aus deiner zuletzt gespeicherten Welt an. Ordne jeden Begriff so ein, wie es für dich persönlich passt.", "sort.need": "Das brauche ich ganz sicher", "sort.desire": "Das wünsche ich mir eher zusätzlich", "sort.hard": "Schwierig zu entscheiden", "t1.hardWhat": "Was ist schwierig einzuordnen?", "t1.hardWhy": "Warum ist die Entscheidung schwierig?", "t1.confirm": "Meine Auswahl bestätigen", "t1.reveal": "Für «Das brauche ich» wird auch der Begriff Need (Bedürfnis) verwendet. Für «Das möchte ich zusätzlich» wird Desire (zusätzlicher Wunsch) verwendet.", "t1.allergy": "Was ein Mensch braucht, hängt teilweise von seiner Situation ab. Wer zum Beispiel eine Lebensmittelallergie hat, braucht möglicherweise bestimmte Nahrung, die für andere nur eine zusätzliche Wahl wäre.", "t1.noCategories": "In deiner letzten gespeicherten Welt wurden keine benannten Kategorien gefunden. Gehe zurück und benenne die verwendeten Farben.", "t2.title": "Drei Dinge genauer anschauen", "t2.instruction": "Wähle drei Dinge aus, die du ganz sicher für ein gutes Leben brauchst. Schreibe genauer, was du damit meinst. Ergänze zu jedem einen Wunsch, den du dir zusätzlich erfüllen möchtest.", "common.example": "Beispiel", "t2.example": "Das brauche ich ganz sicher: mit anderen Menschen in Kontakt sein können. Das wünsche ich mir zusätzlich: dafür immer das neueste Smartphone haben.", "t2.choose": "Kategorie auswählen", "t2.needLabel": "Das brauche ich ganz sicher", "t2.desireLabel": "Das wünsche ich mir zusätzlich", "t2.confirm": "Auswahl übernehmen", "t2.requirementsIntro": "Damit Menschen etwas bekommen oder tun können, braucht es natürliche und gesellschaftliche Voraussetzungen.", "t2.requirementsNote": "", "t2.needThree": "Ordne in Aufgabe A mindestens drei Kategorien bei «Das brauche ich ganz sicher» ein.", "t2.fill": "Bitte fülle bei allen drei Beispielen beide Felder aus.", "t3.title": "Der magische Baum", "t3.story": "Auf one.zero braucht es für deine ausgewählten Dinge keine natürlichen oder gesellschaftlichen Voraussetzungen. Hier wächst ein magischer Baum. Seine Früchte können all diese Dinge möglich machen. Für jede Sache braucht es zwei Früchte. Immer an Neujahr entscheidest du, was du dir im kommenden Jahr erfüllen möchtest. Beim Jahreswechsel wachsen neue Früchte nach. Wie viele es sind, siehst du erst nach Neujahr. In der Wirklichkeit brauchen verschiedene Dinge unterschiedliche Voraussetzungen.", "t3.goal": "Wähle aus, was du dir im kommenden Jahr erfüllen möchtest. Beim Klick auf «Neues Jahr starten» werden die dafür nötigen Früchte (gelbe Quadrate) vom Baum genommen. Spiele mindestens 10 Jahre und beobachte, wie sich der Bestand verändert. Probiere, dir zu erfüllen, was du brauchst und was du dir wünschst, aber achte auch darauf, wie es dem Baum geht. Es kann spannend sein, mehrere Durchläufe zu spielen und dabei bewusst unterschiedliche Strategien auszuprobieren.", "sim.tree": "Am Baum", "sim.reserve": "Zurückgelegt", "sim.round": "Jahr", "sim.harvest": "Ernten", "sim.secure": "Davon für später zurücklegen", "sim.finish": "Neues Jahr starten", "sim.needFirst": "Schliesse zuerst Aufgabe B ab.", "sim.feedback": "Du hast {harvest} Früchte geerntet. {left} blieben am Baum. Beim Jahreswechsel wuchsen {regrow} nach. Erfüllt wurden {needs} von 3 Dingen, die du ganz sicher brauchst, und {desires} von 3 zusätzlichen Wünschen.", "log.round": "Jahr", "log.harvest": "Ernte", "log.treeleft": "Rest am Baum", "log.regrow": "Nachgewachsen", "log.reserve": "Zurückgelegt", "log.needs": "Needs", "log.desires": "Desires", "t4.title": "Was hast du beobachtet?", "t4.intro": "Schau auf deine Jahre zurück und beschreibe deine Erfahrungen.", "t4.q1": "Was ist passiert, wenn du viele Früchte genutzt hast?", "t4.q2": "Was ist passiert, wenn du weniger Früchte genutzt hast?", "t4.q3": "Wann konntest du dir auch zusätzliche Wünsche erfüllen – und wann nicht?", "t4.q4": "Was konntest du beim Nachwachsen der Früchte nicht vorhersagen?", "t4.rememberTitle": "Vergleiche mit deinen Beobachtungen:", "t4.remember": "Nutzung heute beeinflusst Möglichkeiten morgen. Wie viele Früchte nachwachsen, ist begrenzt und nicht vollständig vorhersehbar. Auch wenn du nicht genau weisst, was später passiert, kannst du überlegen, was später noch möglich sein soll – und wie du das beeinflussen könntest. Der Baum zeigt diesen Zusammenhang vereinfacht. In der letzten Aufgabe dieser Lerneinheit erfährst du mehr darüber.", "t5.title": "Jetzt arbeitet ihr zu zweit", "t5.intro": "Setzt euch zu zweit zusammen. Ihr bekommt zwei erfundene Personen: Person A und Person B. Beide haben eigene Needs und Desires.", "t5.newProfiles": "Andere Profile", "t5.rule": "Eure Abmachung", "t5.help": "Denkt zum Beispiel darüber nach: Welche Needs sollen zuerst erfüllt werden? Soll jede Person gleich viel erhalten? Wann erfüllt ihr zusätzlich Desires? Was macht ihr, wenn nicht alles möglich ist?", "profile.needs": "Needs – das braucht die Person", "profile.desires": "Desires – das möchte die Person zusätzlich", "t6.title": "Gemeinsam entscheiden", "t6.intro": "Wählt selbst per Klick aus, welche Needs und Desires ihr im kommenden Jahr erfüllen wollt. Spielt mindestens 10 Jahre und beobachtet, wie sich der Bestand verändert und wie es dem Baum geht. Es kann spannend sein, mehrere Durchläufe zu spielen und dabei bewusst unterschiedliche Strategien auszuprobieren. Die Website zeigt nur die Folgen eurer Entscheidung.", "t6.secure": "Für später zurücklegen", "t6.finish": "Neues Jahr starten", "t6.changeRule": "Habt ihr eure Abmachung im Laufe der Jahre verändert? Wenn ja: warum?", "t6.tooMuch": "Dafür reichen die verfügbaren Früchte nicht.", "t6.feedback": "Ihr habt {used} Früchte verteilt und {secure} für später zurückgelegt. {aN}/3 Needs von Person A und {bN}/3 Needs von Person B wurden erfüllt. Am Baum blieben {left}; beim Jahreswechsel wuchsen {reg} nach.", "t7.title": "Was hat sich verändert?", "t7.q1": "Welche Needs konnten nicht immer erfüllt werden?", "t7.q2": "War eure Verteilung für Person A und Person B gerecht? Warum?", "t7.q3": "Was ist passiert, wenn ihr viele Früchte für Needs und Desires eingesetzt habt?", "t7.q4": "Was habt ihr bei euren gemeinsamen Regeln und Entscheidungen bemerkt?", "end.question": "Was kann one.zero über ein gutes Leben auf der Erde zeigen?", "end.note": "Der Baum und seine Früchte sind erfunden. Gibt es auf der Erde trotzdem ähnliche Zusammenhänge? Diese Frage verfolgt ihr im anschliessenden Mystery weiter."};
 function eState(){try{return JSON.parse(localStorage.getItem(E_KEY))||{};}catch(e){return {};}}
 function ePatch(p){const s=eState();Object.assign(s,p);localStorage.setItem(E_KEY,JSON.stringify(s));return s;}
 function t(k,f=""){return TXT[k]||f||k}
@@ -9245,7 +9289,7 @@ function updatePhase2Progress(){
     }else if(parent.id==="learn4"){
       hint.textContent=!afterBOk
         ?(!bComplete?"Bearbeite zuerst Aufgabe B vollständig.":"Lies zuerst die Erklärung zu den Voraussetzungen und bestätige «Gelesen und verstanden».")
-        :!cComplete?"Spiele zuerst mindestens 10 Runden in Aufgabe C.":"";
+        :!cComplete?"Spiele zuerst mindestens 10 Jahre in Aufgabe C.":"";
     }else if(parent.id==="learn5"){
       hint.textContent=!dComplete
         ?"Speichere zuerst deine Reflexion in Aufgabe D."
@@ -9254,7 +9298,7 @@ function updatePhase2Progress(){
     }else if(parent.id==="learn7"){
       hint.textContent=!termsOk
         ?"Lies zuerst beide Erklärungen zu Needs und Desires."
-        :!eComplete?"Spielt zuerst mindestens 10 gemeinsame Runden in Aufgabe E.":"";
+        :!eComplete?"Spielt zuerst mindestens 10 gemeinsame Jahre in Aufgabe E.":"";
     }
   });
 }
@@ -9537,14 +9581,25 @@ function buildTreeNightOverlay(tree){
   if(old)old.remove();
   const overlay=document.createElement("div");
   overlay.className="treeNightOverlay";
-  const stars=[[9,12],[21,24],[36,10],[51,22],[66,9],[82,18],[14,47],[30,38],[48,49],[68,42],[87,51],[57,7]];
-  stars.forEach((p,i)=>{
-    const s=document.createElement("i");
-    s.className="treeNightStar";
-    s.style.left=p[0]+"%";
-    s.style.top=p[1]+"%";
-    s.style.animationDelay=(i%4)*.18+"s";
-    overlay.appendChild(s);
+  const fireworks=[
+    [14,17,"#f4c84a","#e78ab3"],
+    [34,10,"#5db7de","#f4c84a"],
+    [54,19,"#75c56b","#b58ad8"],
+    [76,11,"#e76f51","#f4c84a"],
+    [84,38,"#b58ad8","#5db7de"],
+    [24,42,"#e78ab3","#75c56b"],
+    [48,37,"#f4c84a","#5db7de"],
+    [68,45,"#5db7de","#e76f51"]
+  ];
+  fireworks.forEach((p,i)=>{
+    const spark=document.createElement("i");
+    spark.className="treeNewYearFirework";
+    spark.style.left=p[0]+"%";
+    spark.style.top=p[1]+"%";
+    spark.style.setProperty("--fireworkColor",p[2]);
+    spark.style.setProperty("--fireworkColor2",p[3]);
+    spark.style.animationDelay=(i%4)*.18+"s";
+    overlay.appendChild(spark);
   });
   tree.appendChild(overlay);
   requestAnimationFrame(()=>overlay.classList.add("active"));
@@ -9583,10 +9638,10 @@ async function animateTreeRound(layerId,fromCount,used,left,next){
   });
   await waitMs(1550);
 
-  /* Nacht */
+  /* Jahreswechsel */
   drawTreeTo(layerId,left);
   const overlay=buildTreeNightOverlay(tree);
-  await waitMs(1050);
+  await waitMs(520);
 
   /* Nachwachsen: blau → grün → gelb
      Zwei Rendering-Frames sichern, dass auch beim allerersten Durchlauf
@@ -9599,7 +9654,7 @@ async function animateTreeRound(layerId,fromCount,used,left,next){
   layer.querySelectorAll(".treeRegrow").forEach(f=>f.classList.add("stageYellow"));
   await waitMs(1050);
 
-  /* Morgen */
+  /* Neues Jahr */
   overlay.classList.remove("active");
   await waitMs(1000);
   overlay.remove();
@@ -9667,7 +9722,7 @@ function renderFruitChart(containerId,log,start=TREE_START,max=TREE_MAX,exhausti
   const score=Math.max(0,Number(exhaustionScore)||0);
   const loadLabel=collapsed===true?"Baum: kollabiert":score>=5?"Belastung: kritisch":score>=3?"Belastung: hoch":score>=1?"Belastung: erhöht":"";
   let svg='<div class="fruitChartHeader"><p class="fruitChartTitle">Früchte im Verlauf</p>'+(loadLabel?'<span class="treeLoadStatus">'+loadLabel+'</span>':'')+'</div>';
-  svg+='<svg class="fruitChartSvg" viewBox="0 0 '+width+' '+height+'" role="img" aria-label="Fruchtbestand nach jeder Runde">';
+  svg+='<svg class="fruitChartSvg" viewBox="0 0 '+width+' '+height+'" role="img" aria-label="Fruchtbestand nach jedem Jahr">';
 
   yTicks.forEach(v=>{
     const yy=y(v);
@@ -9694,7 +9749,7 @@ function renderFruitChart(containerId,log,start=TREE_START,max=TREE_MAX,exhausti
     svg+='<text class="fruitChartCurrent" x="'+Math.min(width-pad.r-2,x(last.round)+8)+'" y="'+Math.max(12,y(last.tree)-9)+'">'+last.tree+'</text>';
   }
 
-  svg+='<text class="fruitChartLabel" x="'+(pad.l+innerW/2)+'" y="'+(height-6)+'" text-anchor="middle">Runden</text>';
+  svg+='<text class="fruitChartLabel" x="'+(pad.l+innerW/2)+'" y="'+(height-6)+'" text-anchor="middle">Jahre</text>';
   svg+='</svg>';
   box.innerHTML=svg;
 }
@@ -9780,7 +9835,7 @@ function renderPersonalSim(){
 
 /* Regeneration eines begrenzten Systems:
    Der Restbestand direkt nach der Ernte bestimmt den möglichen Nachwuchs.
-   Pro Nacht wird ein Wert wie bei einem sechsseitigen Würfel zufällig gewählt.
+   Bei jedem Jahreswechsel wird ein Wert wie bei einem sechsseitigen Würfel zufällig gewählt.
    Es wachsen nie mehr Früchte nach, als bis zum Maximalbestand Platz haben. */
 function growOvernight(left,used,max=TREE_MAX,round=1,currentTree=max){
   let values;
@@ -9849,13 +9904,13 @@ async function finishPRound(){
 
   /* Erschöpfung:
      Bleiben nach der Ernte 0 oder 1 Frucht übrig, steigt die Belastung um 1.
-     Erholt sich der Baum über Nacht auf mindestens 6 Früchte, sinkt sie um 1.
-     Ein Kollaps tritt bei 0 Restfrüchten ab 5 Belastungspunkten ein,
-     bei 1 Restfrucht erst ab 6 Belastungspunkten. Es gibt keine Rundensperre. */
+     Erholt sich der Baum beim Jahreswechsel auf mindestens 6 Früchte, sinkt sie um 1.
+     Ein Kollaps tritt bei 0 Restfrüchten erst ein, wenn der Baum bereits kritisch belastet war;
+     bei 1 Restfrucht weiterhin ab 6 Belastungspunkten. Es gibt keine Rundensperre. */
   const exhaustionScore=Math.max(0,Math.min(6,Number(q.exhaustionScore)||0));
   const stressPoints=left<=1 ? 1 : 0;
   const stressedScore=Math.min(6,exhaustionScore+stressPoints);
-  const collapsed=(left===0 && stressedScore>=5)||(left===1 && stressedScore>=6);
+  const collapsed=(left===0 && exhaustionScore>=5)||(left===1 && stressedScore>=6);
 
   const night=growOvernight(left,used,max,q.round,q.tree);
   const reg=collapsed?0:night.reg;
@@ -9908,7 +9963,7 @@ async function finishPRound(){
     const box=document.getElementById("personalThoughtHint");
     if(box){
       box.classList.add("active");
-      box.textContent="Dieser Durchlauf ist beendet. Du kannst den Endbestand anschauen, zur Reflexion weitergehen oder die Runden zurücksetzen und eine andere Strategie ausprobieren.";
+      box.textContent="Dieser Durchlauf ist beendet. Du kannst den Endbestand anschauen, zur Reflexion weitergehen oder die Jahre zurücksetzen und eine andere Strategie ausprobieren.";
     }
   }
   updatePhase2Progress();
@@ -9978,56 +10033,75 @@ const DOUGHNUT_NEEDS={
 };
 
 const ADOLESCENT_DESIRES=[
-  {text:"jederzeit warm duschen können",exclude:["Wasser","Energie"]},
-  {text:"ein grosses eigenes Zimmer haben",exclude:["Wohnen"]},
-  {text:"ein eigenes Bad haben",exclude:["Wohnen","Wasser"]},
-  {text:"jederzeit mit dem eigenen Smartphone online sein können",exclude:["Netzwerke","Energie"]},
-  {text:"zu Hause sehr schnelles Internet haben",exclude:["Netzwerke","Energie"]},
-  {text:"viel freie Zeit für meine Hobbys haben",exclude:[]},
-  {text:"mein Zimmer genau nach meinem Geschmack einrichten können",exclude:["Wohnen"]},
-  {text:"oft Freundinnen und Freunde zu mir nach Hause einladen können",exclude:["Netzwerke","Wohnen"]},
-  {text:"jederzeit Snacks nach eigener Wahl haben",exclude:["Nahrung"]},
-  {text:"ein besonders bequemes Bett haben",exclude:["Wohnen"]},
-  {text:"regelmässig Konzerte besuchen können",exclude:["Netzwerke"]},
-  {text:"oft auswärts essen können",exclude:["Nahrung"]},
-  {text:"regelmässig neue Games spielen können",exclude:["Energie"]},
-  {text:"ein eigenes Haustier haben",exclude:["Wohnen"]},
-  {text:"oft Essen nach Hause bestellen können",exclude:["Nahrung"]},
-  {text:"regelmässig Sportveranstaltungen besuchen können",exclude:[]},
-  {text:"mehrere verschiedene Hobbys gleichzeitig ausüben können",exclude:[]},
-  {text:"oft neue Kleidung auswählen können",exclude:["Soziale Gleichheit","Einkommen & Arbeit"]},
-  {text:"häufig Freizeitparks besuchen können",exclude:[]},
-  {text:"regelmässig ins Kino gehen können",exclude:[]},
-  {text:"häufig Tagesausflüge machen können",exclude:[]},
-  {text:"ein eigenes Musikinstrument besitzen",exclude:["Einkommen & Arbeit"]},
-  {text:"regelmässig in einem Sportverein trainieren können",exclude:["Netzwerke"]},
-  {text:"im Urlaub weit entfernte Orte besuchen können",exclude:[]},
+  /* Technik / Medien */
+  {text:"ein neues Smartphone haben können",exclude:[]},
+  {text:"einen richtig guten Computer haben können",exclude:[]},
+  {text:"eine eigene Spielkonsole haben können",exclude:[]},
+  {text:"regelmässig neue Games spielen können",exclude:[]},
+  {text:"jederzeit Filme, Serien und Videos streamen können",exclude:[]},
+  {text:"jederzeit Musik streamen können",exclude:[]},
+  {text:"richtig gute Kopfhörer oder Lautsprecher besitzen können",exclude:[]},
+  {text:"einen grossen Bildschirm für Filme oder Games haben können",exclude:["Wohnen"]},
+
+  /* Mode / Konsum */
+  {text:"regelmässig neue Kleidung kaufen können",exclude:[]},
+  {text:"mehrere Paar Schuhe zur Auswahl haben können",exclude:[]},
+  {text:"mir öfter neue Sachen kaufen können, die mir gefallen",exclude:[]},
+  {text:"eine gute Uhr oder andere besondere Accessoires besitzen können",exclude:[]},
+  {text:"Dinge sammeln können, die ich richtig cool finde",exclude:[]},
+  {text:"bei meinen Sachen zwischen vielen verschiedenen Designs wählen können",exclude:[]},
+
+  /* Reisen / Erlebnisse */
   {text:"mehrmals im Jahr verreisen können",exclude:[]},
-  {text:"bei Reisen in einem komfortablen Hotel übernachten können",exclude:["Wohnen"]},
-  {text:"regelmässig neue Bücher oder Comics kaufen können",exclude:["Bildung","Einkommen & Arbeit"]},
-  {text:"regelmässig neue Games kaufen können",exclude:["Energie","Einkommen & Arbeit"]},
-  {text:"jederzeit Musik streamen können",exclude:["Energie"]},
-  {text:"jederzeit Filme und Serien streamen können",exclude:["Energie"]},
-  {text:"zu Hause einen grossen Bildschirm für Filme und Games haben",exclude:["Energie","Wohnen"]},
-  {text:"ein eigenes E-Bike nutzen können",exclude:["Energie","Einkommen & Arbeit"]},
-  {text:"ein eigenes Musikinstrument in guter Qualität besitzen",exclude:["Einkommen & Arbeit"]},
-  {text:"regelmässig besondere Sportausrüstung nutzen können",exclude:["Einkommen & Arbeit"]},
-  {text:"oft in einem Café etwas trinken oder essen können",exclude:["Nahrung","Einkommen & Arbeit"]},
-  {text:"regelmässig Freizeitangebote ausserhalb des Wohnorts besuchen können",exclude:[]},
-  {text:"bei Ausflügen bequem mit Taxi oder Fahrdienst unterwegs sein können",exclude:["Einkommen & Arbeit"]},
-  {text:"häufig Eintritt für Kino, Bad oder Freizeitpark bezahlen können",exclude:["Einkommen & Arbeit"]},
-  {text:"regelmässig neue Deko für das eigene Zimmer auswählen können",exclude:["Wohnen","Einkommen & Arbeit"]},
-  {text:"eine grosse Auswahl an Freizeitmedien nutzen können",exclude:["Energie"]},
-  {text:"oft besondere Desserts oder Snacks auswählen können",exclude:["Nahrung"]},
-  {text:"regelmässig neue Brett- oder Kartenspiele kaufen können",exclude:["Einkommen & Arbeit"]},
-  {text:"häufig an kostenpflichtigen Freizeitkursen teilnehmen können",exclude:["Bildung","Einkommen & Arbeit"]},
-  {text:"bei Ferienreisen viele verschiedene Ausflüge machen können",exclude:[]},
-  {text:"regelmässig neue Sportarten in der Freizeit ausprobieren können",exclude:[]},
-  {text:"bei Veranstaltungen besonders gute Plätze wählen können",exclude:["Einkommen & Arbeit"]},
-  {text:"häufig besondere Freizeit-Erlebnisse buchen können",exclude:["Einkommen & Arbeit"]},
-  {text:"regelmässig neue Spiele für Konsole oder Computer auswählen können",exclude:["Energie","Einkommen & Arbeit"]},
-  {text:"bei Reisen besonders bequem unterwegs sein können",exclude:[]},
-  {text:"eine grosse Auswahl an persönlichen Freizeitgegenständen besitzen",exclude:["Einkommen & Arbeit"]}
+  {text:"weit entfernte Länder und Orte besuchen können",exclude:[]},
+  {text:"in den Ferien viele besondere Ausflüge machen können",exclude:[]},
+  {text:"in einem richtig komfortablen Hotel übernachten können",exclude:["Wohnen"]},
+  {text:"besondere Abenteuer oder Erlebnisse buchen können",exclude:[]},
+  {text:"einmal eine richtig grosse Reise machen können",exclude:[]},
+  {text:"an einen Ort reisen können, den ich unbedingt einmal sehen möchte",exclude:[]},
+
+  /* Sport / Hobbys */
+  {text:"hochwertige Ausrüstung für mein Hobby besitzen können",exclude:[]},
+  {text:"immer wieder neue Sportarten ausprobieren können",exclude:[]},
+  {text:"ein eigenes gutes Musikinstrument besitzen können",exclude:[]},
+  {text:"mehreren Hobbys gleichzeitig nachgehen können",exclude:[]},
+  {text:"an besonderen Kursen oder Workshops teilnehmen können",exclude:["Bildung"]},
+  {text:"meine Sport- oder Hobbyausrüstung regelmässig erneuern können",exclude:[]},
+  {text:"für mein Hobby an besondere Orte oder Veranstaltungen reisen können",exclude:[]},
+
+  /* Wohnen / Zimmer */
+  {text:"ein grosses eigenes Zimmer haben können",exclude:["Wohnen"]},
+  {text:"ein eigenes Bad haben können",exclude:["Wohnen","Wasser"]},
+  {text:"mein Zimmer komplett neu einrichten können",exclude:["Wohnen"]},
+  {text:"neue Möbel für mein Zimmer aussuchen können",exclude:["Wohnen"]},
+  {text:"ein besonders bequemes Bett haben können",exclude:["Wohnen"]},
+  {text:"in meinem Zimmer einen eigenen Bereich nur für mein Hobby haben können",exclude:["Wohnen"]},
+
+  /* Mobilität */
+  {text:"ein eigenes E-Bike haben können",exclude:[]},
+  {text:"ein besonders gutes Velo oder Mountainbike haben können",exclude:[]},
+  {text:"später ein eigenes Auto haben können",exclude:[]},
+  {text:"auf Reisen besonders bequem unterwegs sein können",exclude:[]},
+  {text:"für Ausflüge jederzeit ein passendes Verkehrsmittel wählen können",exclude:[]},
+  {text:"für Freizeit und Ferien weite Strecken schnell zurücklegen können",exclude:[]},
+
+  /* Essen / Genuss */
+  {text:"jederzeit meine Lieblingssnacks und -getränke haben können",exclude:["Nahrung"]},
+  {text:"regelmässig besondere Gerichte essen können",exclude:["Nahrung"]},
+  {text:"oft besondere Süssigkeiten oder Desserts auswählen können",exclude:["Nahrung"]},
+  {text:"immer eine grosse Auswahl an Essen haben können",exclude:["Nahrung"]},
+  {text:"regelmässig neue Gerichte aus verschiedenen Ländern ausprobieren können",exclude:["Nahrung"]},
+  {text:"für besondere Anlässe richtig aufwendiges Essen haben können",exclude:["Nahrung"]},
+
+  /* Veranstaltungen / Freizeit */
+  {text:"regelmässig Konzerte oder Festivals besuchen können",exclude:[]},
+  {text:"grosse Sportveranstaltungen live besuchen können",exclude:[]},
+  {text:"häufig Freizeitparks oder Erlebnisbäder besuchen können",exclude:[]},
+  {text:"bei Konzerten oder Veranstaltungen richtig gute Plätze haben können",exclude:[]},
+  {text:"regelmässig neue Bücher, Comics oder andere Freizeitmedien kaufen können",exclude:["Bildung"]},
+  {text:"häufig besondere Tagesausflüge und Unternehmungen machen können",exclude:[]},
+  {text:"regelmässig Live-Shows oder andere grosse Veranstaltungen besuchen können",exclude:[]},
+  {text:"in der Freizeit immer wieder etwas Neues ausprobieren können",exclude:[]}
 ];
 
 function profileSet(){
@@ -10225,7 +10299,7 @@ async function finishGroup(){
   const exhaustionScore=Math.max(0,Math.min(6,Number(q.exhaustionScore)||0));
   const stressPoints=left<=1 ? 1 : 0;
   const stressedScore=Math.min(6,exhaustionScore+stressPoints);
-  const collapsed=(left===0 && stressedScore>=5)||(left===1 && stressedScore>=6);
+  const collapsed=(left===0 && exhaustionScore>=5)||(left===1 && stressedScore>=6);
 
   const night=growOvernight(left,used,TREE_MAX,q.round,q.tree);
   const reg=collapsed?0:night.reg;
@@ -10268,7 +10342,7 @@ async function finishGroup(){
     const box=document.getElementById("groupThoughtHint");
     if(box){
       box.classList.add("active");
-      box.textContent="Dieser gemeinsame Durchlauf ist beendet. Ihr könnt den Endbestand anschauen, zur Reflexion weitergehen oder die Runden zurücksetzen und eine andere Strategie ausprobieren.";
+      box.textContent="Dieser gemeinsame Durchlauf ist beendet. Ihr könnt den Endbestand anschauen, zur Reflexion weitergehen oder die Jahre zurücksetzen und eine andere Strategie ausprobieren.";
     }
   }
   updatePhase2Progress();
@@ -10369,11 +10443,11 @@ function makeWorkStateHtml(printOnlyCompleted=false){
 
   const taskBBlock='<section class="printCard"><h2>one.zero entdecken – Aufgabe B</h2><table><thead><tr><th>#</th><th>Bereich</th><th>Beschreibung</th><th>Persönliche Einordnung</th></tr></thead><tbody>'+personalRows+'</tbody></table></section>';
 
-  const taskCBlock='<section class="printCard"><h2>one.zero entdecken – Aufgabe C</h2><p>'+esc((learning.psim?.log||[]).length)+' Runden durchgeführt.</p></section>';
+  const taskCBlock='<section class="printCard"><h2>one.zero entdecken – Aufgabe C</h2><p>'+esc((learning.psim?.log||[]).length)+' Jahre durchgeführt.</p></section>';
 
   const taskDBlock='<section class="printCard"><h2>one.zero entdecken – Aufgabe D</h2><div class="answer">'+esc(learning.individualReflection||"")+'</div></section>';
 
-  const taskEBlock='<section class="printCard"><h2>one.zero entdecken – Aufgabe E</h2><h3>Eure Abmachung</h3><div class="answer">'+esc(learning.groupRule||"")+'</div><p>'+esc((learning.gsim?.log||[]).length)+' gemeinsame Runden durchgeführt.</p></section>';
+  const taskEBlock='<section class="printCard"><h2>one.zero entdecken – Aufgabe E</h2><h3>Eure Abmachung</h3><div class="answer">'+esc(learning.groupRule||"")+'</div><p>'+esc((learning.gsim?.log||[]).length)+' gemeinsame Jahre durchgeführt.</p></section>';
 
   const taskFBlock='<section class="printCard"><h2>one.zero entdecken – Aufgabe F</h2><div class="answer">'+esc(learning.groupReflection||"")+'</div></section>';
 
@@ -10745,7 +10819,7 @@ function openNoveraAnalogVersion(){
     ["Der Baum zeigt alle wichtigen Zusammenhänge im Erdsystem.","Nein"],
     ["one.zero kann helfen, über Verteilung und Gerechtigkeit zu sprechen.","Ja"],
     ["Die Zahl der Früchte entspricht einer echten Menge an Ressourcen auf der Erde.","Nein"],
-    ["one.zero kann helfen, Folgen von Entscheidungen über mehrere Runden zu beobachten.","Ja"],
+    ["one.zero kann helfen, Folgen von Entscheidungen über mehrere Jahre zu beobachten.","Ja"],
     ["Ein Modell kann Zusammenhänge verständlicher machen, obwohl es die Wirklichkeit vereinfacht.","Ja"],
     ["Aus one.zero lässt sich direkt die richtige Lösung für die Erde ablesen.","Nein"],
     ["Ein Modell ist nur nützlich, wenn es die Wirklichkeit vollständig abbildet.","Nein"]
@@ -10803,7 +10877,7 @@ function openNoveraAnalogVersion(){
         '<li>für das Mystery: ein grosser Papierbogen oder zwei zusammengeklebte A4-Blätter pro Gruppe</li>'+
       '</ul></div>'+
       '<h2>Wichtig für die Kreissimulation</h2>'+
-      '<p>Zeichnet einen grossen Baum. Zu Beginn hängen <strong>16 Post-its</strong> als Früchte am Baum. Für jede erfüllte Karte werden zwei Früchte entfernt. Nach jeder Runde wächst nur ein Teil nach. So bleibt die Grundidee der digitalen Simulation erhalten, ohne dass gerechnet oder gewürfelt werden muss.</p>'+
+      '<p>Zeichnet einen grossen Baum. Zu Beginn hängen <strong>16 Post-its</strong> als Früchte am Baum. Für jede erfüllte Karte werden zwei Früchte entfernt. Nach jedem Jahr wächst nur ein Teil nach. So bleibt die Grundidee der digitalen Simulation erhalten, ohne dass gerechnet oder gewürfelt werden muss.</p>'+
     '</div>'+
     '<div><h2>Druck- und Kopierplan</h2><table class="copyPlan"><thead><tr><th>Seiten</th><th>Kopien</th></tr></thead><tbody>'+
       '<tr><td>Phase 1: zwei Rasterwelten</td><td>je 1 pro Schüler:in</td></tr>'+
@@ -10843,17 +10917,17 @@ function openNoveraAnalogVersion(){
   '<section class="sheet">'+
     '<div class="sheetHead"><span class="phaseTag">Phase 2 · Kreissimulation Teil 1</span><h1>Der magische Baum – unsere eigenen Anliegen</h1><p>Setzt euch in einen Kreis. Jede Person hat ihr Arbeitsblatt mit den konkretisierten Bedürfnissen und Wünschen dabei.</p></div>'+
     '<div class="circleLayout">'+
-      '<div><h2>So läuft eine Runde ab</h2><ol>'+
+      '<div><h2>So läuft ein Jahr ab</h2><ol>'+
         '<li>Zeichnet in der Mitte einen grossen Baum und hängt <strong>16 Post-its</strong> als Früchte daran.</li>'+
         '<li>Jede Person wählt ein konkretes Anliegen vom eigenen Blatt und schreibt es auf einen kleinen Zettel.</li>'+
-        '<li>Legt die Zettel in die Mitte. Besprecht, welche Anliegen ihr in dieser Runde erfüllen möchtet. Ihr müsst euch einigen; nicht alles kann gleichzeitig gewählt werden.</li>'+
+        '<li>Legt die Zettel in die Mitte. Besprecht, welche Anliegen ihr in diesem Jahr erfüllen möchtet. Ihr müsst euch einigen; nicht alles kann gleichzeitig gewählt werden.</li>'+
         '<li><strong>Jedes erfüllte Anliegen kostet zwei Früchte.</strong> Nehmt dafür zwei Post-its vom Baum.</li>'+
-        '<li>Am Ende der Runde zählt ihr, wie viele Früchte noch hängen. Dann kommt die Nacht.</li>'+
+        '<li>Am Ende des Jahres zählt ihr, wie viele Früchte noch hängen. Dann kommt Neujahr.</li>'+
       '</ol>'+
-      '<div class="ruleBox"><h2>Die einfache Nachtregel</h2><p class="fruitRule">Es wächst die Hälfte der noch vorhandenen Früchte nach.</p>'+
+      '<div class="ruleBox"><h2>Die einfache Neujahrsregel</h2><p class="fruitRule">Es wächst die Hälfte der noch vorhandenen Früchte nach.</p>'+
         '<p>Abrunden, wenn die Zahl ungerade ist. Der Baum kann höchstens 16 Früchte tragen. Sind keine Früchte mehr da, wächst nichts nach.</p>'+
-        '<p><strong>Beispiel:</strong> 8 Früchte bleiben → 4 wachsen nach → nächste Runde startet mit 12.</p></div></div>'+
-      '<div><h2>Rundenprotokoll</h2><table class="roundTable"><thead><tr><th>Runde</th><th>Start</th><th>verbraucht</th><th>übrig</th><th>wächst nach</th><th>neu</th></tr></thead><tbody>'+
+        '<p><strong>Beispiel:</strong> 8 Früchte bleiben → 4 wachsen nach → nächstes Jahr startet mit 12.</p></div></div>'+
+      '<div><h2>Jahresprotokoll</h2><table class="roundTable"><thead><tr><th>Jahr</th><th>Start</th><th>verbraucht</th><th>übrig</th><th>wächst nach</th><th>neu</th></tr></thead><tbody>'+
         '<tr><td>1</td><td>16</td><td></td><td></td><td></td><td></td></tr>'+
         '<tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>'+
         '<tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>'+
@@ -10881,17 +10955,17 @@ function openNoveraAnalogVersion(){
       '<div><h2>Auftrag</h2><ol>'+
         '<li>Mischt die Karten. Bei einer grossen Klasse teilen sich jeweils zwei Personen eine Karte.</li>'+
         '<li>Jede Person oder jedes Paar vertritt das Anliegen auf der gezogenen Karte.</li>'+
-        '<li>Legt die Karten in die Mitte und handelt aus, welche Anliegen in dieser Runde erfüllt werden.</li>'+
-        '<li>Jede erfüllte Karte kostet wieder zwei Früchte. Verwendet dieselbe Nachtregel wie zuvor.</li>'+
-        '<li>Spielt mindestens drei Runden. Ihr dürft eure Abmachungen zwischen den Runden verändern.</li>'+
+        '<li>Legt die Karten in die Mitte und handelt aus, welche Anliegen in diesem Jahr erfüllt werden.</li>'+
+        '<li>Jede erfüllte Karte kostet wieder zwei Früchte. Verwendet dieselbe Neujahrsregel wie zuvor.</li>'+
+        '<li>Spielt mindestens drei Jahre. Ihr dürft eure Abmachungen zwischen den Jahren verändern.</li>'+
       '</ol>'+
-      '<div class="ruleBox"><h2>Nachtregel bleibt gleich</h2><p class="fruitRule">Die Hälfte der übrigen Früchte wächst nach.</p><p>Maximal 16. Bei 0 wächst 0 nach.</p></div></div>'+
-      '<div><h2>Rundenprotokoll</h2><table class="roundTable"><thead><tr><th>Runde</th><th>Start</th><th>verbraucht</th><th>übrig</th><th>wächst nach</th><th>neu</th></tr></thead><tbody>'+
+      '<div class="ruleBox"><h2>Neujahrsregel bleibt gleich</h2><p class="fruitRule">Die Hälfte der übrigen Früchte wächst nach.</p><p>Maximal 16. Bei 0 wächst 0 nach.</p></div></div>'+
+      '<div><h2>Jahresprotokoll</h2><table class="roundTable"><thead><tr><th>Jahr</th><th>Start</th><th>verbraucht</th><th>übrig</th><th>wächst nach</th><th>neu</th></tr></thead><tbody>'+
         '<tr><td>1</td><td>16</td><td></td><td></td><td></td><td></td></tr>'+
         '<tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>'+
         '<tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>'+
       '</tbody></table>'+
-      '<div class="reflection"><strong>Reflexion</strong><p>Wurden Needs und Desires unterschiedlich behandelt? War eure Verteilung gerecht? Welche Regel würdet ihr für eine weitere Runde beibehalten oder verändern?</p>'+writingLines(5)+'</div></div>'+
+      '<div class="reflection"><strong>Reflexion</strong><p>Wurden Needs und Desires unterschiedlich behandelt? War eure Verteilung gerecht? Welche Regel würdet ihr für ein weiteres Jahr beibehalten oder verändern?</p>'+writingLines(5)+'</div></div>'+
     '</div>'+
     '<div class="miniGoals"><strong>Lernziele</strong><span>Ich kann Needs und Desires unterscheiden, natürliche und gesellschaftliche Voraussetzungen erklären und beschreiben, warum heutige Entscheidungen spätere Möglichkeiten beeinflussen.</span></div>'+
   '</section>'+
@@ -11034,11 +11108,11 @@ function setPersonalThoughtHint(lastRound,needTotal,desireTotal){
   if(lastRound.collapsed===true){
     text="Du hast den Baum erschöpft. Er kann sich nicht mehr erholen. Der Durchlauf endet hier. Schau dir den Verlauf an und überlege in der Reflexion, wie es dazu gekommen ist und was du anders hättest entscheiden können.";
   }else if(needTotal===0 && desireTotal>0 && d===desireTotal){
-    text="Du hast dir alle deine Wünsche erfüllt. Und wie geht es dem Baum? Beobachte ihn in den nächsten Runden weiter und entscheide dann, ob das für dich ein gutes Leben ist.";
+    text="Du hast dir alle deine Wünsche erfüllt. Und wie geht es dem Baum? Beobachte ihn in den nächsten Jahren weiter und entscheide dann, ob das für dich ein gutes Leben ist.";
   }else if(needTotal===0 && desireTotal>0 && d>0){
     text="Du hast dir einige deiner Wünsche erfüllt. Wäre das für dich ein gutes Leben? Beobachte auch den Baum weiter.";
   }else if(desireTotal===0 && needTotal>0 && n===needTotal){
-    text="Du hast alles bekommen, was du ganz sicher brauchst. Und wie geht es dem Baum? Beobachte ihn in den nächsten Runden weiter und entscheide dann, ob das für dich ein gutes Leben ist.";
+    text="Du hast alles bekommen, was du ganz sicher brauchst. Und wie geht es dem Baum? Beobachte ihn in den nächsten Jahren weiter und entscheide dann, ob das für dich ein gutes Leben ist.";
   }else if(desireTotal===0 && needTotal>0 && n<needTotal){
     const lowThreshold=needTotal>=4 ? 2 : 1;
     if(n<=lowThreshold){
@@ -11047,7 +11121,7 @@ function setPersonalThoughtHint(lastRound,needTotal,desireTotal){
       text="Du hast nur einen Teil von dem bekommen, was du ganz sicher brauchst. Wäre das für dich ein gutes Leben? Beobachte auch den Baum weiter.";
     }
   }else if(needTotal>0 && desireTotal>0 && n===needTotal && d===desireTotal){
-    text="Du hast dir alles erfüllt. Und wie geht es dem Baum? Beobachte ihn in den nächsten Runden weiter und entscheide dann, ob das für dich ein gutes Leben ist.";
+    text="Du hast dir alles erfüllt. Und wie geht es dem Baum? Beobachte ihn in den nächsten Jahren weiter und entscheide dann, ob das für dich ein gutes Leben ist.";
   }else if(needTotal>0 && n===needTotal && d>0){
     text="Du hast alles bekommen, was du ganz sicher brauchst, und einige zusätzliche Wünsche erfüllt. Wäre das für dich ein gutes Leben? Beobachte den Baum weiter.";
   }else if(needTotal>0 && n===needTotal && desireTotal>0 && d===0){
@@ -11103,7 +11177,7 @@ function setGroupThoughtHint(lastRound,currentTree){
   if(lastRound.collapsed===true || treeNow===0){
     text="Ihr habt den Baum erschöpft. Er kann sich nicht mehr erholen. Der Durchlauf endet hier. Schaut euch den Verlauf an und überlegt in der Reflexion, wie es dazu gekommen ist und was ihr anders hättet entscheiden können.";
   }else if(totalN===4 && totalD===4){
-    text="Ihr habt alles erfüllt. Und wie geht es dem Baum? Beobachtet ihn in den nächsten Runden weiter und entscheidet dann, ob das für beide ein gutes Leben ist.";
+    text="Ihr habt alles erfüllt. Und wie geht es dem Baum? Beobachtet ihn in den nächsten Jahren weiter und entscheidet dann, ob das für beide ein gutes Leben ist.";
   }else if(totalN===4 && totalD>0){
     text="Alle Needs sind erfüllt. Dazu kommen einige Desires. Ist das für beide ein gutes Leben? Beobachtet den Baum weiter.";
   }else if(totalN===4 && totalD===0){
@@ -12450,7 +12524,7 @@ function initErarbeitung(){
         }else if((card.id==="learn3"||card.id==="learn4"||card.id==="learn5"||card.id==="learn7") && s.requirementsUnderstood!==true){
           alert("Lies zuerst die Erklärung zu den Voraussetzungen und bestätige «Gelesen und verstanden».");
         }else if((card.id==="learn4"||card.id==="learn5"||card.id==="learn7") && (s.psim?.log?.length||0)<REFLECTION_MIN_ROUNDS && s.psim?.collapsed!==true){
-          alert("Spiele zuerst mindestens 10 Runden in Aufgabe C.");
+          alert("Spiele zuerst mindestens 10 Jahre in Aufgabe C.");
         }else if((card.id==="learn5"||card.id==="learn7") && s.individualReflectionSaved!==true){
           alert("Speichere zuerst deine Reflexion in Aufgabe D.");
         }else if((card.id==="learn5"||card.id==="learn7") && s.reflectionUnderstandingConfirmed!==true){
@@ -12458,7 +12532,7 @@ function initErarbeitung(){
         }else if((card.id==="learn5"||card.id==="learn7") && (s.termsPart1Understood!==true||s.universalTermsUnderstood!==true)){
           alert("Lies zuerst beide Erklärungen zu Needs und Desires und bestätige sie.");
         }else if(card.id==="learn7" && (s.gsim?.log?.length||0)<REFLECTION_MIN_ROUNDS && s.gsim?.collapsed!==true){
-          alert("Spielt zuerst mindestens 10 gemeinsame Runden in Aufgabe E.");
+          alert("Spielt zuerst mindestens 10 gemeinsame Jahre in Aufgabe E.");
         }
       }
     });
