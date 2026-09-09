@@ -982,7 +982,7 @@ button.full-width{
   75%{opacity:1;transform:scale(1.35)}
   100%{opacity:0;transform:scale(1.6)}
 }
-.simNumbers,.socialStatus{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}.simNumbers strong,.socialStatus strong{background:#f4f1ea;padding:8px 10px;border-radius:8px}.miniCard{padding:9px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px}.counterBox{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0;padding:10px;background:#f4f1ea;border-radius:9px}.counter{display:flex;align-items:center;gap:10px}.counter button{width:36px;height:36px;border:0;border-radius:8px;background:#222;color:#fff;font-size:20px;cursor:pointer}.profileGrid,.allocationGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.profile{padding:14px;border:1px solid #ddd;border-radius:10px;background:#faf9f6}.profile h3{font-size:19px;margin:0 0 8px}.profile h4{font-size:13px;margin:13px 0 5px;color:#555}.profile p{margin:5px 0}.socialStart{border-top-color:#5db7de}.allocItem{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:start;padding:9px;border:1px solid #ddd;border-radius:8px;font-size:13px}.nextQuestion{margin-top:18px}.textLoadWarning{background:#fff3cd;padding:10px;border-radius:8px}@media(max-width:700px){.sortRow,.hardDecision,.needEditor,.treeStory,.simLayout,.profileGrid,.allocationGrid{grid-template-columns:1fr}.sortChoices{display:grid}.storyTree{margin:auto}}
+.simNumbers,.socialStatus{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}.simNumbers strong,.socialStatus strong{background:#f4f1ea;padding:8px 10px;border-radius:8px}.miniCard{padding:9px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px}.counterBox{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0;padding:10px;background:#f4f1ea;border-radius:9px}.counter{display:flex;align-items:center;gap:10px}.counter button{width:36px;height:36px;border:0;border-radius:8px;background:#222;color:#fff;font-size:20px;cursor:pointer}.profileGrid,.allocationGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.profile{padding:14px;border:1px solid #ddd;border-radius:10px;background:#faf9f6}.profile h3{font-size:19px;margin:0 0 8px}.profile h4{font-size:13px;margin:13px 0 5px;color:#555}.profile p{margin:5px 0}.socialStart{border-top-color:#75c56b}.allocItem{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:start;padding:9px;border:1px solid #ddd;border-radius:8px;font-size:13px}.nextQuestion{margin-top:18px}.textLoadWarning{background:#fff3cd;padding:10px;border-radius:8px}@media(max-width:700px){.sortRow,.hardDecision,.needEditor,.treeStory,.simLayout,.profileGrid,.allocationGrid{grid-template-columns:1fr}.sortChoices{display:grid}.storyTree{margin:auto}}
 
 
 /* Needs und Desires konsequent unterscheiden */
@@ -4904,10 +4904,12 @@ body.mysteryExpanded{
 /* ===== Optionale Challenges ===== */
 .optionalChallenge{
   margin:0 0 18px;
-  padding:16px;
-  border:1px solid #ddd;
-  border-radius:12px;
-  background:#faf9f6;
+  padding:20px;
+  border:0;
+  border-top:5px solid #75c56b;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 2px 12px #00000012;
 }
 .optionalChallenge.hidden{display:none!important}
 .optionalChallengeHead{
@@ -4932,9 +4934,9 @@ body.mysteryExpanded{
 .optionalChallenge .challengeEvent{
   margin:10px 0;
   padding:11px 12px;
-  border-left:4px solid #5db7de;
+  border-left:4px solid #75c56b;
   border-radius:8px;
-  background:#edf6fb;
+  background:#edf7ea;
 }
 .optionalChallenge .challengeEvent strong{display:block;margin-bottom:4px}
 .challengeStatus{margin:8px 0 0!important;font-size:12px!important;color:#666}
@@ -4966,8 +4968,9 @@ body.mysteryExpanded{
 .treeChallengeDialog{width:min(1120px,100%);max-height:94vh;overflow:auto;padding:20px;border-radius:14px;background:#fff;box-shadow:0 8px 35px #00000030}
 .treeChallengeOverlayHead{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}
 .treeChallengeOverlayHead h2{margin:0;font-size:21px}
+.treeChallengeOverlayHead .taskLabel{margin-bottom:8px}
 .treeChallengeClose{flex:0 0 auto!important;width:auto!important}
-.treeChallengeDialog .challengeEvent{margin:10px 0;padding:11px 12px;border-left:4px solid #5db7de;border-radius:8px;background:#edf6fb}
+.treeChallengeDialog .challengeEvent{margin:10px 0;padding:11px 12px;border-left:4px solid #75c56b;border-radius:8px;background:#edf7ea}
 .treeChallengeDialog .challengeEvent strong{display:block;margin-bottom:4px}
 @media(max-width:800px){
   .challengeTreeLayout{grid-template-columns:1fr!important}
@@ -5760,12 +5763,13 @@ details.learningGoals{
 </div>
 </article>
 <div class="optionalChallenge hidden" id="environmentChallenge">
+  <span class="taskLabel">Zusatzaufgabe</span>
   <div class="optionalChallengeHead">
     <h3>Umwelt-Challenge</h3>
     <span class="optionalChallengeTag" id="environmentChallengeCounter">4 Varianten</span>
   </div>
   <p class="challengeLead">Die nächste Aufgabe ist eine Gruppenaufgabe. Musst du noch warten? Dann kannst du hier weiterarbeiten. Spiele nur so lange, bis die anderen bereit sind.</p>
-  <div class="challengeEvent hidden" id="environmentChallengeEvent"></div>
+  <div class="challengeEvent taskInstruction hidden" id="environmentChallengeEvent"></div>
   <p class="challengeStatus" id="environmentChallengeStatus">Es gibt vier verschiedene Ereignisse. Du kannst mehrere ausprobieren.</p>
   <div class="challengeActions">
     <button class="action" id="startEnvironmentChallenge" type="button">Challenge starten</button>
@@ -5963,6 +5967,7 @@ details.learningGoals{
 </div>
 </article>
 <div class="optionalChallenge hidden" id="treeChallenge">
+  <span class="taskLabel">Zusatzaufgabe</span>
   <div class="optionalChallengeHead">
     <h3>Baum-Challenges</h3>
   </div>
@@ -5975,10 +5980,13 @@ details.learningGoals{
 <div class="treeChallengeOverlay" id="treeChallengeOverlay" role="dialog" aria-modal="true" aria-labelledby="treeChallengeOverlayTitle">
   <div class="treeChallengeDialog">
     <div class="treeChallengeOverlayHead">
-      <h2 id="treeChallengeOverlayTitle">Baum-Challenge</h2>
+      <div>
+        <span class="taskLabel">Zusatzaufgabe</span>
+        <h2 id="treeChallengeOverlayTitle">Baum-Challenge</h2>
+      </div>
       <button class="action secondary treeChallengeClose" id="closeTreeChallenge" type="button">Schliessen</button>
     </div>
-    <div class="challengeEvent hidden" id="treeChallengeEvent"></div>
+    <div class="challengeEvent taskInstruction hidden" id="treeChallengeEvent"></div>
     <div class="challengeTreeWrap hidden" id="treeChallengePlay">
       <div class="challengeChoiceGrid" id="treeChallengeChoices"></div>
       <div class="challengeTreeLayout">
@@ -5991,10 +5999,10 @@ details.learningGoals{
       <div class="roundActions">
         <button class="action" id="finishTreeChallengeYear" type="button">Neues Jahr starten</button>
         <button class="action secondary" id="resetTreeChallenge" type="button">Challenge neu starten</button>
+        <button class="action secondary hidden" id="nextTreeChallenge" type="button">Andere Challenge ausprobieren</button>
       </div>
     </div>
     <div class="challengeActions">
-      <button class="action secondary hidden" id="nextTreeChallenge" type="button">Andere Challenge ausprobieren</button>
       <button class="action secondary hidden" id="ownTreeChallenge" type="button" disabled>Eigene Strategie</button>
     </div>
   </div>
@@ -9660,6 +9668,10 @@ function updatePhase2Progress(){
   if(b)b.classList.toggle("phase2Locked",!(hasWorld&&aComplete));
   if(c)c.classList.toggle("phase2Locked",!afterBOk);
   if(d)d.classList.toggle("phase2Locked",!(afterBOk&&cComplete));
+  const reflectionSaveButton=document.getElementById("checkIndividualReflection");
+  if(reflectionSaveButton){
+    reflectionSaveButton.style.display=(afterBOk&&cComplete)?"inline-block":"none";
+  }
   if(e)e.classList.toggle("phase2Locked",!taskDComplete);
   if(f)f.classList.toggle("phase2Locked",!eComplete);
   updateTreeChallengeVisibility();
@@ -10398,7 +10410,8 @@ function renderTreeChallenge(){
   if(status){
     status.textContent=treeChallengeState.collapsed
       ?"Der Baum ist kollabiert. Du kannst eine andere Challenge ausprobieren."
-      :"Jahr "+Math.min(treeChallengeState.round,GAME_ROUNDS)+" · "+treeChallengeState.tree+" Früchte am Baum";
+      :"";
+    status.classList.toggle("hidden",!treeChallengeState.collapsed);
   }
   const finish=document.getElementById("finishTreeChallengeYear");
   if(finish)finish.disabled=treeChallengeAnimating||treeChallengeState.collapsed||treeChallengeState.log.length>=GAME_ROUNDS;
