@@ -9888,8 +9888,12 @@ async function finishPRound(){
   const validDesires=[...selectedDesires].filter(i=>p[i]?.kind==="desire");
   const used=(validNeeds.length+validDesires.length)*FRUIT_COST;
 
-  if(used===0){
-    alert("Wähle zuerst mindestens eine Sache aus.");
+  const selectedCount=validNeeds.length+validDesires.length;
+  const minSelections=q.tree>=4 ? 2 : (q.tree>=2 ? 1 : 0);
+  if(selectedCount<minSelections){
+    alert(minSelections===2
+      ? "Wähle mindestens zwei Dinge für dieses Jahr aus."
+      : "Es sind nur noch wenige Früchte da. Wähle aber mindestens eine Sache aus.");
     return;
   }
 
@@ -10283,8 +10287,12 @@ async function finishGroup(){
     if(cb.dataset.k==="n")needs[pi]++;else des[pi]++;
   });
 
-  if(used===0){
-    alert("Wählt zuerst mindestens eine Sache aus.");
+  const selectedCount=needs[0]+needs[1]+des[0]+des[1];
+  const minSelections=q.tree>=4 ? 2 : (q.tree>=2 ? 1 : 0);
+  if(selectedCount<minSelections){
+    alert(minSelections===2
+      ? "Wählt mindestens zwei Dinge für dieses Jahr aus."
+      : "Es sind nur noch wenige Früchte da. Wählt aber mindestens eine Sache aus.");
     return;
   }
 
