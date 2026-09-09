@@ -5556,9 +5556,81 @@ details.learningGoals{
   display:flex;
   justify-content:flex-start;
 }
+
+/* ===== Startabfrage bei vorhandenem Arbeitsstand ===== */
+.resumeOverlay{
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:#00000066;
+}
+.resumeOverlay.active{display:flex}
+.resumeDialog{
+  width:min(560px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:14px;
+  padding:22px;
+  box-shadow:0 8px 35px #00000030;
+}
+.resumeDialog h2{
+  margin:0 0 10px;
+  font-size:21px;
+}
+.resumeDialog p{
+  margin:0;
+  font-size:14px;
+  line-height:1.55;
+}
+.resumeActions{
+  display:flex;
+  gap:8px;
+  margin-top:18px;
+}
+.resumeActions .action{flex:1 1 0}
+.resumeConfirm{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid #ddd;
+}
+.resumeConfirm.hidden{display:none}
+.resumeConfirm .resumeActions{margin-top:14px}
+@media(max-width:520px){
+  .resumeDialog{padding:18px}
+  .resumeActions{flex-direction:column}
+  .resumeActions .action{width:100%}
+}
+
 </style>
 </head>
 <body>
+
+<div class="resumeOverlay" id="resumeOverlay" role="dialog" aria-modal="true" aria-labelledby="resumeTitle">
+  <div class="resumeDialog">
+    <div id="resumeMainStep">
+      <h2 id="resumeTitle">Du hast one.zero schon besucht und damit gearbeitet.</h2>
+      <p>Möchtest du mit deinem bestehenden Arbeitsstand weiterarbeiten oder neu starten?</p>
+      <div class="resumeActions">
+        <button class="action" id="resumeContinue" type="button">Mit Arbeitsstand weiterfahren</button>
+        <button class="action secondary" id="resumeRestart" type="button">Neu starten</button>
+      </div>
+    </div>
+    <div class="resumeConfirm hidden" id="resumeConfirmStep">
+      <h2>Neu starten?</h2>
+      <p>Dein bisheriger Arbeitsstand wird zuerst heruntergeladen. Danach werden die gespeicherten one.zero-Daten auf diesem Gerät gelöscht und die aktuelle Version der Website neu geladen.</p>
+      <div class="resumeActions">
+        <button class="action secondary" id="resumeRestartBack" type="button">Zurück</button>
+        <button class="action" id="resumeRestartConfirm" type="button">Arbeitsstand herunterladen &amp; neu starten</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <header>
 <div class="headerBar">
 <h1>Willkommen auf one.zero</h1>
@@ -13152,9 +13224,165 @@ function initErarbeitung(){
 }
 
 
+
+/* ============================================================
+   STARTABFRAGE BEI VORHANDENEM ARBEITSSTAND
+   ============================================================ */
+const RESUME_SKIP_KEY="novera_skip_resume_once";
+
+function hasMeaningfulStoredWork(){
+  try{
+    const worlds=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
+    if(Array.isArray(worlds)&&worlds.length>0)return true;
+  }catch(e){}
+
+  try{
+    const answers=JSON.parse(localStorage.getItem(TASK_ANSWERS_KEY)||"{}");
+    if(answers&&typeof answers==="object"&&Object.values(answers).some(v=>String(v??"").trim()!==""))return true;
+  }catch(e){}
+
+  try{
+    const learning=JSON.parse(localStorage.getItem(E_KEY)||"{}");
+    if(learning&&typeof learning==="object"&&!Array.isArray(learning)){
+      const meaningfulKeys=Object.keys(learning).filter(key=>{
+        const value=learning[key];
+        if(value===undefined||value===null||value===false)return false;
+        if(typeof value==="string")return value.trim()!=="";
+        if(Array.isArray(value))return value.length>0;
+        if(typeof value==="object")return Object.keys(value).length>0;
+        return true;
+      });
+      if(meaningfulKeys.length>0)return true;
+    }
+  }catch(e){}
+
+  return false;
+}
+
+function clearOneZeroStoredWork(){
+  const exactKeys=[
+    STORAGE_KEY,
+    TASK_ANSWERS_KEY,
+    E_KEY,
+    "novera_current_phase"
+  ];
+  exactKeys.forEach(key=>localStorage.removeItem(key));
+
+  /* Auch künftig ergänzte one.zero-Schlüssel mit diesen Präfixen entfernen. */
+  for(let i=localStorage.length-1;i>=0;i--){
+    const key=localStorage.key(i)||"";
+    if(key.startsWith("novera_")||key.startsWith("mons_novera_")){
+      localStorage.removeItem(key);
+    }
+  }
+
+  for(let i=sessionStorage.length-1;i>=0;i--){
+    const key=sessionStorage.key(i)||"";
+    if(key.startsWith("novera_")||key.startsWith("mons_novera_")){
+      sessionStorage.removeItem(key);
+    }
+  }
+}
+
+async function clearOneZeroWebsiteCaches(){
+  try{
+    if("caches" in window){
+      const names=await caches.keys();
+      await Promise.all(names.map(name=>caches.delete(name)));
+    }
+  }catch(e){}
+
+  try{
+    if("serviceWorker" in navigator){
+      const registrations=await navigator.serviceWorker.getRegistrations();
+      await Promise.all(registrations.map(reg=>reg.unregister()));
+    }
+  }catch(e){}
+}
+
+function reloadFreshOneZero(){
+  const url=new URL(window.location.href);
+  url.search="";
+  url.hash="";
+  url.searchParams.set("fresh",Date.now().toString());
+  window.location.replace(url.toString());
+}
+
+function initResumeOverlay(showOverlay){
+  const overlay=document.getElementById("resumeOverlay");
+  const main=document.getElementById("resumeMainStep");
+  const confirmStep=document.getElementById("resumeConfirmStep");
+  const continueBtn=document.getElementById("resumeContinue");
+  const restartBtn=document.getElementById("resumeRestart");
+  const backBtn=document.getElementById("resumeRestartBack");
+  const confirmBtn=document.getElementById("resumeRestartConfirm");
+
+  if(!overlay||!showOverlay)return;
+
+  overlay.classList.add("active");
+  document.body.style.overflow="hidden";
+
+  if(continueBtn)continueBtn.onclick=()=>{
+    overlay.classList.remove("active");
+    document.body.style.overflow="";
+  };
+
+  if(restartBtn)restartBtn.onclick=()=>{
+    if(main)main.classList.add("hidden");
+    if(confirmStep)confirmStep.classList.remove("hidden");
+  };
+
+  if(backBtn)backBtn.onclick=()=>{
+    if(confirmStep)confirmStep.classList.add("hidden");
+    if(main)main.classList.remove("hidden");
+  };
+
+  if(confirmBtn)confirmBtn.onclick=async()=>{
+    confirmBtn.disabled=true;
+
+    let downloadStarted=false;
+    try{
+      const exportHtml=makeWorkStateHtml();
+      const blob=new Blob([exportHtml],{type:"text/html;charset=utf-8"});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement("a");
+      a.href=url;
+      a.download="one-zero-arbeitsstand.html";
+      a.style.display="none";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),5000);
+      downloadStarted=true;
+    }catch(e){
+      console.error(e);
+    }
+
+    if(!downloadStarted){
+      confirmBtn.disabled=false;
+      alert("Der Arbeitsstand konnte nicht heruntergeladen werden. Es wurde nichts gelöscht.");
+      return;
+    }
+
+    clearOneZeroStoredWork();
+    await clearOneZeroWebsiteCaches();
+
+    /* Kurze Verzögerung, damit der vom Browser gestartete Download nicht
+       durch den unmittelbar folgenden Seitenwechsel abgebrochen wird. */
+    setTimeout(reloadFreshOneZero,450);
+  };
+}
+
+
 /* ============================================================
    START
    ============================================================ */
+
+const hadMeaningfulWorkOnArrival=hasMeaningfulStoredWork();
+const skipResumeOverlay=
+  sessionStorage.getItem("novera_workstate_just_loaded")==="1"||
+  sessionStorage.getItem(RESUME_SKIP_KEY)==="1";
+sessionStorage.removeItem(RESUME_SKIP_KEY);
 
 initTaskAnswers();
 
@@ -13175,6 +13403,8 @@ showPhase(startPhase===3?3:(startPhase===2?2:1));
 renderGallery();
 
 syncStateWithURL();
+
+initResumeOverlay(hadMeaningfulWorkOnArrival&&!skipResumeOverlay);
 
 })();
 </script>
