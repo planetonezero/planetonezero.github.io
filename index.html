@@ -10853,12 +10853,18 @@ async function finishGroup(){
     if(cb.dataset.k==="n")needs[pi]++;else des[pi]++;
   });
 
-  const selectedCount=needs[0]+needs[1]+des[0]+des[1];
+  const selectedA=needs[0]+des[0];
+  const selectedB=needs[1]+des[1];
+  const selectedCount=selectedA+selectedB;
   const minSelections=q.tree>=4 ? 2 : (q.tree>=2 ? 1 : 0);
   if(selectedCount<minSelections){
     alert(minSelections===2
-      ? "Wählt mindestens zwei Dinge für dieses Jahr aus."
+      ? "Wählt mindestens zwei Dinge für dieses Jahr aus – mindestens eines für jede Person."
       : "Es sind nur noch wenige Früchte da. Wählt aber mindestens eine Sache aus.");
+    return;
+  }
+  if(q.tree>=4&&(selectedA<1||selectedB<1)){
+    alert("Wählt mindestens zwei Dinge für dieses Jahr aus – mindestens eines für jede Person.");
     return;
   }
 
