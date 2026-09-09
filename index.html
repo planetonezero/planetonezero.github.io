@@ -4942,15 +4942,42 @@ body.mysteryExpanded{
 .challengeActions .action{flex:0 0 auto!important;width:auto!important}
 .challengeCanvasNote{margin-top:8px!important;font-size:12px!important;color:#666}
 .challengeTreeWrap{margin-top:12px}
-.challengeChoiceGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
-.challengeTreeLayout{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(280px,1fr);gap:18px;align-items:start;margin-top:12px}
-.challengeTreeLayout .pixelTree{max-width:360px}
+.challengeChoiceGrid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin:12px 0;
+}
+.challengeTreeLayout{
+  display:grid!important;
+  grid-template-columns:minmax(260px,1fr) minmax(300px,.95fr)!important;
+  gap:22px!important;
+  align-items:center!important;
+  margin:14px 0 18px!important;
+  max-width:900px;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.challengeTreeLayout .pixelTree{max-width:none}
 .challengeRuleLocked{opacity:.58}
 .challengeRuleLocked .action{pointer-events:none}
+.treeChallengeOverlay{position:fixed;inset:0;z-index:4600;display:none;align-items:center;justify-content:center;padding:20px;background:#00000066}
+.treeChallengeOverlay.active{display:flex}
+.treeChallengeDialog{width:min(1120px,100%);max-height:94vh;overflow:auto;padding:20px;border-radius:14px;background:#fff;box-shadow:0 8px 35px #00000030}
+.treeChallengeOverlayHead{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}
+.treeChallengeOverlayHead h2{margin:0;font-size:21px}
+.treeChallengeClose{flex:0 0 auto!important;width:auto!important}
+.treeChallengeDialog .challengeEvent{margin:10px 0;padding:11px 12px;border-left:4px solid #5db7de;border-radius:8px;background:#edf6fb}
+.treeChallengeDialog .challengeEvent strong{display:block;margin-bottom:4px}
+@media(max-width:800px){
+  .challengeTreeLayout{grid-template-columns:1fr!important}
+  .challengeChoiceGrid{grid-template-columns:1fr}
+  .treeChallengeDialog{padding:16px}
+  .treeChallengeOverlayHead{align-items:flex-start}
+}
 @media(max-width:700px){
   .optionalChallengeHead{display:grid}
   .optionalChallengeTag{justify-self:start}
-  .challengeChoiceGrid,.challengeTreeLayout{grid-template-columns:1fr}
   .challengeActions{flex-direction:column}
   .challengeActions .action{width:100%!important}
 }
@@ -5938,28 +5965,38 @@ details.learningGoals{
 <div class="optionalChallenge hidden" id="treeChallenge">
   <div class="optionalChallengeHead">
     <h3>Baum-Challenges</h3>
-    <span class="optionalChallengeTag" id="treeChallengeCounter">mehrere Varianten</span>
   </div>
   <p class="challengeLead">Die nächste Aufgabe ist eine Gruppenaufgabe. Musst du noch warten? Dann kannst du hier weiterarbeiten. Spiele nur so lange, bis die anderen bereit sind.</p>
-  <div class="challengeEvent hidden" id="treeChallengeEvent"></div>
-  <div class="challengeTreeWrap hidden" id="treeChallengePlay">
-    <div class="challengeChoiceGrid" id="treeChallengeChoices"></div>
-    <div class="challengeTreeLayout">
-      <div>
-        <div class="pixelTree" id="challengePixelTree"><div class="pixelCrown"></div><div class="pixelTrunk"></div><div class="pixelTreeDiamond" aria-hidden="true"></div><div id="challengeFruitLayer"></div></div>
-      </div>
-      <div class="fruitChartBox" id="challengeFruitChart" aria-label="Diagramm: Früchte im Challenge-Verlauf"></div>
-    </div>
-    <p class="challengeStatus" id="treeChallengeStatus"></p>
-    <div class="roundActions">
-      <button class="action" id="finishTreeChallengeYear" type="button">Neues Jahr starten</button>
-      <button class="action secondary" id="resetTreeChallenge" type="button">Challenge neu starten</button>
-    </div>
-  </div>
   <div class="challengeActions">
-    <button class="action" id="startTreeChallenge" type="button">Challenge starten</button>
-    <button class="action secondary hidden" id="nextTreeChallenge" type="button">Andere Challenge ausprobieren</button>
-    <button class="action secondary hidden" id="ownTreeChallenge" type="button" disabled>Eigene Strategie</button>
+    <button class="action" id="startTreeChallenge" type="button">Baum-Challenge starten</button>
+  </div>
+</div>
+
+<div class="treeChallengeOverlay" id="treeChallengeOverlay" role="dialog" aria-modal="true" aria-labelledby="treeChallengeOverlayTitle">
+  <div class="treeChallengeDialog">
+    <div class="treeChallengeOverlayHead">
+      <h2 id="treeChallengeOverlayTitle">Baum-Challenge</h2>
+      <button class="action secondary treeChallengeClose" id="closeTreeChallenge" type="button">Schliessen</button>
+    </div>
+    <div class="challengeEvent hidden" id="treeChallengeEvent"></div>
+    <div class="challengeTreeWrap hidden" id="treeChallengePlay">
+      <div class="challengeChoiceGrid" id="treeChallengeChoices"></div>
+      <div class="challengeTreeLayout">
+        <div class="treeChartTreeColumn">
+          <div class="pixelTree" id="challengePixelTree"><div class="pixelCrown"></div><div class="pixelTrunk"></div><div class="pixelTreeDiamond" aria-hidden="true"></div><div id="challengeFruitLayer"></div></div>
+        </div>
+        <div class="fruitChartBox" id="challengeFruitChart" aria-label="Diagramm: Früchte im Challenge-Verlauf"></div>
+      </div>
+      <p class="challengeStatus" id="treeChallengeStatus"></p>
+      <div class="roundActions">
+        <button class="action" id="finishTreeChallengeYear" type="button">Neues Jahr starten</button>
+        <button class="action secondary" id="resetTreeChallenge" type="button">Challenge neu starten</button>
+      </div>
+    </div>
+    <div class="challengeActions">
+      <button class="action secondary hidden" id="nextTreeChallenge" type="button">Andere Challenge ausprobieren</button>
+      <button class="action secondary hidden" id="ownTreeChallenge" type="button" disabled>Eigene Strategie</button>
+    </div>
   </div>
 </div>
 <article class="learnCard socialStart phase2Lockable phase2Locked" id="learn5">
@@ -10427,8 +10464,9 @@ function startTreeChallengeBy(challenge){
   const event=document.getElementById("treeChallengeEvent");
   if(event){event.innerHTML="<strong>"+challenge.title+"</strong>"+challenge.text;event.classList.remove("hidden");}
   document.getElementById("treeChallengePlay")?.classList.remove("hidden");
-  document.getElementById("startTreeChallenge")?.classList.add("hidden");
   document.getElementById("nextTreeChallenge")?.classList.remove("hidden");
+  const overlay=document.getElementById("treeChallengeOverlay");
+  if(overlay){overlay.classList.add("active");document.body.style.overflow="hidden";}
   renderTreeChallenge();
 }
 function startRandomTreeChallenge(){
@@ -13120,11 +13158,14 @@ function initErarbeitung(){
   const treeOwn=id("ownTreeChallenge");
   const treeFinish=id("finishTreeChallengeYear");
   const treeReset=id("resetTreeChallenge");
+  const treeClose=id("closeTreeChallenge");
+  const treeOverlay=id("treeChallengeOverlay");
   if(treeStart)treeStart.onclick=startRandomTreeChallenge;
   if(treeNext)treeNext.onclick=startRandomTreeChallenge;
   if(treeOwn)treeOwn.onclick=()=>{if(treeChallengeTried.size>=2)startTreeChallengeBy({id:"own",title:"Eigene Strategie",text:"Du hast verschiedene Strategien ausprobiert. Überlege dir jetzt selbst eine Regel für deine Auswahl und spiele mehrere Jahre danach."});};
   if(treeFinish)treeFinish.onclick=finishTreeChallengeYear;
   if(treeReset)treeReset.onclick=()=>{if(treeChallengeCurrent){treeChallengeState=freshTreeChallengeState();renderTreeChallenge();}};
+  if(treeClose)treeClose.onclick=()=>{if(treeOverlay)treeOverlay.classList.remove("active");document.body.style.overflow="";};
 
   id("finishRound").onclick=finishPRound;
   id("resetPersonalRounds").onclick=resetPersonalRounds;
