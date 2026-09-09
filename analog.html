@@ -230,12 +230,12 @@ p,li,.infoBody,.materialLead{font-size:9.4pt;line-height:1.48}p{margin:1.6mm 0}o
   align-content:space-between;
 }
 
-/* Sieben Runden */
+/* Sieben Jahre */
 .miniProtocol td{
   height:8.5mm!important;
 }
 
-/* Nachtregel kompakt */
+/* Neujahrsregel kompakt */
 .infoBox.hint .infoBody ul{
   margin:1mm 0!important;
 }
@@ -506,7 +506,7 @@ p,li,.infoBody,.materialLead{font-size:9.4pt;line-height:1.48}p{margin:1.6mm 0}o
   background:#fff!important;
 }
 
-/* Rundentabelle vollständig und gut beschreibbar */
+/* Jahrestabelle vollständig und gut beschreibbar */
 .roundLead{
   margin-top:0!important;
 }
@@ -1852,7 +1852,7 @@ main{
   max-height:74mm;
 }
 
-/* Runde 0 ist bewusst als ausgefülltes Beispiel markiert */
+/* Jahr 0 ist bewusst als ausgefülltes Beispiel markiert */
 .roundZeroExample td{
   background:#f2f0eb!important;
   font-weight:700!important;
@@ -1952,7 +1952,7 @@ main{
 }
 
 
-/* ===== Seite 6: Baumgrafik + Pultaufsicht links, Nachtregel rechts ===== */
+/* ===== Seite 6: Baumgrafik + Pultaufsicht links, Neujahrsregel rechts ===== */
 .page[data-page="6"] .deskRow{
   grid-template-columns:68mm minmax(0,1fr)!important;
   gap:4mm!important;
@@ -2091,6 +2091,12 @@ main{
   height:4.6mm!important;
 }
 
+
+/* ===== Phase 2 · Aufgabe B: lokal etwas höher, damit der untere Hinweis drucksicher bleibt ===== */
+.page[data-page="5"] .sectionRule{
+  margin-bottom:-3.8mm!important;
+}
+
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -2202,12 +2208,12 @@ main{
 <h1 class="pageTitle">Der magische Baum</h1>
 <div class="pageBody">
 <span class="taskBadge">Aufgabe C</span>
-<p>Auf one.zero sorgt ein magischer Baum dafür, dass du bekommst, was du dir für ein gutes Leben wünschst. Für alles, was du dir erfüllst, werden zwei Früchte geerntet. Nach jeder Runde wachsen über Nacht neue Früchte. Wie viele es genau sind, siehst du erst nach der Nacht.</p>
+<p>Auf one.zero sorgt ein magischer Baum dafür, dass du bekommst, was du dir für ein gutes Leben wünschst. Immer an Neujahr entscheidest du, was dir im kommenden Jahr erfüllt werden soll. Für alles, was du auswählst, werden zwei Früchte geerntet. Beim Jahreswechsel wachsen neue Früchte nach. Wie viele es genau sind, siehst du erst nach Neujahr.</p>
 <div class="infoBox task"><div class="infoLabel">✦ Auftrag</div><div class="infoBody"><ol>
 <li>Verwende den Baum aus den Kopiervorlagen und hänge <strong>22 Post-its</strong> als Früchte daran.</li>
-<li>Wähle in jeder Runde aus, was du brauchst und was du dir wünschst. Für jede erfüllte Sache nimmst du <strong>zwei Früchte</strong> vom Baum.</li>
-<li>Werte danach die Nacht mit der Nachtregel aus. Trage den neuen Bestand in die Tabelle ein.</li>
-<li>Spiele <strong>mindestens 10 Runden</strong> oder bis der Baum kollabiert. Beobachte, wie sich der Bestand verändert und wie es dem Baum geht.</li>
+<li>Wähle für jedes Jahr aus, was du brauchst und was du dir wünschst. Für jede erfüllte Sache nimmst du <strong>zwei Früchte</strong> vom Baum.</li>
+<li>Werte danach den Jahreswechsel mit der Neujahrsregel aus. Trage den neuen Bestand in die Tabelle ein.</li>
+<li>Spiele <strong>mindestens 10 Jahre</strong> oder bis der Baum kollabiert. Beobachte, wie sich der Bestand verändert und wie es dem Baum geht.</li>
 </ol></div></div>
 <div class="deskRow">
 <div class="treeVisualStack">
@@ -2225,7 +2231,7 @@ main{
 </svg>
 </div>
 <div class="infoBox hint treeNightHint"><div class="infoLabel">ⓘ Hinweis</div><div class="infoBody">
-<strong>Nachtregel</strong>
+<strong>Neujahrsregel</strong>
 <p>Der <strong>Restbestand nach der Ernte</strong> entscheidet, wie stark sich der Baum erholen kann. Der Würfel entscheidet, wie viele Früchte genau nachwachsen. Die entsprechende Zahl wird in der Tabelle abgelesen.</p>
 <table class="workTable nightRuleTable">
 <thead><tr><th>Früchte übrig</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
@@ -2239,18 +2245,18 @@ main{
 <tr><td>22</td><td>+0</td><td>+0</td><td>+0</td><td>+0</td><td>+0</td><td>+0</td></tr>
 </tbody></table>
 <p><strong>Nie mehr als 22 Früchte:</strong> Es wachsen höchstens so viele Früchte nach, bis wieder 22 am Baum hängen.</p>
-<p><strong>Belastung</strong> ist ein Spielwert dafür, wie stark der Baum beansprucht wurde. Sie startet in Runde 0 bei <strong>0</strong>. Tragt nach jeder Runde den neuen Belastungswert in die letzte Spalte der Tabelle ein.</p>
+<p><strong>Belastung</strong> ist ein Spielwert dafür, wie stark der Baum beansprucht wurde. Sie startet in Jahr 0 bei <strong>0</strong>. Tragt nach jedem Jahr den neuen Belastungswert in die letzte Spalte der Tabelle ein.</p>
 <ul>
 <li>Bleiben nach der Ernte <strong>0 oder 1 Frucht</strong> übrig: +1 Belastungspunkt.</li>
 <li>Ein Kollaps tritt ein, wenn nach der Ernte <strong>0 Früchte</strong> übrig sind und die Belastung <strong>5 Punkte</strong> erreicht hat – oder wenn <strong>1 Frucht</strong> übrig ist und die Belastung <strong>6 Punkte</strong> erreicht hat. Dann wird nicht mehr gewürfelt, es wächst nichts mehr nach und der Durchlauf endet.</li>
 <li>Kollabiert der Baum nicht, wird gewürfelt und der Nachwuchs mit der Tabelle bestimmt.</li>
-<li>Hat der Baum am Ende der Nacht wieder <strong>mindestens 6 Früchte</strong>, sinkt die Belastung um 1 Punkt (nicht unter 0).</li>
+<li>Hat der Baum nach dem Jahreswechsel wieder <strong>mindestens 6 Früchte</strong>, sinkt die Belastung um 1 Punkt (nicht unter 0).</li>
 </ul>
 </div></div>
 </div>
 <table class="workTable miniProtocol analogRoundTable">
-<thead><tr><th>Runde</th><th>Start</th><th>genutzt</th><th>übrig</th><th>Würfel</th><th>+ neu</th><th>Ende Nacht</th><th>Belastung</th></tr></thead>
-<tbody><tr class="roundZeroExample"><td>0</td><td>22</td><td>0</td><td>22</td><td>–</td><td>0</td><td>22</td><td>0</td></tr><tr><td>1</td><td>22</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><p class="copyTemplateRef"><strong>Für die Auswertung aller 10 Runden die Kopiervorlage auf Seite 15 benutzen.</strong></p>
+<thead><tr><th>Jahr</th><th>Start</th><th>genutzt</th><th>übrig</th><th>Würfel</th><th>+ neu</th><th>Nach Neujahr</th><th>Belastung</th></tr></thead>
+<tbody><tr class="roundZeroExample"><td>0</td><td>22</td><td>0</td><td>22</td><td>–</td><td>0</td><td>22</td><td>0</td></tr><tr><td>1</td><td>22</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><p class="copyTemplateRef"><strong>Für die Auswertung aller 10 Jahre die Kopiervorlage auf Seite 15 benutzen.</strong></p>
 </div></div></section><section class="page" data-page="7">
 <div class="pageInner">
 <div class="pageTop"><span>PHASE 2 · AUFGABE D</span><span>Seite 7</span></div>
@@ -2258,7 +2264,7 @@ main{
 <div class="pageBody">
 <span class="taskBadge">Aufgabe D</span>
 
-<div class="infoBox reflect"><div class="infoLabel">💭 Reflexion</div><div class="infoBody">Denke über deine Runden nach. Gehe dabei auf diese Fragen ein:
+<div class="infoBox reflect"><div class="infoLabel">💭 Reflexion</div><div class="infoBody">Denke über deine Jahre nach. Gehe dabei auf diese Fragen ein:
 <ul><li>Was ist passiert, wenn du viele Früchte genutzt hast?</li>
 <li>Was ist passiert, wenn du weniger Früchte genutzt hast?</li>
 <li>Wann konntest du dir auch zusätzliche Wünsche erfüllen – und wann nicht?</li>
@@ -2277,8 +2283,8 @@ main{
 <li>Setzt euch zu zweit zusammen. Ihr seid Person A und Person B.</li>
 <li>Jede Person erhält zwei vorgegebene Needs und zwei Desires. Ermittelt sie mit der Tabelle: Würfelt für Needs zweimal und für Desires zweimal mit zwei Würfeln, addiert jeweils die Augen und markiert die entsprechenden Zeilen mit Büroklammern.</li>
 <li>Ihr spielt wieder mit dem Baum. Besprecht zuerst, wie ihr gemeinsam entscheiden wollt, und schreibt eure Abmachung auf der nächsten Seite auf.</li>
-<li>Setzt den Baum für diesen Durchlauf wieder auf <strong>22 Früchte</strong>. Entscheidet danach in jeder Runde gemeinsam, welche Needs und Desires erfüllt werden. Verwendet dieselbe Nacht- und Erschöpfungsregel wie in Aufgabe C.</li>
-<li>Spielt <strong>mindestens 10 Runden</strong> oder bis der Baum kollabiert. Beobachtet, wie sich eure Entscheidungen auf die Verteilung und den Baum auswirken.</li>
+<li>Setzt den Baum für diesen Durchlauf wieder auf <strong>22 Früchte</strong>. Entscheidet danach für jedes Jahr gemeinsam, welche Needs und Desires erfüllt werden. Verwendet dieselbe Neujahrs- und Erschöpfungsregel wie in Aufgabe C.</li>
+<li>Spielt <strong>mindestens 10 Jahre</strong> oder bis der Baum kollabiert. Beobachtet, wie sich eure Entscheidungen auf die Verteilung und den Baum auswirken.</li>
 </ol></div></div>
 <section class="personRollBox">
 <div class="personBoxHead"><h3>Person A</h3><span>📎 Büroklammern auf die erwürfelten Zahlen legen.</span></div>
@@ -2294,7 +2300,7 @@ main{
 <h4>Desires</h4>
 <table class="workTable rollSimple">
 <thead><tr><th>Summe</th><th>Desire</th></tr></thead>
-<tbody><tr><td class="clipCell"><span class="clipNumber">2</span></td><td>Einen besonders leistungsstarken Gaming-PC besitzen</td></tr><tr><td class="clipCell"><span class="clipNumber">3</span></td><td>Ein VIP-Ticket für ein grosses Konzert haben</td></tr><tr><td class="clipCell"><span class="clipNumber">4</span></td><td>Jedes Jahr eine weite Ferienreise machen</td></tr><tr><td class="clipCell"><span class="clipNumber">5</span></td><td>Eine grosse Sammlung limitierter Sneakers besitzen</td></tr><tr><td class="clipCell"><span class="clipNumber">6</span></td><td>Einen eigenen Pool haben</td></tr><tr><td class="clipCell"><span class="clipNumber">7</span></td><td>Ein privates Heimkino einrichten</td></tr><tr><td class="clipCell"><span class="clipNumber">8</span></td><td>Eine teure Designerjacke besitzen</td></tr><tr><td class="clipCell"><span class="clipNumber">9</span></td><td>Eine Drohne für Freizeitaufnahmen haben</td></tr><tr><td class="clipCell"><span class="clipNumber">10</span></td><td>Einen riesigen Fernseher besitzen</td></tr><tr><td class="clipCell"><span class="clipNumber">11</span></td><td>Eine aufwendige Geburtstagsparty feiern</td></tr><tr><td class="clipCell"><span class="clipNumber">12</span></td><td>Eine Sammlung seltener Fanartikel besitzen</td></tr></tbody>
+<tbody><tr><td class="clipCell"><span class="clipNumber">2</span></td><td>Ein neues Smartphone haben können</td></tr><tr><td class="clipCell"><span class="clipNumber">3</span></td><td>Hochwertige Ausrüstung für mein Hobby besitzen können</td></tr><tr><td class="clipCell"><span class="clipNumber">4</span></td><td>Weit entfernte Länder und Orte besuchen können</td></tr><tr><td class="clipCell"><span class="clipNumber">5</span></td><td>Mein Zimmer komplett neu einrichten können</td></tr><tr><td class="clipCell"><span class="clipNumber">6</span></td><td>Ein eigenes E-Bike haben können</td></tr><tr><td class="clipCell"><span class="clipNumber">7</span></td><td>Regelmässig Konzerte oder Festivals besuchen können</td></tr><tr><td class="clipCell"><span class="clipNumber">8</span></td><td>Regelmässig neue Kleidung kaufen können</td></tr><tr><td class="clipCell"><span class="clipNumber">9</span></td><td>Richtig gute Kopfhörer oder Lautsprecher besitzen können</td></tr><tr><td class="clipCell"><span class="clipNumber">10</span></td><td>Häufig Freizeitparks oder Erlebnisbäder besuchen können</td></tr><tr><td class="clipCell"><span class="clipNumber">11</span></td><td>Ein eigenes gutes Musikinstrument besitzen können</td></tr><tr><td class="clipCell"><span class="clipNumber">12</span></td><td>Besondere Abenteuer oder Erlebnisse buchen können</td></tr></tbody>
 </table>
 </div>
 </div>
@@ -2322,7 +2328,7 @@ main{
 <h4>Desires</h4>
 <table class="workTable rollSimple">
 <thead><tr><th>Summe</th><th>Desire</th></tr></thead>
-<tbody><tr><td class="clipCell"><span class="clipNumber">2</span></td><td>Einen besonders leistungsstarken Gaming-PC besitzen</td></tr><tr><td class="clipCell"><span class="clipNumber">3</span></td><td>Ein VIP-Ticket für ein grosses Konzert haben</td></tr><tr><td class="clipCell"><span class="clipNumber">4</span></td><td>Jedes Jahr eine weite Ferienreise machen</td></tr><tr><td class="clipCell"><span class="clipNumber">5</span></td><td>Eine grosse Sammlung limitierter Sneakers besitzen</td></tr><tr><td class="clipCell"><span class="clipNumber">6</span></td><td>Einen eigenen Pool haben</td></tr><tr><td class="clipCell"><span class="clipNumber">7</span></td><td>Ein privates Heimkino einrichten</td></tr><tr><td class="clipCell"><span class="clipNumber">8</span></td><td>Eine teure Designerjacke besitzen</td></tr><tr><td class="clipCell"><span class="clipNumber">9</span></td><td>Eine Drohne für Freizeitaufnahmen haben</td></tr><tr><td class="clipCell"><span class="clipNumber">10</span></td><td>Einen riesigen Fernseher besitzen</td></tr><tr><td class="clipCell"><span class="clipNumber">11</span></td><td>Eine aufwendige Geburtstagsparty feiern</td></tr><tr><td class="clipCell"><span class="clipNumber">12</span></td><td>Eine Sammlung seltener Fanartikel besitzen</td></tr></tbody>
+<tbody><tr><td class="clipCell"><span class="clipNumber">2</span></td><td>Einen eigenen guten Computer oder eine Spielkonsole haben können</td></tr><tr><td class="clipCell"><span class="clipNumber">3</span></td><td>Mehrere Paar Schuhe zur Auswahl haben können</td></tr><tr><td class="clipCell"><span class="clipNumber">4</span></td><td>Mehrmals im Jahr verreisen können</td></tr><tr><td class="clipCell"><span class="clipNumber">5</span></td><td>Hochwertige Sportausrüstung besitzen können</td></tr><tr><td class="clipCell"><span class="clipNumber">6</span></td><td>In einem richtig komfortablen Hotel übernachten können</td></tr><tr><td class="clipCell"><span class="clipNumber">7</span></td><td>Neue Möbel für mein Zimmer aussuchen können</td></tr><tr><td class="clipCell"><span class="clipNumber">8</span></td><td>Grosse Sportveranstaltungen live besuchen können</td></tr><tr><td class="clipCell"><span class="clipNumber">9</span></td><td>Regelmässig neue Games spielen können</td></tr><tr><td class="clipCell"><span class="clipNumber">10</span></td><td>Bei Konzerten oder Veranstaltungen richtig gute Plätze haben können</td></tr><tr><td class="clipCell"><span class="clipNumber">11</span></td><td>Auf Reisen besonders bequem unterwegs sein können</td></tr><tr><td class="clipCell"><span class="clipNumber">12</span></td><td>Mir immer wieder neue Sachen kaufen können, die mir gefallen</td></tr></tbody>
 </table>
 </div>
 </div>
@@ -2331,7 +2337,7 @@ main{
 <p><strong>Abmachung:</strong> Schreibt auf, wie ihr gemeinsam entscheiden wollt, welche Needs und Desires erfüllt werden.</p>
 <div class="writeLines"><span></span><span></span></div>
 </div>
-<p class="copyTemplateRef"><strong>Für die Auswertung aller 10 gemeinsamen Runden die Kopiervorlage auf Seite 15 benutzen.</strong></p>
+<p class="copyTemplateRef"><strong>Für die Auswertung aller 10 gemeinsamen Jahre die Kopiervorlage auf Seite 15 benutzen.</strong></p>
 <span class="taskBadge">Aufgabe F</span>
 <div class="infoBox reflect compactF"><div class="infoLabel">💭 Reflexion</div><div class="infoBody">War eure Verteilung für Person A und Person B gerecht? Wie hat die Abmachung funktioniert?
 <div class="writeLines"><span></span><span></span><span></span></div></div></div>
@@ -2377,7 +2383,7 @@ main{
 Modelle haben aber Grenzen: Sie lassen vieles weg. Der Baum zeigt zum Beispiel, dass heutige Nutzung spätere Möglichkeiten beeinflussen kann. Er zeigt aber nicht, wie die vielen Vorgänge auf der Erde genau ablaufen.<br/><br/>
 Darum ist wichtig zu fragen: <strong>Was kann das Modell zeigen – und was nicht?</strong></div></div>
 <div class="infoBox task"><div class="infoLabel">✦ Auftrag</div><div class="infoBody">Entscheide bei jeder Aussage: Kann one.zero das zeigen oder nicht? Kreuze Ja oder Nein an.</div></div>
-<table class="workTable modelTable"><thead><tr><th>Aussage</th><th>Ja</th><th>Nein</th></tr></thead><tbody><tr><td>Der Baum zeigt, dass heutige Nutzung spätere Möglichkeiten beeinflussen kann.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>one.zero kann helfen, über Needs und Desires nachzudenken.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Der Baum zeigt genau, wie schnell sich Wälder, Fischbestände oder Böden auf der Erde erholen.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>one.zero kann zeigen, dass nicht alles gleichzeitig erfüllt werden kann.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>one.zero zeigt genau, was jeder Mensch für ein gutes Leben braucht.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Der Baum zeigt alle wichtigen Zusammenhänge des Erdsystems.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>one.zero kann helfen, über Verteilung und Gerechtigkeit zu sprechen.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Die Fruchtzahl zeigt, wie viele Rohstoffe es auf der Erde wirklich gibt.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>one.zero kann helfen, Folgen von Entscheidungen über mehrere Runden zu beobachten.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Ein Modell kann etwas verständlicher machen, obwohl es die Wirklichkeit vereinfacht.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Aus one.zero kann man direkt ablesen, welche Lösung für die Erde richtig ist.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Ein Modell ist nur dann nützlich, wenn es die Wirklichkeit vollständig abbildet.</td><td class="yn">□</td><td class="yn">□</td></tr></tbody></table>
+<table class="workTable modelTable"><thead><tr><th>Aussage</th><th>Ja</th><th>Nein</th></tr></thead><tbody><tr><td>Der Baum zeigt, dass heutige Nutzung spätere Möglichkeiten beeinflussen kann.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>one.zero kann helfen, über Needs und Desires nachzudenken.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Der Baum zeigt genau, wie schnell sich Wälder, Fischbestände oder Böden auf der Erde erholen.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>one.zero kann zeigen, dass nicht alles gleichzeitig erfüllt werden kann.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>one.zero zeigt genau, was jeder Mensch für ein gutes Leben braucht.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Der Baum zeigt alle wichtigen Zusammenhänge des Erdsystems.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>one.zero kann helfen, über Verteilung und Gerechtigkeit zu sprechen.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Die Fruchtzahl zeigt, wie viele Rohstoffe es auf der Erde wirklich gibt.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>one.zero kann helfen, Folgen von Entscheidungen über mehrere Jahre zu beobachten.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Ein Modell kann etwas verständlicher machen, obwohl es die Wirklichkeit vereinfacht.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Aus one.zero kann man direkt ablesen, welche Lösung für die Erde richtig ist.</td><td class="yn">□</td><td class="yn">□</td></tr><tr><td>Ein Modell ist nur dann nützlich, wenn es die Wirklichkeit vollständig abbildet.</td><td class="yn">□</td><td class="yn">□</td></tr></tbody></table>
 <div class="infoBox reflect"><div class="infoLabel">💭 Reflexion</div><div class="infoBody">Möchtest du noch etwas aufschreiben, das dir zu den Möglichkeiten oder Grenzen von one.zero aufgefallen ist?<div class="writeLines"><span></span><span></span><span></span></div></div></div>
 </div>
 </div>
@@ -2403,18 +2409,18 @@ Darum ist wichtig zu fragen: <strong>Was kann das Modell zeigen – und was nich
 <g fill="none" stroke="#f4c84a" stroke-dasharray="3 2" stroke-width="1.05"><rect x="20" y="27" width="27" height="21" rx="2"></rect><rect x="52" y="20" width="27" height="21" rx="2"></rect><rect x="84" y="18" width="27" height="21" rx="2"></rect><rect x="116" y="20" width="27" height="21" rx="2"></rect><rect x="148" y="27" width="27" height="21" rx="2"></rect><rect x="14" y="55" width="27" height="21" rx="2"></rect><rect x="46" y="50" width="27" height="21" rx="2"></rect><rect x="78" y="48" width="27" height="21" rx="2"></rect><rect x="110" y="50" width="27" height="21" rx="2"></rect><rect x="142" y="54" width="27" height="21" rx="2"></rect><rect x="52" y="137" width="27" height="21" rx="2"></rect><rect x="17" y="84" width="27" height="21" rx="2"></rect><rect x="49" y="80" width="27" height="21" rx="2"></rect><rect x="81" y="78" width="27" height="21" rx="2"></rect><rect x="113" y="80" width="27" height="21" rx="2"></rect><rect x="145" y="84" width="27" height="21" rx="2"></rect><rect x="86" y="137" width="27" height="21" rx="2"></rect><rect x="28" y="113" width="27" height="21" rx="2"></rect><rect x="60" y="109" width="27" height="21" rx="2"></rect><rect x="92" y="108" width="27" height="21" rx="2"></rect><rect x="124" y="111" width="27" height="21" rx="2"></rect><rect x="120" y="137" width="27" height="21" rx="2"></rect></g>
 </svg></div>
 
-<div class="infoBox hint treeNightHint"><div class="infoLabel">ⓘ Hinweis</div><div class="infoBody"><strong>Für die Simulation gilt die Nacht- und Erschöpfungsregel aus Aufgabe C auf Seite 6.</strong> Für die Auswertung aller 10 Runden die Kopiervorlage auf Seite 15 benutzen.</div></div></div></div></section><section class="page materialPage" data-page="15">
+<div class="infoBox hint treeNightHint"><div class="infoLabel">ⓘ Hinweis</div><div class="infoBody"><strong>Für die Simulation gilt die Neujahrs- und Erschöpfungsregel aus Aufgabe C auf Seite 6.</strong> Für die Auswertung aller 10 Jahre die Kopiervorlage auf Seite 15 benutzen.</div></div></div></div></section><section class="page materialPage" data-page="15">
 <div class="pageInner">
 <div class="pageTop"><span>MATERIAL · PHASE 2</span><span>Seite 15</span></div>
 <h1 class="pageTitle">Auswertung der Baum-Simulation</h1>
 <div class="pageBody">
 <div class="copyHeader"><span>PHASE 2</span><strong>Aufgabe C und E</strong></div>
-<h2>Kopiervorlage: 10 Runden</h2>
+<h2>Kopiervorlage: 10 Jahre</h2>
 <p class="materialLead">Diese Vorlage kann sowohl für den eigenen als auch für den gemeinsamen Durchlauf verwendet werden.</p>
 <table class="workTable miniProtocol roundTableLarge analogRoundTable">
-<thead><tr><th>Runde</th><th>Start</th><th>genutzt</th><th>übrig</th><th>Würfel</th><th>+ neu</th><th>Ende Nacht</th><th>Belastung</th></tr></thead>
+<thead><tr><th>Jahr</th><th>Start</th><th>genutzt</th><th>übrig</th><th>Würfel</th><th>+ neu</th><th>Nach Neujahr</th><th>Belastung</th></tr></thead>
 <tbody><tr class="roundZeroExample"><td>0</td><td>22</td><td>0</td><td>22</td><td>–</td><td>0</td><td>22</td><td>0</td></tr><tr><td>1</td><td>22</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
-<div class="analogChart"><div class="analogChartTitle">Fruchtbestand im Verlauf</div><svg viewBox="0 0 720 260" role="img" aria-label="Fruchtbestand im Verlauf"><line x1="55" y1="222.00" x2="700" y2="222.00" class="chartGridLine"/><text x="46" y="226.00" text-anchor="end" class="chartLabel">0</text><line x1="55" y1="203.82" x2="700" y2="203.82" class="chartGridLine"/><text x="46" y="207.82" text-anchor="end" class="chartLabel">2</text><line x1="55" y1="185.64" x2="700" y2="185.64" class="chartGridLine"/><text x="46" y="189.64" text-anchor="end" class="chartLabel">4</text><line x1="55" y1="167.45" x2="700" y2="167.45" class="chartGridLine"/><text x="46" y="171.45" text-anchor="end" class="chartLabel">6</text><line x1="55" y1="149.27" x2="700" y2="149.27" class="chartGridLine"/><text x="46" y="153.27" text-anchor="end" class="chartLabel">8</text><line x1="55" y1="131.09" x2="700" y2="131.09" class="chartGridLine"/><text x="46" y="135.09" text-anchor="end" class="chartLabel">10</text><line x1="55" y1="112.91" x2="700" y2="112.91" class="chartGridLine"/><text x="46" y="116.91" text-anchor="end" class="chartLabel">12</text><line x1="55" y1="94.73" x2="700" y2="94.73" class="chartGridLine"/><text x="46" y="98.73" text-anchor="end" class="chartLabel">14</text><line x1="55" y1="76.55" x2="700" y2="76.55" class="chartGridLine"/><text x="46" y="80.55" text-anchor="end" class="chartLabel">16</text><line x1="55" y1="58.36" x2="700" y2="58.36" class="chartGridLine"/><text x="46" y="62.36" text-anchor="end" class="chartLabel">18</text><line x1="55" y1="40.18" x2="700" y2="40.18" class="chartGridLine"/><text x="46" y="44.18" text-anchor="end" class="chartLabel">20</text><line x1="55" y1="22.00" x2="700" y2="22.00" class="chartGridLine"/><text x="46" y="26.00" text-anchor="end" class="chartLabel">22</text><line x1="55.00" y1="22" x2="55.00" y2="222" class="chartGridLine"/><text x="55.00" y="242" text-anchor="middle" class="chartLabel">0</text><line x1="119.50" y1="22" x2="119.50" y2="222" class="chartGridLine"/><text x="119.50" y="242" text-anchor="middle" class="chartLabel">1</text><line x1="184.00" y1="22" x2="184.00" y2="222" class="chartGridLine"/><text x="184.00" y="242" text-anchor="middle" class="chartLabel">2</text><line x1="248.50" y1="22" x2="248.50" y2="222" class="chartGridLine"/><text x="248.50" y="242" text-anchor="middle" class="chartLabel">3</text><line x1="313.00" y1="22" x2="313.00" y2="222" class="chartGridLine"/><text x="313.00" y="242" text-anchor="middle" class="chartLabel">4</text><line x1="377.50" y1="22" x2="377.50" y2="222" class="chartGridLine"/><text x="377.50" y="242" text-anchor="middle" class="chartLabel">5</text><line x1="442.00" y1="22" x2="442.00" y2="222" class="chartGridLine"/><text x="442.00" y="242" text-anchor="middle" class="chartLabel">6</text><line x1="506.50" y1="22" x2="506.50" y2="222" class="chartGridLine"/><text x="506.50" y="242" text-anchor="middle" class="chartLabel">7</text><line x1="571.00" y1="22" x2="571.00" y2="222" class="chartGridLine"/><text x="571.00" y="242" text-anchor="middle" class="chartLabel">8</text><line x1="635.50" y1="22" x2="635.50" y2="222" class="chartGridLine"/><text x="635.50" y="242" text-anchor="middle" class="chartLabel">9</text><line x1="700.00" y1="22" x2="700.00" y2="222" class="chartGridLine"/><text x="700.00" y="242" text-anchor="middle" class="chartLabel">10</text><line x1="55" y1="22" x2="55" y2="222" class="chartAxis"/><line x1="55" y1="222" x2="700" y2="222" class="chartAxis"/><text x="377.50" y="256" text-anchor="middle" class="chartAxisTitle">Runde</text><text x="14" y="122.00" text-anchor="middle" transform="rotate(-90 14 122.00)" class="chartAxisTitle">Früchte</text></svg><p class="chartHint">Nach jeder Nacht den neuen Fruchtbestand als Punkt eintragen und die Punkte verbinden.</p></div>
+<div class="analogChart"><div class="analogChartTitle">Fruchtbestand im Verlauf</div><svg viewBox="0 0 720 260" role="img" aria-label="Fruchtbestand im Verlauf"><line x1="55" y1="222.00" x2="700" y2="222.00" class="chartGridLine"/><text x="46" y="226.00" text-anchor="end" class="chartLabel">0</text><line x1="55" y1="203.82" x2="700" y2="203.82" class="chartGridLine"/><text x="46" y="207.82" text-anchor="end" class="chartLabel">2</text><line x1="55" y1="185.64" x2="700" y2="185.64" class="chartGridLine"/><text x="46" y="189.64" text-anchor="end" class="chartLabel">4</text><line x1="55" y1="167.45" x2="700" y2="167.45" class="chartGridLine"/><text x="46" y="171.45" text-anchor="end" class="chartLabel">6</text><line x1="55" y1="149.27" x2="700" y2="149.27" class="chartGridLine"/><text x="46" y="153.27" text-anchor="end" class="chartLabel">8</text><line x1="55" y1="131.09" x2="700" y2="131.09" class="chartGridLine"/><text x="46" y="135.09" text-anchor="end" class="chartLabel">10</text><line x1="55" y1="112.91" x2="700" y2="112.91" class="chartGridLine"/><text x="46" y="116.91" text-anchor="end" class="chartLabel">12</text><line x1="55" y1="94.73" x2="700" y2="94.73" class="chartGridLine"/><text x="46" y="98.73" text-anchor="end" class="chartLabel">14</text><line x1="55" y1="76.55" x2="700" y2="76.55" class="chartGridLine"/><text x="46" y="80.55" text-anchor="end" class="chartLabel">16</text><line x1="55" y1="58.36" x2="700" y2="58.36" class="chartGridLine"/><text x="46" y="62.36" text-anchor="end" class="chartLabel">18</text><line x1="55" y1="40.18" x2="700" y2="40.18" class="chartGridLine"/><text x="46" y="44.18" text-anchor="end" class="chartLabel">20</text><line x1="55" y1="22.00" x2="700" y2="22.00" class="chartGridLine"/><text x="46" y="26.00" text-anchor="end" class="chartLabel">22</text><line x1="55.00" y1="22" x2="55.00" y2="222" class="chartGridLine"/><text x="55.00" y="242" text-anchor="middle" class="chartLabel">0</text><line x1="119.50" y1="22" x2="119.50" y2="222" class="chartGridLine"/><text x="119.50" y="242" text-anchor="middle" class="chartLabel">1</text><line x1="184.00" y1="22" x2="184.00" y2="222" class="chartGridLine"/><text x="184.00" y="242" text-anchor="middle" class="chartLabel">2</text><line x1="248.50" y1="22" x2="248.50" y2="222" class="chartGridLine"/><text x="248.50" y="242" text-anchor="middle" class="chartLabel">3</text><line x1="313.00" y1="22" x2="313.00" y2="222" class="chartGridLine"/><text x="313.00" y="242" text-anchor="middle" class="chartLabel">4</text><line x1="377.50" y1="22" x2="377.50" y2="222" class="chartGridLine"/><text x="377.50" y="242" text-anchor="middle" class="chartLabel">5</text><line x1="442.00" y1="22" x2="442.00" y2="222" class="chartGridLine"/><text x="442.00" y="242" text-anchor="middle" class="chartLabel">6</text><line x1="506.50" y1="22" x2="506.50" y2="222" class="chartGridLine"/><text x="506.50" y="242" text-anchor="middle" class="chartLabel">7</text><line x1="571.00" y1="22" x2="571.00" y2="222" class="chartGridLine"/><text x="571.00" y="242" text-anchor="middle" class="chartLabel">8</text><line x1="635.50" y1="22" x2="635.50" y2="222" class="chartGridLine"/><text x="635.50" y="242" text-anchor="middle" class="chartLabel">9</text><line x1="700.00" y1="22" x2="700.00" y2="222" class="chartGridLine"/><text x="700.00" y="242" text-anchor="middle" class="chartLabel">10</text><line x1="55" y1="22" x2="55" y2="222" class="chartAxis"/><line x1="55" y1="222" x2="700" y2="222" class="chartAxis"/><text x="377.50" y="256" text-anchor="middle" class="chartAxisTitle">Jahre</text><text x="14" y="122.00" text-anchor="middle" transform="rotate(-90 14 122.00)" class="chartAxisTitle">Früchte</text></svg><p class="chartHint">Nach jedem Jahreswechsel den neuen Fruchtbestand als Punkt eintragen und die Punkte verbinden.</p></div>
 </div></div></section><section class="page materialPage" data-page="16">
 <div class="pageInner">
 <div class="pageTop"><span>MATERIAL · PHASE 3</span><span>Seite 16</span></div>
@@ -2438,7 +2444,7 @@ Darum ist wichtig zu fragen: <strong>Was kann das Modell zeigen – und was nich
 <div class="pageBody">
 <div class="copyHeader"><span>LÖSUNGEN</span><strong>Phase 3 · Aufgabe B</strong></div>
 <p>Für die offenen Gestaltungs-, Reflexions- und Mysteryaufgaben gibt es bewusst keine eindeutige Musterlösung.</p>
-<table class="workTable solutionTable"><thead><tr><th>Nr.</th><th>Aussage</th><th>Lösung</th></tr></thead><tbody><tr><td>1</td><td>Der Baum zeigt, dass heutige Nutzung spätere Möglichkeiten beeinflussen kann.</td><td>Ja</td></tr><tr><td>2</td><td>one.zero kann helfen, über Needs und Desires nachzudenken.</td><td>Ja</td></tr><tr><td>3</td><td>Der Baum zeigt genau, wie schnell sich Wälder, Fischbestände oder Böden auf der Erde erholen.</td><td>Nein</td></tr><tr><td>4</td><td>one.zero kann zeigen, dass nicht alles gleichzeitig erfüllt werden kann.</td><td>Ja</td></tr><tr><td>5</td><td>one.zero zeigt genau, was jeder Mensch für ein gutes Leben braucht.</td><td>Nein</td></tr><tr><td>6</td><td>Der Baum zeigt alle wichtigen Zusammenhänge des Erdsystems.</td><td>Nein</td></tr><tr><td>7</td><td>one.zero kann helfen, über Verteilung und Gerechtigkeit zu sprechen.</td><td>Ja</td></tr><tr><td>8</td><td>Die Fruchtzahl zeigt, wie viele Rohstoffe es auf der Erde wirklich gibt.</td><td>Nein</td></tr><tr><td>9</td><td>one.zero kann helfen, Folgen von Entscheidungen über mehrere Runden zu beobachten.</td><td>Ja</td></tr><tr><td>10</td><td>Ein Modell kann etwas verständlicher machen, obwohl es die Wirklichkeit vereinfacht.</td><td>Ja</td></tr><tr><td>11</td><td>Aus one.zero kann man direkt ablesen, welche Lösung für die Erde richtig ist.</td><td>Nein</td></tr><tr><td>12</td><td>Ein Modell ist nur dann nützlich, wenn es die Wirklichkeit vollständig abbildet.</td><td>Nein</td></tr></tbody></table>
+<table class="workTable solutionTable"><thead><tr><th>Nr.</th><th>Aussage</th><th>Lösung</th></tr></thead><tbody><tr><td>1</td><td>Der Baum zeigt, dass heutige Nutzung spätere Möglichkeiten beeinflussen kann.</td><td>Ja</td></tr><tr><td>2</td><td>one.zero kann helfen, über Needs und Desires nachzudenken.</td><td>Ja</td></tr><tr><td>3</td><td>Der Baum zeigt genau, wie schnell sich Wälder, Fischbestände oder Böden auf der Erde erholen.</td><td>Nein</td></tr><tr><td>4</td><td>one.zero kann zeigen, dass nicht alles gleichzeitig erfüllt werden kann.</td><td>Ja</td></tr><tr><td>5</td><td>one.zero zeigt genau, was jeder Mensch für ein gutes Leben braucht.</td><td>Nein</td></tr><tr><td>6</td><td>Der Baum zeigt alle wichtigen Zusammenhänge des Erdsystems.</td><td>Nein</td></tr><tr><td>7</td><td>one.zero kann helfen, über Verteilung und Gerechtigkeit zu sprechen.</td><td>Ja</td></tr><tr><td>8</td><td>Die Fruchtzahl zeigt, wie viele Rohstoffe es auf der Erde wirklich gibt.</td><td>Nein</td></tr><tr><td>9</td><td>one.zero kann helfen, Folgen von Entscheidungen über mehrere Jahre zu beobachten.</td><td>Ja</td></tr><tr><td>10</td><td>Ein Modell kann etwas verständlicher machen, obwohl es die Wirklichkeit vereinfacht.</td><td>Ja</td></tr><tr><td>11</td><td>Aus one.zero kann man direkt ablesen, welche Lösung für die Erde richtig ist.</td><td>Nein</td></tr><tr><td>12</td><td>Ein Modell ist nur dann nützlich, wenn es die Wirklichkeit vollständig abbildet.</td><td>Nein</td></tr></tbody></table>
 </div>
 </div>
 </section><section class="page legalPage" data-page="19">
