@@ -10605,74 +10605,80 @@ const DOUGHNUT_NEEDS={
 const ADOLESCENT_DESIRES=[
   /* Technik / Medien */
   {text:"ein neues Smartphone haben können",exclude:[]},
-  {text:"einen richtig guten Computer haben können",exclude:[]},
-  {text:"eine eigene Spielkonsole haben können",exclude:[]},
-  {text:"regelmässig neue Games spielen können",exclude:[]},
-  {text:"jederzeit Filme, Serien und Videos streamen können",exclude:[]},
-  {text:"jederzeit Musik streamen können",exclude:[]},
-  {text:"richtig gute Kopfhörer oder Lautsprecher besitzen können",exclude:[]},
-  {text:"einen grossen Bildschirm für Filme oder Games haben können",exclude:["Wohnen"]},
+  {text:"einen eigenen Gaming-Raum mit der besten Ausstattung haben",exclude:["Wohnen"]},
+  {text:"immer die neuesten technischen Geräte ausprobieren können",exclude:[]},
+  {text:"einen Roboter haben, der alles erledigt, was ich nicht machen möchte",exclude:[]},
+  {text:"einen Social-Media-Account mit einer Million Followern haben",exclude:[]},
 
   /* Mode / Konsum */
-  {text:"regelmässig neue Kleidung kaufen können",exclude:[]},
+  {text:"coole Kleider kaufen können, wenn ich Lust dazu habe",exclude:[]},
   {text:"mehrere Paar Schuhe zur Auswahl haben können",exclude:[]},
-  {text:"mir öfter neue Sachen kaufen können, die mir gefallen",exclude:[]},
-  {text:"eine gute Uhr oder andere besondere Accessoires besitzen können",exclude:[]},
-  {text:"Dinge sammeln können, die ich richtig cool finde",exclude:[]},
-  {text:"bei meinen Sachen zwischen vielen verschiedenen Designs wählen können",exclude:[]},
+  {text:"einen Sponsoringvertrag haben, bei dem ich meine Lieblingsprodukte kostenlos bekomme",exclude:[]},
 
-  /* Reisen / Erlebnisse */
-  {text:"mehrmals im Jahr verreisen können",exclude:[]},
-  {text:"weit entfernte Länder und Orte besuchen können",exclude:[]},
-  {text:"in den Ferien viele besondere Ausflüge machen können",exclude:[]},
-  {text:"in einem richtig komfortablen Hotel übernachten können",exclude:["Wohnen"]},
-  {text:"besondere Abenteuer oder Erlebnisse buchen können",exclude:[]},
-  {text:"einmal eine richtig grosse Reise machen können",exclude:[]},
-  {text:"an einen Ort reisen können, den ich unbedingt einmal sehen möchte",exclude:[]},
+  /* Geld / Luxus */
+  {text:"jede Woche 200 Franken Sackgeld bekommen",exclude:[]},
+  {text:"eine Villa mit Pool besitzen",exclude:["Wohnen","Wasser"]},
+  {text:"eine eigene Yacht besitzen",exclude:[]},
+  {text:"eine eigene Insel besitzen",exclude:[]},
+  {text:"einen Privatkoch oder eine Privatköchin haben",exclude:["Nahrung"]},
+  {text:"eine persönliche Assistenz haben, die meinen Alltag organisiert",exclude:[]},
 
-  /* Sport / Hobbys */
-  {text:"hochwertige Ausrüstung für mein Hobby besitzen können",exclude:[]},
-  {text:"immer wieder neue Sportarten ausprobieren können",exclude:[]},
-  {text:"ein eigenes gutes Musikinstrument besitzen können",exclude:[]},
+  /* Status / Erfolg */
+  {text:"so berühmt sein, dass mich fast alle kennen",exclude:[]},
+  {text:"Klassenbeste oder Klassenbester sein",exclude:["Bildung"]},
+  {text:"Chef oder Chefin eines erfolgreichen Unternehmens sein",exclude:["Einkommen & Arbeit"]},
+  {text:"ein Buch schreiben, das zum Bestseller wird",exclude:[]},
+  {text:"jeden Wettkampf oder jedes Spiel gewinnen, bei dem ich mitmache",exclude:[]},
+  {text:"meine Lieblingsstars persönlich kennen",exclude:[]},
+  {text:"so berühmt sein, dass viele Menschen auf meine Ideen hören",exclude:[]},
+
+  /* Freiheit / Unabhängigkeit */
+  {text:"nur dann zur Schule gehen müssen, wenn ich gerade Lust habe",exclude:["Bildung"]},
+  {text:"nie mehr Hausaufgaben machen müssen",exclude:["Bildung"]},
+  {text:"mich nicht mehr mit meinen Eltern absprechen müssen",exclude:[]},
+  {text:"jedes Wochenende sturmfreie Bude haben und einladen dürfen, wen ich will",exclude:["Wohnen"]},
+  {text:"nie mehr früh aufstehen müssen",exclude:[]},
+  {text:"jeden Tag selbst bestimmen können, was ich mache",exclude:[]},
+  {text:"nie warten müssen, wenn ich irgendwo hinwill oder etwas machen möchte",exclude:[]},
+
+  /* Freizeit / Erlebnisse */
+  {text:"jede Woche eine Party genau nach meinen Wünschen veranstalten können",exclude:[]},
+  {text:"doppelt so viele Ferien haben",exclude:[]},
+  {text:"jedes Jahr All-inclusive-Ferien machen können",exclude:[]},
+  {text:"immer VIP-Tickets für Konzerte, Festivals oder Sportevents bekommen",exclude:[]},
+  {text:"regelmässig Freizeitparks oder Erlebnisbäder besuchen können",exclude:[]},
+  {text:"bei Konzerten oder Veranstaltungen immer die besten Plätze bekommen",exclude:[]},
+
+  /* Mobilität / Besitz */
+  {text:"ein eigenes Flugzeug besitzen",exclude:[]},
+  {text:"ein schnelles Auto haben und es auch fahren dürfen",exclude:[]},
+  {text:"jederzeit jeden Ort erreichen können, den ich will",exclude:[]},
+  {text:"immer das Verkehrsmittel benutzen können, auf das ich gerade Lust habe",exclude:[]},
+  {text:"mehrere verschiedene Autos besitzen können",exclude:[]},
+
+  /* Wohnen / Komfort */
+  {text:"mein Zimmer ohne Budgetlimit einrichten können",exclude:["Wohnen"]},
+  {text:"ein eigenes Bad haben",exclude:["Wohnen","Wasser"]},
+  {text:"einen eigenen Raum nur für meine Hobbys haben",exclude:["Wohnen"]},
+  {text:"einen eigenen Pool haben",exclude:["Wohnen","Wasser"]},
+  {text:"nie putzen, aufräumen oder andere Hausarbeiten machen müssen",exclude:["Wohnen"]},
+
+  /* Fähigkeiten / Hobbys */
+  {text:"zehn Sprachen sprechen können, ohne dafür lernen zu müssen",exclude:["Bildung"]},
+  {text:"in jedem Fach genau die Note bekommen, die ich möchte",exclude:["Bildung"]},
+  {text:"ein Musikinstrument perfekt spielen können, ohne lange üben zu müssen",exclude:[]},
+  {text:"einen Profivertrag in meiner Lieblingssportart haben",exclude:["Einkommen & Arbeit"]},
+  {text:"für mein Hobby die beste Ausrüstung haben können",exclude:[]},
   {text:"mehreren Hobbys gleichzeitig nachgehen können",exclude:[]},
-  {text:"an besonderen Kursen oder Workshops teilnehmen können",exclude:["Bildung"]},
-  {text:"meine Sport- oder Hobbyausrüstung regelmässig erneuern können",exclude:[]},
-  {text:"für mein Hobby an besondere Orte oder Veranstaltungen reisen können",exclude:[]},
+  {text:"jede Fähigkeit, die mich interessiert, sehr schnell lernen können",exclude:["Bildung"]},
 
-  /* Wohnen / Zimmer */
-  {text:"ein grosses eigenes Zimmer haben können",exclude:["Wohnen"]},
-  {text:"ein eigenes Bad haben können",exclude:["Wohnen","Wasser"]},
-  {text:"mein Zimmer komplett neu einrichten können",exclude:["Wohnen"]},
-  {text:"neue Möbel für mein Zimmer aussuchen können",exclude:["Wohnen"]},
-  {text:"ein besonders bequemes Bett haben können",exclude:["Wohnen"]},
-  {text:"in meinem Zimmer einen eigenen Bereich nur für mein Hobby haben können",exclude:["Wohnen"]},
-
-  /* Mobilität */
-  {text:"ein eigenes E-Bike haben können",exclude:[]},
-  {text:"ein besonders gutes Velo oder Mountainbike haben können",exclude:[]},
-  {text:"später ein eigenes Auto haben können",exclude:[]},
-  {text:"auf Reisen besonders bequem unterwegs sein können",exclude:[]},
-  {text:"für Ausflüge jederzeit ein passendes Verkehrsmittel wählen können",exclude:[]},
-  {text:"für Freizeit und Ferien weite Strecken schnell zurücklegen können",exclude:[]},
-
-  /* Essen / Genuss */
-  {text:"jederzeit meine Lieblingssnacks und -getränke haben können",exclude:["Nahrung"]},
-  {text:"regelmässig besondere Gerichte essen können",exclude:["Nahrung"]},
-  {text:"oft besondere Süssigkeiten oder Desserts auswählen können",exclude:["Nahrung"]},
-  {text:"immer eine grosse Auswahl an Essen haben können",exclude:["Nahrung"]},
-  {text:"regelmässig neue Gerichte aus verschiedenen Ländern ausprobieren können",exclude:["Nahrung"]},
-  {text:"für besondere Anlässe richtig aufwendiges Essen haben können",exclude:["Nahrung"]},
-
-  /* Veranstaltungen / Freizeit */
-  {text:"regelmässig Konzerte oder Festivals besuchen können",exclude:[]},
-  {text:"grosse Sportveranstaltungen live besuchen können",exclude:[]},
-  {text:"häufig Freizeitparks oder Erlebnisbäder besuchen können",exclude:[]},
-  {text:"bei Konzerten oder Veranstaltungen richtig gute Plätze haben können",exclude:[]},
-  {text:"regelmässig neue Bücher, Comics oder andere Freizeitmedien kaufen können",exclude:["Bildung"]},
-  {text:"häufig besondere Tagesausflüge und Unternehmungen machen können",exclude:[]},
-  {text:"regelmässig Live-Shows oder andere grosse Veranstaltungen besuchen können",exclude:[]},
-  {text:"in der Freizeit immer wieder etwas Neues ausprobieren können",exclude:[]}
+  /* Einfluss / für andere */
+  {text:"so viel Einfluss haben, dass sehr viele Menschen auf mich hören",exclude:["Politische Mitsprache"]},
+  {text:"Menschen, die mir wichtig sind, jeden grossen Wunsch erfüllen können",exclude:[]},
+  {text:"mit einer eigenen Erfindung vielen Menschen das Leben erleichtern können",exclude:[]},
+  {text:"so bekannt sein, dass ich viele Menschen für eine Sache begeistern kann",exclude:[]}
 ];
+
 
 function profileSet(){
   const categories=shuffledValues(Object.keys(DOUGHNUT_NEEDS)).slice(0,4);
@@ -10689,7 +10695,41 @@ function profileSet(){
     ? allowedDesires
     : ADOLESCENT_DESIRES.filter(item=>(item.exclude||[]).length===0);
 
-  const desires=shuffledValues(desirePool).slice(0,4).map(item=>item.text);
+  const desireCategory=item=>{
+    const i=ADOLESCENT_DESIRES.indexOf(item);
+    if(i<5)return "Technik / Medien";
+    if(i<8)return "Mode / Konsum";
+    if(i<14)return "Geld / Luxus";
+    if(i<21)return "Status / Erfolg";
+    if(i<28)return "Freiheit / Unabhängigkeit";
+    if(i<34)return "Freizeit / Erlebnisse";
+    if(i<39)return "Mobilität / Besitz";
+    if(i<44)return "Wohnen / Komfort";
+    if(i<51)return "Fähigkeiten / Hobbys";
+    return "Einfluss / für andere";
+  };
+
+  let desireItems=[];
+  for(let attempt=0;attempt<100;attempt++){
+    const candidate=shuffledValues(desirePool).slice(0,4);
+    if(candidate.length===4 &&
+       desireCategory(candidate[0])!==desireCategory(candidate[1]) &&
+       desireCategory(candidate[2])!==desireCategory(candidate[3])){
+      desireItems=candidate;
+      break;
+    }
+  }
+  if(desireItems.length<4){
+    const remaining=shuffledValues(desirePool);
+    const takePair=()=>{
+      const first=remaining.shift();
+      const idx=remaining.findIndex(item=>desireCategory(item)!==desireCategory(first));
+      const second=idx>=0?remaining.splice(idx,1)[0]:remaining.shift();
+      return [first,second];
+    };
+    desireItems=[...takePair(),...takePair()];
+  }
+  const desires=desireItems.map(item=>item.text);
   const needs=categories.map(cat=>{
     const variants=DOUGHNUT_NEEDS[cat];
     return variants[rand(0,variants.length-1)];
