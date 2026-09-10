@@ -10709,12 +10709,44 @@ function profileSet(){
     return "Einfluss / für andere";
   };
 
+  const desireSimilarityFamily=item=>{
+    const t=item?.text||"";
+    if([
+      "einen Social-Media-Account mit einer Million Followern haben",
+      "so berühmt sein, dass mich fast alle kennen",
+      "so berühmt sein, dass viele Menschen auf meine Ideen hören",
+      "so viel Einfluss haben, dass sehr viele Menschen auf mich hören",
+      "so bekannt sein, dass ich viele Menschen für eine Sache begeistern kann"
+    ].includes(t))return "Bekanntheit / Einfluss";
+    if([
+      "jeden Wettkampf oder jedes Spiel gewinnen, bei dem ich mitmache",
+      "einen Profivertrag in meiner Lieblingssportart haben"
+    ].includes(t))return "Sportlicher Erfolg";
+    if([
+      "eine Villa mit Pool besitzen",
+      "einen eigenen Pool haben"
+    ].includes(t))return "Pool / Luxuswohnen";
+    if([
+      "eine eigene Yacht besitzen",
+      "ein eigenes Flugzeug besitzen"
+    ].includes(t))return "Luxusmobilität";
+    return "";
+  };
+
+  const desiresCompatible=(a,b)=>{
+    if(!a||!b)return false;
+    if(desireCategory(a)===desireCategory(b))return false;
+    const fa=desireSimilarityFamily(a);
+    const fb=desireSimilarityFamily(b);
+    return !(fa&&fb&&fa===fb);
+  };
+
   let desireItems=[];
   for(let attempt=0;attempt<100;attempt++){
     const candidate=shuffledValues(desirePool).slice(0,4);
     if(candidate.length===4 &&
-       desireCategory(candidate[0])!==desireCategory(candidate[1]) &&
-       desireCategory(candidate[2])!==desireCategory(candidate[3])){
+       desiresCompatible(candidate[0],candidate[1]) &&
+       desiresCompatible(candidate[2],candidate[3])){
       desireItems=candidate;
       break;
     }
@@ -10723,7 +10755,7 @@ function profileSet(){
     const remaining=shuffledValues(desirePool);
     const takePair=()=>{
       const first=remaining.shift();
-      const idx=remaining.findIndex(item=>desireCategory(item)!==desireCategory(first));
+      const idx=remaining.findIndex(item=>desiresCompatible(first,item));
       const second=idx>=0?remaining.splice(idx,1)[0]:remaining.shift();
       return [first,second];
     };
@@ -10757,10 +10789,10 @@ function profileSet(){
 
 function ensureProfiles(force=false){
   let s=eState();
-  if(force||!s.profiles||s.profilePoolVersion!=="independent-v3"){
+  if(force||!s.profiles||s.profilePoolVersion!=="independent-v4"){
     s=ePatch({
       profiles:profileSet(),
-      profilePoolVersion:"independent-v3",
+      profilePoolVersion:"independent-v4",
       gsim:{tree:TREE_START,round:1,log:[]},
       groupReflection:""
     });
