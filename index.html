@@ -4992,6 +4992,19 @@ body.mysteryExpanded{
   .challengeActions .action{width:100%!important}
 }
 
+.environmentChallengeLayout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:22px;align-items:start;margin:14px 0 10px;}
+.environmentChallengeWorldWrap{padding:12px;border-radius:10px;background:#dff1fa;}
+.environmentChallengeCanvas{display:block;width:100%;max-width:640px;height:auto;margin:auto;image-rendering:pixelated;cursor:pointer;}
+.environmentChallengeControls{min-width:0;}
+.environmentChallengeControls h3{margin:0 0 10px;font-size:17px;}
+.environmentChallengePalette{margin-bottom:0;}
+.environmentChallengePalette .colorCard{cursor:pointer;}
+.environmentChallengePalette.locked{opacity:.62;pointer-events:none;}
+.environmentChallengePalette .colorCard.active .swatch{border-color:#111;outline:2px solid white;}
+.environmentChallengePalette .colorPicker,.environmentChallengePalette .nameInput{pointer-events:none;}
+.environmentChallengePalette .nameInput{background:#fff;}
+@media(max-width:800px){.environmentChallengeLayout{grid-template-columns:1fr}.environmentChallengeControls{order:2}}
+
 /* ===== Einheitliche Hinweise in Phase 1 ===== */
 .inlineHint{
   margin:8px 0 12px!important;
@@ -5771,19 +5784,28 @@ details.learningGoals{
 </article>
 <div class="optionalChallenge hidden" id="environmentChallenge">
   <span class="taskLabel">Zusatzaufgabe</span>
-  <div class="optionalChallengeHead">
-    <h3>Umwelt-Challenge</h3>
-  </div>
+  <div class="optionalChallengeHead"><h3>Umwelt-Challenge</h3></div>
   <p class="challengeLead">Die nächste Aufgabe ist eine Gruppenaufgabe. Musst du noch warten? Dann kannst du hier weiterarbeiten. Spiele nur so lange, bis die anderen bereit sind.</p>
-  <div class="challengeEvent taskInstruction hidden" id="environmentChallengeEvent"></div>
-  <p class="challengeStatus" id="environmentChallengeStatus"></p>
-  <div class="challengeActions">
-    <button class="action secondary" id="startEnvironmentChallenge" type="button">Challenge starten</button>
-    <button class="action secondary hidden" id="nextEnvironmentChallenge" type="button">Andere Challenge ausprobieren</button>
-    <button class="action secondary hidden" id="restoreEnvironmentWorld" type="button">Zur ursprünglichen Welt</button>
-    <button class="action secondary hidden" id="resetEnvironmentSelection" type="button">Flächenauswahl zurücksetzen</button>
+  <div class="challengeActions"><button class="action secondary" id="startEnvironmentChallenge" type="button">Challenge starten</button></div>
+</div>
+
+<div class="treeChallengeOverlay" id="environmentChallengeOverlay" role="dialog" aria-modal="true" aria-labelledby="environmentChallengeOverlayTitle">
+  <div class="treeChallengeDialog environmentChallengeDialog">
+    <div class="treeChallengeOverlayHead">
+      <div><span class="taskLabel">Zusatzaufgabe</span><h2 id="environmentChallengeOverlayTitle">Umwelt-Challenge</h2></div>
+      <button class="action secondary treeChallengeClose" id="closeEnvironmentChallenge" type="button">Schliessen</button>
+    </div>
+    <div class="challengeEvent taskInstruction" id="environmentChallengeEvent"></div>
+    <div class="environmentChallengeLayout">
+      <div class="environmentChallengeWorldWrap"><canvas class="environmentChallengeCanvas" id="environmentChallengeCanvas" aria-label="Deine gespeicherte Welt für die Umwelt-Challenge"></canvas></div>
+      <aside class="environmentChallengeControls"><h3>Farben und Bedeutungen</h3><div class="paletteSectionTitle">Meine Farben</div><div class="palette environmentChallengePalette" id="environmentChallengePalette"></div></aside>
+    </div>
+    <p class="challengeStatus" id="environmentChallengeStatus"></p>
+    <div class="challengeActions">
+      <button class="action secondary hidden" id="resetEnvironmentSelection" type="button">Flächenauswahl zurücksetzen</button>
+      <button class="action secondary" id="nextEnvironmentChallenge" type="button">Andere Challenge ausprobieren</button>
+    </div>
   </div>
-  <p class="challengeCanvasNote hidden" id="environmentCanvasNote"></p>
 </div>
 <article class="taskCard withArtwork phase1Lockable phase1Locked" id="taskB">
 <span class="taskLabel">Aufgabe B</span>
@@ -5808,7 +5830,7 @@ details.learningGoals{
 
 <p class="taskQuestion">
             Was war euch wichtig? Warum denkt ihr über ein gutes Leben nicht alle gleich?
-            Worauf musstet ihr euch einigen?
+            Worauf musstet ihr euch einigen? Wie habt ihr diese Einigung erreicht?
           </p>
 <label class="taskAnswerLabel" for="taskAnswerB">
             Eure Antwort
@@ -5824,9 +5846,6 @@ details.learningGoals{
             </label>
 <textarea class="taskAnswer" data-task-answer="D" id="taskAnswerD" maxlength="5000"></textarea>
 </div>
-<p class="taskSaveNote">
-            Eure Antworten werden automatisch in diesem Browser gespeichert.
-          </p>
 </div>
 </div>
 </article>
@@ -6104,12 +6123,11 @@ details.learningGoals{
 <strong>ⓘ Hinweis</strong>
 <ul>
 <li>Verschiebt die Karten so, dass wichtige Zusammenhänge sichtbar werden.</li>
-<li>Verbindet passende Karten: Klickt oder tippt auf den Punkt rechts unten in einer Karte und danach auf den Punkt einer zweiten Karte.</li>
+<li>Verbindet passende Karten: Klickt oder tippt auf den Punkt rechts unten in einer Karte und danach auf den Punkt einer zweiten Karte. Der ?-Knopf zeigt euch, wie das Verbinden funktioniert.</li>
 <li>Beschriftet wichtige Verbindungen kurz: Klickt dazu auf die Linie und schreibt, wie die beiden Aussagen zusammenhängen.</li>
 <li>Ihr müsst nicht alle Karten verbinden.</li>
 <li>Die Arbeitsfläche könnt ihr verschieben und mit dem Mausrad oder zwei Fingern zoomen.</li>
 </ul>
-<p>Der ?-Knopf zeigt euch, wie das Verbinden funktioniert.</p>
 <button aria-label="Zeige, wie Karten verbunden werden" class="mysteryHowToBtn helpBtn" id="mysteryHowToBtn" type="button">?</button>
 </div>
 <div class="mysteryWorkspaceShell" id="mysteryWorkspaceShell">
@@ -7295,8 +7313,8 @@ function initTaskAnswers(){
             currentAnswers
           );
 
-          if(key==="A"&&typeof updateEnvironmentChallengeVisibility==="function"){
-            updateEnvironmentChallengeVisibility();
+          if(key==="A"&&typeof updatePhase1Progress==="function"){
+            updatePhase1Progress();
           }
         }
       );
@@ -7531,205 +7549,56 @@ function deleteWorld(id){
    Arbeiten nur mit einer Kopie der aktuellen Welt.
    ============================================================ */
 const ENV_CHALLENGES=[
-  {id:"rain",title:"Starkregen",count:10,mode:"randomCluster",color:"#b9bec4",text:"Durch starken Regen entsteht ein neuer See. 10 zusammenhängende Felder deiner Welt werden zu Wasser. Welche Felder davon betroffen sind, siehst du nun in deiner Welt. Schaue deine Welt an und überlege dir, wie du auf die Veränderung reagierst. Gestalte um."},
-  {id:"slide",title:"Erdrutsch",count:8,mode:"randomPath",color:"#b9bec4",text:"Ein Hang gerät ins Rutschen. 8 zusammenhängende Felder deiner Welt werden zu Fels und Geröll. Welche Felder davon betroffen sind, siehst du nun in deiner Welt. Schaue deine Welt an und überlege dir, wie du auf die Veränderung reagierst. Gestalte um."},
-  {id:"tornado",title:"Tornado",count:9,mode:"randomPath",color:"#b9bec4",text:"Ein Tornado fegt über one.zero. 9 zusammenhängende Felder deiner Welt werden zerstört. Welche Felder davon betroffen sind, siehst du nun in deiner Welt. Schaue deine Welt an und überlege dir, wie du auf die Veränderung reagierst. Gestalte um."},
-  {id:"meteor",title:"Jahrtausendereignis",count:11,mode:"randomCluster",color:"#555b63",text:"Ein Meteorit schlägt auf one.zero ein. 11 zusammenhängende Felder deiner Welt werden unbrauchbar. Welche Felder davon betroffen sind, siehst du nun in deiner Welt. Schaue deine Welt an und überlege dir, wie du auf die Veränderung reagierst. Gestalte um."}
+  {id:"rain",title:"Starkregen",symbol:"💧",text:"Durch starken Regen entsteht ein neuer See."},
+  {id:"slide",title:"Erdrutsch",symbol:"◈",text:"Ein Hang gerät ins Rutschen."},
+  {id:"tornado",title:"Tornado",symbol:"〰",text:"Ein Tornado fegt über one.zero."},
+  {id:"meteor",title:"Jahrtausendereignis",symbol:"✦",text:"Ein Meteorit schlägt auf one.zero ein."}
 ];
-let envChallengeBase=null;
-let envChallengeCurrent=null;
-let envChallengeCells=[];
-let envChallengeUsed=[];
-let envChallengeSelecting=false;
-
+let envChallengeWorld=null,envChallengeCurrent=null,envChallengeCells=[],envChallengeUsed=[],envChallengeSelecting=false,envChallengeSelectedColor=0;
 function cellKey(x,y){return x+":"+y}
 function cloneGridValue(g){return JSON.parse(JSON.stringify(g))}
 function envCellSet(){return new Set(envChallengeCells.map(c=>cellKey(c.x,c.y)))}
-function isEnvBlocked(x,y){return !!envChallengeCurrent && envCellSet().has(cellKey(x,y))}
-function envNeighbors(x,y){
-  return [[1,0],[-1,0],[0,1],[0,-1]].map(([dx,dy])=>({x:x+dx,y:y+dy}))
-    .filter(c=>c.x>=0&&c.x<COLS&&c.y>=0&&c.y<ROWS&&mask[c.y][c.x]);
+function envNeighbors(x,y){return [[1,0],[-1,0],[0,1],[0,-1]].map(([dx,dy])=>({x:x+dx,y:y+dy})).filter(c=>c.x>=0&&c.x<COLS&&c.y>=0&&c.y<ROWS&&mask[c.y][c.x]);}
+function drawEnvironmentChallengeSymbol(ctx,x,y){
+  const cx=x*SCALE+SCALE/2,cy=y*SCALE+SCALE/2;ctx.save();ctx.strokeStyle="#4e555d";ctx.fillStyle="#ffffffcc";ctx.lineWidth=2;
+  if(envChallengeCurrent.id==="rain"){ctx.beginPath();ctx.moveTo(cx,cy-9);ctx.bezierCurveTo(cx-7,cy-1,cx-8,cy+3,cx-8,cy+6);ctx.bezierCurveTo(cx-8,cy+11,cx-4,cy+14,cx,cy+14);ctx.bezierCurveTo(cx+4,cy+14,cx+8,cy+11,cx+8,cy+6);ctx.bezierCurveTo(cx+8,cy+3,cx+7,cy-1,cx,cy-9);ctx.closePath();ctx.fill();ctx.stroke();}
+  else if(envChallengeCurrent.id==="slide"){ctx.beginPath();ctx.moveTo(cx-10,cy+8);ctx.lineTo(cx-6,cy+1);ctx.lineTo(cx-2,cy-7);ctx.lineTo(cx+6,cy-2);ctx.lineTo(cx+10,cy+7);ctx.lineTo(cx+3,cy+10);ctx.closePath();ctx.fill();ctx.stroke();}
+  else if(envChallengeCurrent.id==="tornado"){ctx.beginPath();ctx.moveTo(cx-9,cy-7);ctx.lineTo(cx+9,cy-7);ctx.lineTo(cx+4,cy-2);ctx.lineTo(cx+8,cy-2);ctx.lineTo(cx,cy+8);ctx.lineTo(cx+3,cy+2);ctx.lineTo(cx-4,cy+2);ctx.closePath();ctx.fill();ctx.stroke();}
+  else{ctx.beginPath();ctx.moveTo(cx,cy-10);ctx.lineTo(cx+3,cy-3);ctx.lineTo(cx+10,cy);ctx.lineTo(cx+3,cy+3);ctx.lineTo(cx,cy+10);ctx.lineTo(cx-3,cy+3);ctx.lineTo(cx-10,cy);ctx.lineTo(cx-3,cy-3);ctx.closePath();ctx.fill();ctx.stroke();}ctx.restore();
 }
-function buildRandomEnvArea(count,mode){
-  const all=[];
-  for(let y=0;y<ROWS;y++)for(let x=0;x<COLS;x++)if(mask[y][x])all.push({x,y});
-  for(let attempt=0;attempt<80;attempt++){
-    const start=all[rand(0,all.length-1)];
-    const cells=[start],seen=new Set([cellKey(start.x,start.y)]);
-    while(cells.length<count){
-      let candidates=[];
-      if(mode==="randomPath"){
-        const tail=cells[cells.length-1];
-        candidates=envNeighbors(tail.x,tail.y).filter(c=>!seen.has(cellKey(c.x,c.y)));
-        if(!candidates.length){
-          candidates=cells.flatMap(c=>envNeighbors(c.x,c.y)).filter(c=>!seen.has(cellKey(c.x,c.y)));
-        }
-      }else{
-        candidates=cells.flatMap(c=>envNeighbors(c.x,c.y)).filter(c=>!seen.has(cellKey(c.x,c.y)));
-        candidates=candidates.filter((c,i,a)=>a.findIndex(d=>d.x===c.x&&d.y===c.y)===i);
-        candidates.sort((a,b)=>{
-          const da=(a.x-start.x)**2+(a.y-start.y)**2+Math.random()*2.2;
-          const db=(b.x-start.x)**2+(b.y-start.y)**2+Math.random()*2.2;
-          return da-db;
-        });
-        candidates=candidates.slice(0,Math.max(2,Math.min(6,candidates.length)));
-      }
-      if(!candidates.length)break;
-      const next=candidates[rand(0,candidates.length-1)];
-      cells.push(next);seen.add(cellKey(next.x,next.y));
-    }
-    if(cells.length===count)return cells;
-  }
-  return all.slice(0,count);
+function drawEnvironmentChallengeWorld(){
+  if(!envChallengeWorld)return;const c=document.getElementById("environmentChallengeCanvas");if(!c)return;const ctx=c.getContext("2d");c.width=COLS*SCALE;c.height=ROWS*SCALE;ctx.fillStyle="#dff1fa";ctx.fillRect(0,0,c.width,c.height);
+  for(let y=0;y<ROWS;y++)for(let x=0;x<COLS;x++){if(!mask[y][x])continue;const v=envChallengeWorld.grid[y][x];ctx.fillStyle=v>=0?(envChallengeWorld.colors[v]||"#fff"):"#fff";ctx.fillRect(x*SCALE,y*SCALE,SCALE,SCALE);ctx.strokeStyle="#ffffff55";ctx.strokeRect(x*SCALE,y*SCALE,SCALE,SCALE);}
+  envCellSet().forEach(key=>{const [x,y]=key.split(":").map(Number);ctx.fillStyle="#b9bec4";ctx.globalAlpha=.94;ctx.fillRect(x*SCALE,y*SCALE,SCALE,SCALE);ctx.globalAlpha=1;ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.strokeRect(x*SCALE+1,y*SCALE+1,SCALE-2,SCALE-2);drawEnvironmentChallengeSymbol(ctx,x,y);});
 }
-function drawEnvironmentOverlay(){
-  if(!envChallengeCurrent||!envChallengeCells.length)return;
-  ctx.save();
-  envChallengeCells.forEach(({x,y})=>{
-    ctx.fillStyle=envChallengeCurrent.color;
-    ctx.globalAlpha=.94;
-    ctx.fillRect(x*SCALE,y*SCALE,SCALE,SCALE);
-    ctx.globalAlpha=1;
-    ctx.strokeStyle="#ffffffaa";
-    ctx.lineWidth=2;
-    ctx.strokeRect(x*SCALE+1,y*SCALE+1,SCALE-2,SCALE-2);
-    if(envChallengeCurrent.id==="rain"){
-      ctx.strokeStyle="#5f6870";
-      ctx.fillStyle="#ffffff99";
-      ctx.lineWidth=2;
-      const cx=x*SCALE+SCALE/2;
-      const cy=y*SCALE+SCALE/2+1;
-      ctx.beginPath();
-      ctx.moveTo(cx,cy-8);
-      ctx.bezierCurveTo(cx-6,cy-2,cx-7,cy+2,cx-7,cy+5);
-      ctx.bezierCurveTo(cx-7,cy+10,cx-3,cy+13,cx,cy+13);
-      ctx.bezierCurveTo(cx+3,cy+13,cx+7,cy+10,cx+7,cy+5);
-      ctx.bezierCurveTo(cx+7,cy+2,cx+6,cy-2,cx,cy-8);
-      ctx.closePath();
-      ctx.fill();
-      ctx.stroke();
-    }else if(envChallengeCurrent.id==="slide"){
-      ctx.strokeStyle="#5f6870";
-      ctx.fillStyle="#ffffff99";
-      ctx.lineWidth=2;
-      const left=x*SCALE+8;
-      const top=y*SCALE+10;
-      ctx.beginPath();
-      ctx.moveTo(left+4,top+13);
-      ctx.lineTo(left+1,top+8);
-      ctx.lineTo(left+6,top+2);
-      ctx.lineTo(left+14,top);
-      ctx.lineTo(left+20,top+6);
-      ctx.lineTo(left+18,top+14);
-      ctx.lineTo(left+10,top+17);
-      ctx.closePath();
-      ctx.fill();
-      ctx.stroke();
-    }else if(["tornado","meteor"].includes(envChallengeCurrent.id)){
-      ctx.strokeStyle=envChallengeCurrent.id==="meteor"?"#2e3237":"#727981";
-      ctx.lineWidth=3;
-      ctx.beginPath();ctx.moveTo(x*SCALE+7,y*SCALE+7);ctx.lineTo((x+1)*SCALE-7,(y+1)*SCALE-7);ctx.stroke();
-    }
-  });
-  ctx.restore();
+function renderEnvironmentChallengePalette(){
+  const box=document.getElementById("environmentChallengePalette");if(!box||!envChallengeWorld)return;box.innerHTML="";box.classList.toggle("locked",envChallengeSelecting);envChallengeWorld.colors.forEach((color,index)=>{const card=document.createElement("div");card.className="colorCard"+(index===envChallengeSelectedColor?" active":"");const sw=document.createElement("button");sw.type="button";sw.className="swatch"+(index===envChallengeSelectedColor?" selected":"");sw.style.background=color;sw.title="Farbe auswählen";sw.onclick=()=>{envChallengeSelectedColor=index;renderEnvironmentChallengePalette()};card.appendChild(sw);const picker=document.createElement("input");picker.type="color";picker.className="colorPicker";picker.value=color;picker.title="Farbe wählen";picker.oninput=()=>{envChallengeWorld.colors[index]=picker.value;envChallengeSelectedColor=index;renderEnvironmentChallengePalette();drawEnvironmentChallengeWorld()};card.appendChild(picker);const name=document.createElement("input");name.type="text";name.className="nameInput";name.maxLength=50;name.value=envChallengeWorld.names[index]||"";name.placeholder="Was bedeutet diese Farbe?";name.oninput=()=>{envChallengeWorld.names[index]=name.value};card.appendChild(name);box.appendChild(card);});
 }
-const baseDraw=draw;
-draw=function(){baseDraw();drawEnvironmentOverlay();};
-
-function snapshotEnvironmentWorld(){
-  envChallengeBase={grid:cloneGridValue(grid),colors:[...userColors],names:[...userColorNames],selected};
+function openEnvironmentChallenge(){
+  const worlds=getSavedWorlds().slice().sort((a,b)=>Number(a.id)-Number(b.id)),latest=worlds[worlds.length-1];if(!latest)return;
+  envChallengeWorld={grid:cloneGridValue(latest.grid),colors:[...(latest.userColors||defaultUserColors)],names:[...(latest.userColorNames||Array(defaultUserColors.length).fill(""))]};envChallengeSelectedColor=0;envChallengeCells=[];envChallengeSelecting=true;
+  let available=ENV_CHALLENGES.filter(c=>!envChallengeUsed.includes(c.id));if(!available.length){envChallengeUsed=[];available=[...ENV_CHALLENGES];}envChallengeCurrent=available[rand(0,available.length-1)];envChallengeUsed.push(envChallengeCurrent.id);envChallengeCurrent.count=rand(20,24);
+  const event=document.getElementById("environmentChallengeEvent");if(event)event.innerHTML="<strong>"+envChallengeCurrent.symbol+" "+envChallengeCurrent.title+"</strong><p>"+envChallengeCurrent.text+" "+envChallengeCurrent.count+" Felder werden unbrauchbar. Wähle aus welche Felder betroffen sind, indem du sie anklickst. Die gewählten Felder müssen zusammenhängen. Erst wenn du die Anzahl betroffener Felder gewählt hast, kannst du deine Welt so anpassen, dass sie trotzdem für dich noch ein gutes Leben bietet.</p>";
+  const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Wähle "+envChallengeCurrent.count+" zusammenhängende Felder. Mindestens eine Seite jedes neuen Feldes muss an ein bereits gewähltes Feld anschliessen.";
+  const note=document.getElementById("environmentCanvasNote");if(note)note.textContent="Du kannst erst weiterarbeiten, wenn alle "+envChallengeCurrent.count+" Felder ausgewählt sind.";
+  renderEnvironmentChallengePalette();drawEnvironmentChallengeWorld();document.getElementById("resetEnvironmentSelection")?.classList.remove("hidden");document.getElementById("environmentChallengeOverlay")?.classList.add("active");document.body.style.overflow="hidden";
 }
-function restoreEnvironmentBase(keepChallengeUI=false){
-  if(!envChallengeBase)return;
-  grid=cloneGridValue(envChallengeBase.grid);
-  userColors=[...envChallengeBase.colors];
-  userColorNames.splice(0,userColorNames.length,...envChallengeBase.names);
-  selected=envChallengeBase.selected;
-  envChallengeCells=[];envChallengeSelecting=false;
-  makePalette();draw();
-  const saveBtn=document.getElementById("save");
-  const resetBtn=document.getElementById("reset");
-  if(saveBtn)saveBtn.disabled=false;
-  if(resetBtn)resetBtn.disabled=false;
-  if(!keepChallengeUI){
-    envChallengeCurrent=null;envChallengeBase=null;
-    document.getElementById("environmentChallengeEvent")?.classList.add("hidden");
-    document.getElementById("nextEnvironmentChallenge")?.classList.add("hidden");
-    document.getElementById("restoreEnvironmentWorld")?.classList.add("hidden");
-    document.getElementById("resetEnvironmentSelection")?.classList.add("hidden");
-    document.getElementById("environmentCanvasNote")?.classList.add("hidden");
-    const start=document.getElementById("startEnvironmentChallenge");if(start)start.classList.remove("hidden");
-    const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="";
-  }
+function closeEnvironmentChallenge(){envChallengeWorld=null;envChallengeCurrent=null;envChallengeCells=[];envChallengeSelecting=false;document.getElementById("environmentChallengeOverlay")?.classList.remove("active");document.body.style.overflow="";}
+function nextEnvironmentChallenge(){closeEnvironmentChallenge();openEnvironmentChallenge();}
+function handleEnvironmentChallengeCanvasClick(e){
+  if(!envChallengeWorld||!envChallengeCurrent)return;const c=document.getElementById("environmentChallengeCanvas");if(!c)return;const rect=c.getBoundingClientRect();const x=Math.floor(((e.clientX-rect.left)*(c.width/rect.width))/SCALE),y=Math.floor(((e.clientY-rect.top)*(c.height/rect.height))/SCALE);if(x<0||x>=COLS||y<0||y>=ROWS||!mask[y][x])return;const set=envCellSet();if(set.has(cellKey(x,y)))return;
+  if(envChallengeSelecting){if(envChallengeCells.length>0&&!envNeighbors(x,y).some(c=>set.has(cellKey(c.x,c.y)))){const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Die Fläche muss zusammenhängend bleiben. Wähle ein Feld direkt neben deiner bisherigen Fläche.";return;}envChallengeCells.push({x,y});if(envChallengeCells.length>=envChallengeCurrent.count){envChallengeSelecting=false;const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Die Fläche steht fest. Gestalte deine Welt jetzt mit den verbleibenden Feldern um.";const note=document.getElementById("environmentCanvasNote");if(note)note.textContent="Die markierten Felder können nicht verändert werden.";document.getElementById("resetEnvironmentSelection")?.classList.add("hidden");renderEnvironmentChallengePalette();}else{const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Wähle noch "+(envChallengeCurrent.count-envChallengeCells.length)+" Felder. Die Fläche muss zusammenhängend bleiben.";}drawEnvironmentChallengeWorld();return;}
+  envChallengeWorld.grid[y][x]=envChallengeSelectedColor;drawEnvironmentChallengeWorld();
 }
-function chooseEnvironmentChallenge(){
-  if(!envChallengeBase)snapshotEnvironmentWorld();else restoreEnvironmentBase(true);
-  let available=ENV_CHALLENGES.filter(c=>!envChallengeUsed.includes(c.id));
-  if(!available.length){envChallengeUsed=[];available=[...ENV_CHALLENGES];}
-  envChallengeCurrent=available[rand(0,available.length-1)];
-  envChallengeUsed.push(envChallengeCurrent.id);
-  envChallengeCells=buildRandomEnvArea(envChallengeCurrent.count,envChallengeCurrent.mode);
-  envChallengeSelecting=false;
-
-  const event=document.getElementById("environmentChallengeEvent");
-  if(event){event.innerHTML="<strong>"+envChallengeCurrent.title+"</strong>"+envChallengeCurrent.text;event.classList.remove("hidden");}
-  const counter=document.getElementById("environmentChallengeCounter");
-  if(counter)counter.textContent=Math.min(envChallengeUsed.length,4)+" von 4 ausprobiert";
-  const status=document.getElementById("environmentChallengeStatus");
-  const note=document.getElementById("environmentCanvasNote");
-  if(envChallengeSelecting){
-    if(status)status.textContent="Wähle auf deiner Welt eine zusammenhängende Fläche: 0 von "+envChallengeCurrent.count+" Feldern.";
-    if(note){note.textContent="Klicke das erste Feld an und erweitere die Fläche danach über benachbarte Felder.";note.classList.remove("hidden");}
-    document.getElementById("resetEnvironmentSelection")?.classList.remove("hidden");
-  }else{
-    if(status)status.textContent="";
-    if(note){note.textContent="";note.classList.add("hidden");}
-    document.getElementById("resetEnvironmentSelection")?.classList.add("hidden");
-  }
-  document.getElementById("startEnvironmentChallenge")?.classList.add("hidden");
-  document.getElementById("nextEnvironmentChallenge")?.classList.remove("hidden");
-  document.getElementById("restoreEnvironmentWorld")?.classList.remove("hidden");
-  const saveBtn=document.getElementById("save");const resetBtn=document.getElementById("reset");
-  if(saveBtn)saveBtn.disabled=true;if(resetBtn)resetBtn.disabled=true;
-  draw();
-}
-function handleEnvironmentChallengeClick(x,y){
-  if(!envChallengeCurrent)return false;
-  const set=envCellSet();
-  if(set.has(cellKey(x,y)))return true;
-  if(!envChallengeSelecting)return set.has(cellKey(x,y));
-  if(envChallengeCells.length>=envChallengeCurrent.count)return true;
-  if(envChallengeCells.length>0){
-    const adjacent=envNeighbors(x,y).some(c=>set.has(cellKey(c.x,c.y)));
-    if(!adjacent){
-      const status=document.getElementById("environmentChallengeStatus");
-      if(status)status.textContent="Die Fläche muss zusammenhängend bleiben. Wähle ein Feld direkt neben deiner bisherigen Fläche.";
-      return true;
-    }
-  }
-  envChallengeCells.push({x,y});
-  if(envChallengeCells.length>=envChallengeCurrent.count)envChallengeSelecting=false;
-  const status=document.getElementById("environmentChallengeStatus");
-  if(status)status.textContent=envChallengeSelecting
-    ?"Wähle auf deiner Welt eine zusammenhängende Fläche: "+envChallengeCells.length+" von "+envChallengeCurrent.count+" Feldern."
-    :"Die Fläche steht fest. Passe deine Welt jetzt mit den verbleibenden Feldern an.";
-  draw();
-  return true;
-}
-function updateEnvironmentChallengeVisibility(){
-  const box=document.getElementById("environmentChallenge");if(!box)return;
-  const hasSavedWorld=getSavedWorlds().length>0;
-  const hasReflection=String(getTaskAnswers().A||"").trim().length>0;
-  const canShow=hasSavedWorld&&hasReflection;
-  box.classList.toggle("hidden",!canShow);
-  if(!canShow&&envChallengeBase)restoreEnvironmentBase(false);
-}
+function resetEnvironmentSelection(){if(!envChallengeCurrent)return;envChallengeCells=[];envChallengeSelecting=true;const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Wähle "+envChallengeCurrent.count+" zusammenhängende Felder. Mindestens eine Seite jedes neuen Feldes muss an ein bereits gewähltes Feld anschliessen.";const note=document.getElementById("environmentCanvasNote");if(note)note.textContent="Du kannst erst weiterarbeiten, wenn alle "+envChallengeCurrent.count+" Felder ausgewählt sind.";document.getElementById("resetEnvironmentSelection")?.classList.remove("hidden");drawEnvironmentChallengeWorld();}
+function updateEnvironmentChallengeVisibility(){const box=document.getElementById("environmentChallenge");if(!box)return;const hasSavedWorld=getSavedWorlds().length>0,hasReflection=String(getTaskAnswers().A||"").trim().length>0;box.classList.toggle("hidden",!(hasSavedWorld&&hasReflection));}
 
 function updatePhase1Progress(){
   const worlds=getSavedWorlds().slice().sort((a,b)=>Number(a.id)-Number(b.id));
   const b=document.getElementById("taskB");
+  const hasReflection=String(getTaskAnswers().A||"").trim().length>0;
 
-  if(b)b.classList.toggle("phase1Locked",worlds.length<1);
+  if(b)b.classList.toggle("phase1Locked",!(worlds.length>0&&hasReflection));
   updateEnvironmentChallengeVisibility();
 }
 
@@ -7744,7 +7613,14 @@ function initPhase1Progress(){
       e.stopPropagation();
 
       if(card.id==="taskB"){
-        alert("Bearbeite zuerst Aufgabe A vollständig.");
+        const answers=getTaskAnswers();
+        if(getSavedWorlds().length<1){
+          alert("Speichere zuerst deine Welt.");
+        }else if(!String(answers.A||"").trim()){
+          alert("Schreibe zuerst deine Reflexion in Aufgabe A.");
+        }else{
+          alert("Bearbeite zuerst Aufgabe A vollständig.");
+        }
       }else{
         alert("Bearbeite zuerst die vorangehende Aufgabe vollständig.");
       }
@@ -7752,6 +7628,45 @@ function initPhase1Progress(){
   });
 }
 
+function currentWorldMatchesSaved(world){
+  if(!world)return false;
+  return JSON.stringify(world.grid)===JSON.stringify(grid)&&JSON.stringify(world.userColors||[])===JSON.stringify(userColors)&&JSON.stringify(world.userColorNames||[])===JSON.stringify(userColorNames);
+}
+function makeWorldDataForAutoSave(id){
+  const exportCanvas=document.createElement("canvas"),pad=24,headerH=90,rowH=24,legendRows=Math.ceil(userColors.length/2),legendH=pad+headerH+(legendRows*rowH)+pad;
+  exportCanvas.width=canvas.width;exportCanvas.height=canvas.height+legendH;const exportCtx=exportCanvas.getContext("2d");exportCtx.drawImage(canvas,0,0);exportCtx.fillStyle="#fff";exportCtx.fillRect(0,canvas.height,exportCanvas.width,legendH);exportCtx.strokeStyle="#222";exportCtx.lineWidth=2;exportCtx.strokeRect(0,canvas.height,exportCanvas.width,legendH);exportCtx.fillStyle="#222";exportCtx.font="bold 16px system-ui, sans-serif";exportCtx.fillText("one.zero – meine Welt",pad,canvas.height+pad+14);exportCtx.font="12px system-ui, sans-serif";exportCtx.fillText("Farben und ihre Bedeutungen",pad,canvas.height+pad+36);exportCtx.beginPath();exportCtx.moveTo(pad,canvas.height+pad+50);exportCtx.lineTo(exportCanvas.width-pad,canvas.height+pad+50);exportCtx.strokeStyle="#ccc";exportCtx.stroke();const startY=canvas.height+pad+72,colW=(exportCanvas.width-(pad*3))/2;userColors.forEach((color,index)=>{const col=index%2,row=Math.floor(index/2),x=pad+col*(colW+pad),y=startY+row*rowH;exportCtx.fillStyle=color;exportCtx.fillRect(x,y-11,14,14);exportCtx.strokeStyle="#222";exportCtx.lineWidth=1;exportCtx.strokeRect(x,y-11,14,14);exportCtx.fillStyle="#222";exportCtx.font="12px system-ui, sans-serif";exportCtx.fillText(userColorNames[index].trim()||"noch keine Bedeutung",x+22,y);});return {id,grid:cloneGridValue(grid),userColors:[...userColors],userColorNames:[...userColorNames],dataUrl:exportCanvas.toDataURL("image/png")};
+}
+function saveCurrentWorldBeforeSwitch(){
+  const worlds=getSavedWorlds();
+  const currentId=getURLParam("world");
+
+  /*
+   * Gibt es bereits eine gespeicherte Welt mit dieser ID und wurde sie
+   * inzwischen verändert, wird die veränderte Fassung als neue Welt
+   * gespeichert. Die ursprüngliche gespeicherte Welt bleibt erhalten.
+   */
+  if(currentId){
+    const current=worlds.find(w=>String(w.id)===String(currentId));
+
+    if(current && currentWorldMatchesSaved(current)){
+      return true;
+    }
+  }
+
+  const targetSlot=VALID_SLOTS.find(
+    slot=>!worlds.some(w=>String(w.id)===String(slot))
+  );
+
+  if(!targetSlot){
+    alert("Die veränderte Welt kann vor dem Wechsel nicht automatisch gespeichert werden. Es sind bereits alle Speicherplätze belegt.");
+    return false;
+  }
+
+  worlds.push(makeWorldDataForAutoSave(targetSlot));
+  saveSavedWorlds(worlds);
+  renderGallery();
+  return true;
+}
 function renderGallery(){
 
   const galleryWrap =
@@ -7820,9 +7735,12 @@ function renderGallery(){
       "Welt " + world.id + " laden";
 
 
-    link.onclick = (e) => {
+    link.onclick = async (e) => {
 
       e.preventDefault();
+
+      const saved=await saveCurrentWorldBeforeSwitch();
+      if(!saved)return;
 
       loadWorldData(world);
 
@@ -8695,14 +8613,6 @@ canvas.addEventListener(
     }
 
 
-    if(handleEnvironmentChallengeClick(x,y)){
-      return;
-    }
-
-    if(isEnvBlocked(x,y)){
-      return;
-    }
-
     grid[y][x] =
       selected;
 
@@ -9147,6 +9057,8 @@ document.addEventListener(
         .classList.remove(
           "active"
         );
+
+      closeEnvironmentChallenge();
     }
   }
 );
@@ -11553,7 +11465,7 @@ function openNoveraAnalogVersion(){
     "Aufgabe B",
     "Zwei weitere Personen erreichen deine Welt. Sie wollen auch ein gutes Leben führen. Was verändert ihr?",
     "Schliesse dich mit zwei Personen aus deiner Klasse zusammen. Vergleicht zuerst eure drei Welten: Was ist euch gleich wichtig, wo unterscheiden sie sich? Diskutiert dann, wie ihr eure Welt so anpasst, dass alle drei gut darauf leben können. Einigt euch auf eine gemeinsame Version und gestaltet diese als zweite Welt.",
-    "Was war euch wichtig? Warum denkt ihr über ein gutes Leben nicht alle gleich? Worauf musstet ihr euch einigen?",
+    "Was war euch wichtig? Warum denkt ihr über ein gutes Leben nicht alle gleich? Worauf musstet ihr euch einigen? Wie habt ihr diese Einigung erreicht?",
     "Ich kann beschreiben, was für mich zu einem guten Leben gehört, unterschiedliche Vorstellungen erklären und mit anderen eine gemeinsame Lösung aushandeln."
   )+
 
@@ -13269,17 +13181,14 @@ function initErarbeitung(){
 
   const envStart=id("startEnvironmentChallenge");
   const envNext=id("nextEnvironmentChallenge");
-  const envRestore=id("restoreEnvironmentWorld");
   const envReset=id("resetEnvironmentSelection");
-  if(envStart)envStart.onclick=chooseEnvironmentChallenge;
-  if(envNext)envNext.onclick=chooseEnvironmentChallenge;
-  if(envRestore)envRestore.onclick=()=>restoreEnvironmentBase(false);
-  if(envReset)envReset.onclick=()=>{
-    if(!envChallengeCurrent||envChallengeCurrent.mode!=="self")return;
-    envChallengeCells=[];envChallengeSelecting=true;draw();
-    const status=id("environmentChallengeStatus");
-    if(status)status.textContent="Wähle auf deiner Welt eine zusammenhängende Fläche: 0 von "+envChallengeCurrent.count+" Feldern.";
-  };
+  const envClose=id("closeEnvironmentChallenge");
+  const envCanvas=id("environmentChallengeCanvas");
+  if(envStart)envStart.onclick=openEnvironmentChallenge;
+  if(envNext)envNext.onclick=nextEnvironmentChallenge;
+  if(envReset)envReset.onclick=resetEnvironmentSelection;
+  if(envClose)envClose.onclick=closeEnvironmentChallenge;
+  if(envCanvas)envCanvas.addEventListener("click",handleEnvironmentChallengeCanvasClick);
 
   const treeStart=id("startTreeChallenge");
   const treeNext=id("nextTreeChallenge");
