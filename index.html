@@ -5564,7 +5564,7 @@ details.learningGoals{
 /* Der kurze Speicherhinweis verwendet dieselbe Textgröße wie die übrigen
    Aufgaben- und Reflexionshinweise; die Kategorienzeile bleibt klein. */
 .inlineHint.saveWorldHint{
-  font-size:16px!important;
+  font-size:14px!important;
 }
 
 
@@ -7579,7 +7579,7 @@ function openEnvironmentChallenge(){
   envChallengeWorld={grid:cloneGridValue(latest.grid),colors:[...(latest.userColors||defaultUserColors)],names:[...(latest.userColorNames||Array(defaultUserColors.length).fill(""))]};envChallengeSelectedColor=0;envChallengeCells=[];envChallengeSelecting=true;
   let available=ENV_CHALLENGES.filter(c=>!envChallengeUsed.includes(c.id));if(!available.length){envChallengeUsed=[];available=[...ENV_CHALLENGES];}envChallengeCurrent=available[rand(0,available.length-1)];envChallengeUsed.push(envChallengeCurrent.id);envChallengeCurrent.count=rand(20,24);
   const event=document.getElementById("environmentChallengeEvent");if(event)event.innerHTML="<strong>"+envChallengeCurrent.symbol+" "+envChallengeCurrent.title+"</strong><p>"+envChallengeCurrent.text+" "+envChallengeCurrent.count+" Felder werden unbrauchbar. Wähle aus welche Felder betroffen sind, indem du sie anklickst. Die gewählten Felder müssen zusammenhängen. Erst wenn du die Anzahl betroffener Felder gewählt hast, kannst du deine Welt so anpassen, dass sie trotzdem für dich noch ein gutes Leben bietet.</p>";
-  const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Wähle "+envChallengeCurrent.count+" zusammenhängende Felder. Mindestens eine Seite jedes neuen Feldes muss an ein bereits gewähltes Feld anschliessen.";
+  const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="";
   const note=document.getElementById("environmentCanvasNote");if(note)note.textContent="Du kannst erst weiterarbeiten, wenn alle "+envChallengeCurrent.count+" Felder ausgewählt sind.";
   renderEnvironmentChallengePalette();drawEnvironmentChallengeWorld();document.getElementById("resetEnvironmentSelection")?.classList.remove("hidden");document.getElementById("environmentChallengeOverlay")?.classList.add("active");document.body.style.overflow="hidden";
 }
@@ -7590,7 +7590,7 @@ function handleEnvironmentChallengeCanvasClick(e){
   if(envChallengeSelecting){if(envChallengeCells.length>0&&!envNeighbors(x,y).some(c=>set.has(cellKey(c.x,c.y)))){const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Die Fläche muss zusammenhängend bleiben. Wähle ein Feld direkt neben deiner bisherigen Fläche.";return;}envChallengeCells.push({x,y});if(envChallengeCells.length>=envChallengeCurrent.count){envChallengeSelecting=false;const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Die Fläche steht fest. Gestalte deine Welt jetzt mit den verbleibenden Feldern um.";const note=document.getElementById("environmentCanvasNote");if(note)note.textContent="Die markierten Felder können nicht verändert werden.";document.getElementById("resetEnvironmentSelection")?.classList.add("hidden");renderEnvironmentChallengePalette();}else{const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Wähle noch "+(envChallengeCurrent.count-envChallengeCells.length)+" Felder. Die Fläche muss zusammenhängend bleiben.";}drawEnvironmentChallengeWorld();return;}
   envChallengeWorld.grid[y][x]=envChallengeSelectedColor;drawEnvironmentChallengeWorld();
 }
-function resetEnvironmentSelection(){if(!envChallengeCurrent)return;envChallengeCells=[];envChallengeSelecting=true;const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="Wähle "+envChallengeCurrent.count+" zusammenhängende Felder. Mindestens eine Seite jedes neuen Feldes muss an ein bereits gewähltes Feld anschliessen.";const note=document.getElementById("environmentCanvasNote");if(note)note.textContent="Du kannst erst weiterarbeiten, wenn alle "+envChallengeCurrent.count+" Felder ausgewählt sind.";document.getElementById("resetEnvironmentSelection")?.classList.remove("hidden");drawEnvironmentChallengeWorld();}
+function resetEnvironmentSelection(){if(!envChallengeCurrent)return;envChallengeCells=[];envChallengeSelecting=true;const status=document.getElementById("environmentChallengeStatus");if(status)status.textContent="";const note=document.getElementById("environmentCanvasNote");if(note)note.textContent="Du kannst erst weiterarbeiten, wenn alle "+envChallengeCurrent.count+" Felder ausgewählt sind.";document.getElementById("resetEnvironmentSelection")?.classList.remove("hidden");drawEnvironmentChallengeWorld();}
 function updateEnvironmentChallengeVisibility(){const box=document.getElementById("environmentChallenge");if(!box)return;const hasSavedWorld=getSavedWorlds().length>0,hasReflection=String(getTaskAnswers().A||"").trim().length>0;box.classList.toggle("hidden",!(hasSavedWorld&&hasReflection));}
 
 function updatePhase1Progress(){
